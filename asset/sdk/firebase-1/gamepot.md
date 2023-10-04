@@ -5,7 +5,7 @@ description: AOS, iOS에서 소셜 로그인, 공지사항 기능(추후 Standal
 # GamePot
 
 {% hint style="info" %}
-사용 버전 :   GAMEPOT\_UNITY\_SDK\_20220217.unitypackage
+사용 버전 : GAMEPOT\_UNITY\_SDK\_20220217.unitypackage
 
 GamePot Project ID : 34687e3f-7c50-44a8-86e6-9836b47e1c21
 {% endhint %}
@@ -43,19 +43,17 @@ GamePot Sample Project with arzMETA
 
 ***
 
-
-
 ## GamePot Social Login Setting
 
 ### Unity Android Setting
 
 1. Assets/Plugins/Android/mainTemplate.gradle 수정
 
-<figure><img src="../../../.gitbook/assets/image (16).png" alt=""><figcaption><p>gamepot_project_id 연결, gamepot_store 변경</p></figcaption></figure>
+<figure><img src="../../../gitbook/.gitbook/assets/image (16).png" alt=""><figcaption><p>gamepot_project_id 연결, gamepot_store 변경</p></figcaption></figure>
 
 2. AndroidManifest.xml MainActivity 수정
 
-<figure><img src="../../../.gitbook/assets/image (17).png" alt=""><figcaption><p>android:name 변경</p></figcaption></figure>
+<figure><img src="../../../gitbook/.gitbook/assets/image (17).png" alt=""><figcaption><p>android:name 변경</p></figcaption></figure>
 
 ### Unity iOS Setting
 
@@ -89,20 +87,18 @@ GamePot Sample Project with arzMETA
 5. 구글 플레이 콘솔의 앱 서명 키 인증서 기능을 사용하고 있을지
 6. firebase sha-1 값과 빌드에 사용된 키의 sha-1 값이 일치하는지 (apk로 빌드하여 확인도 가능합니다)
 7. 사용하는 라이브러리들은 nativeLibs 폴더가 아닌 libs 폴더로 이동시켜 사용하고, libs 폴더 전체가 빌드 시 포함되도록 적용하고 nativeLibs 폴더는 포함되지 않도록 적용
-8. Google Console 내 Google Cloud의  OAuth 2.0 클라이언트 ID가 있어야 하며, API 및 서비스 > Auth 동의 화면 내 게시 상태가 프로덕션 단계여야 하며, 사용자 유형은 외부여야 한다.&#x20;
+8. Google Console 내 Google Cloud의 OAuth 2.0 클라이언트 ID가 있어야 하며, API 및 서비스 > Auth 동의 화면 내 게시 상태가 프로덕션 단계여야 하며, 사용자 유형은 외부여야 한다.
 9. [firebase 콘솔](../firebase.md) > FCM, CMA 기존 방식이 사용 설정 되어 있을지 확인
 10. [Gamepot 콘솔](gamepot.md#gamepot) > Auth Key > 구글에 client\_id가 잘 들어갔는지 확인(도움말)참조
 {% endhint %}
 
-<figure><img src="../../../.gitbook/assets/image (23).png" alt=""><figcaption><p>&#x3C; 5. 참고 이미지 > 빌드 시, 폴더를 비포함시키는 방법</p></figcaption></figure>
+<figure><img src="../../../gitbook/.gitbook/assets/image (23).png" alt=""><figcaption><p>&#x3C; 5. 참고 이미지 > 빌드 시, 폴더를 비포함시키는 방법</p></figcaption></figure>
 
 {% embed url="https://console.cloud.google.com/apis/credentials/consent?authuser=1&project=arzmeta-bacde" %}
-< 6. 참고  링크 >
+< 6. 참고 링크 >
 {% endembed %}
 
-<figure><img src="../../../.gitbook/assets/image (24).png" alt=""><figcaption><p>&#x3C; 9. 참고 이미지 ></p></figcaption></figure>
-
-
+<figure><img src="../../../gitbook/.gitbook/assets/image (24).png" alt=""><figcaption><p>&#x3C; 9. 참고 이미지 ></p></figcaption></figure>
 
 ### Apple Login Setting
 
@@ -110,7 +106,7 @@ GamePot Sample Project with arzMETA
 애플 로그인이 잘되지 않을 경우, 아래의 경우들을 확인해보세요.
 
 1. GamePot 콘솔 > Auth Key > 애플 ID\
-   GamePot 콘솔 >  Apple ID Login (도움말 참조)
+   GamePot 콘솔 > Apple ID Login (도움말 참조)
    1. Client ID : com.hancomfrontis.arzmeta.gamepot.services
    2. TEAM ID : Q2B2W3PV27
    3. KEY ID : 8656A9UB85
@@ -134,43 +130,33 @@ GamePot Sample Project with arzMETA
 2.
 {% endhint %}
 
-
-
-{% file src="../../../.gitbook/assets/AuthKey_8656A9UB85.p8" %}
+{% file src="../../../gitbook/.gitbook/assets/AuthKey_8656A9UB85.p8" %}
 < 1. AuthKey\_ .p8 파일 >
 {% endfile %}
 
-
-
 ***
-
-
 
 ## GamePot InApp Purchase
 
 ### GamePot InApp Purchase 사용할 경우, 아래 패치를 적용하여 관련 버전 업그레이드 필요
 
-{% file src="../../../.gitbook/assets/google_inappV5_0823_Unity.zip" %}
+{% file src="../../../gitbook/.gitbook/assets/google_inappV5_0823_Unity.zip" %}
 
 1\. 첨부파일의 4개 파일 ./Assets/Plugins/Android/libs 경로에 붙여넣기 및 교체
 
 2\. 패치 후 billing-3.0.3.aar 파일은 삭제
 
-
-
 ***
-
-
 
 ## <mark style="background-color:yellow;">TroubleShooting</mark>
 
-GamePot SDK를 통해 기능 개발하면서 겪었던 버그들을 정리해두었습니다. 비슷한 버그 발생 시, <mark style="background-color:yellow;">해당 TroubleShooting 문단과</mark> [<mark style="background-color:yellow;">상단의  GamePot 관련 핵심 페이지의 FAQ와 TroubleShooting 페이지</mark>](gamepot.md#gamepot)<mark style="background-color:yellow;">를 함께 참고</mark>하시면 됩니다.
+GamePot SDK를 통해 기능 개발하면서 겪었던 버그들을 정리해두었습니다. 비슷한 버그 발생 시, <mark style="background-color:yellow;">해당 TroubleShooting 문단과</mark> [<mark style="background-color:yellow;">상단의 GamePot 관련 핵심 페이지의 FAQ와 TroubleShooting 페이지</mark>](gamepot.md#gamepot)<mark style="background-color:yellow;">를 함께 참고</mark>하시면 됩니다.
 
 ### Unity AOS Build Error(<mark style="color:red;">에러</mark>, <mark style="color:blue;">해결책</mark>)
 
 * <mark style="color:red;">mainTemplate.gradle file is using the old aaptOptions noCompress property definition which does not include types defined by unityStreamingAssets constant.</mark>
 
-<figure><img src="../../../.gitbook/assets/image (18).png" alt=""><figcaption><p><mark style="color:blue;">aaptOptions 변경</mark></p></figcaption></figure>
+<figure><img src="../../../gitbook/.gitbook/assets/image (18).png" alt=""><figcaption><p><mark style="color:blue;">aaptOptions 변경</mark></p></figcaption></figure>
 
 * <mark style="color:red;">Found plugins with same names, Assets/Plugins/Android/libs/gamepot-channel-facebook.aar and Assets/Plugins/Android/nativeLibs/gamepot-channel-facebook.aar. Delete the one of the duplicate plugins.</mark>
 
@@ -180,8 +166,6 @@ GamePot SDK를 통해 기능 개발하면서 겪었던 버그들을 정리해두
 
     FAILURE: Build completed with 2 failures.
 
-    &#x20;
-
     1: Task failed with an exception.
 
     \-----------
@@ -190,23 +174,17 @@ GamePot SDK를 통해 기능 개발하면서 겪었던 버그들을 정리해두
 
     Build file 'C:\work\arzMETA-CLIENT\Temp\gradleOut\unityLibrary\build.gradle' line: 50
 
-    &#x20;
-
     <mark style="color:red;">\* What went wrong:</mark>
 
     <mark style="color:red;">A problem occurred evaluating project ':unityLibrary'.</mark>
 
     <mark style="color:red;">> Project with path ':GamePotResources' could not be found in project ':unityLibrary'.</mark>
 
-    &#x20;
-
     \* Try:
 
     Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output. Run with --scan to get full insights.
 
     \==============================================================================
-
-    &#x20;
 
     2: Task failed with an exception.
 
@@ -218,25 +196,17 @@ GamePot SDK를 통해 기능 개발하면서 겪었던 버그들을 정리해두
 
     <mark style="color:red;">> compileSdkVersion is not specified. Please add it to build.gradle</mark>
 
-    &#x20;
-
     \* Try:
 
     Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output. Run with --scan to get full insights.
 
     \==============================================================================
 
-    &#x20;
-
     \* Get more help at [https://help.gradle.org](https://help.gradle.org)
-
-    &#x20;
 
     BUILD FAILED in 13s
 
     Picked up JAVA\_TOOL\_OPTIONS: -Dfile.encoding=UTF-8
-
-    &#x20;
 
     UnityEngine.GUIUtility:ProcessEvent (int,intptr,bool&)
 
@@ -250,8 +220,6 @@ GamePot SDK를 통해 기능 개발하면서 겪었던 버그들을 정리해두
 
 <mark style="color:blue;">수정 : ../Assets/Plugins/Android/GamePotResources.androidlib</mark>
 
-&#x20;
-
 <mark style="color:blue;">implementation project('GamePotResources.androidlib')</mark>
 
 <mark style="color:blue;">implementation project('FirebaseApp.androidlib')</mark>
@@ -260,15 +228,9 @@ GamePot SDK를 통해 기능 개발하면서 겪었던 버그들을 정리해두
 
     C:\Program Files\Unity\Hub\Editor\2020.3.35f1\Editor\Data\PlaybackEngines\AndroidPlayer\OpenJDK\bin\java.exe -classpath "C:\Program Files\Unity\Hub\Editor\2020.3.35f1\Editor\Data\PlaybackEngines\AndroidPlayer\Tools\gradle\lib\gradle-launcher-6.1.1.jar" org.gradle.launcher.GradleMain "-Dorg.gradle.jvmargs=-Xmx4096m" "assembleRelease"
 
-    &#x20;
-
     stderr\[
 
-    &#x20;
-
     FAILURE: Build failed with an exception.
-
-    &#x20;
 
     <mark style="color:red;">\* What went wrong:</mark>
 
@@ -276,7 +238,7 @@ GamePot SDK를 통해 기능 개발하면서 겪었던 버그들을 정리해두
 
     <mark style="color:red;">> Configuration with name 'compileClasspath' not found.</mark>
 
-<figure><img src="../../../.gitbook/assets/image (19).png" alt=""><figcaption><p><mark style="color:blue;">mainTemplate.gradle에 추가</mark></p></figcaption></figure>
+<figure><img src="../../../gitbook/.gitbook/assets/image (19).png" alt=""><figcaption><p><mark style="color:blue;">mainTemplate.gradle에 추가</mark></p></figcaption></figure>
 
 * <mark style="color:red;">Could not delete old \[Path]\lint-results-release-fatal.html</mark>
 
@@ -320,7 +282,7 @@ end
 ```
 
 {% hint style="info" %}
-Unity 빌드 후, buildPath에  Podfile 복사 -> pod install -> .xcworkspace 열기까지 buildPath만 입력하면 자동으로 실행되게 Shell Script(podinstall.sh)가 작성되어있습니다.  두레이 프로젝트 위키를 참고해주시면 됩니다.
+Unity 빌드 후, buildPath에 Podfile 복사 -> pod install -> .xcworkspace 열기까지 buildPath만 입력하면 자동으로 실행되게 Shell Script(podinstall.sh)가 작성되어있습니다. 두레이 프로젝트 위키를 참고해주시면 됩니다.
 {% endhint %}
 
 {% embed url="https://hancom.dooray.com/wiki/3447245024658035709/3453789867158525282" %}
@@ -332,7 +294,7 @@ Unity 빌드 후, buildPath에  Podfile 복사 -> pod install -> .xcworkspace �
 1. <mark style="color:blue;">별도의 firebase를 붙여서 사용하시는 경우 게임팟 기능을 위하여 이미 포함되어있는 일부 라이브러리와 충돌이 있을 수 있습니다. 아래 링크의 가이드 내용(https://docs.gamepot.io/undefined/gamepot\_troubleshooting#unity-firebase-sdk-firebase-unity-8.7.0)과 같이 중복되는 라이브러리 삭제</mark>
 2. <mark style="color:blue;">FirebaseAnalytics.unitypackage, FirebaseMessaging.unitypackage(https://developers.google.com/unity/archive?hl=ko 에서 다운로드 가능) 적용 및 podfile 내 :modular\_headers => true 적용이 필요</mark>
 
-&#x20;<mark style="color:blue;">참고 페이지)</mark> [<mark style="color:blue;">https://docs.gamepot.io/undefined/gamepot\_troubleshooting#unity-firebase-sdk-firebase-unity-8.7.0</mark>](https://docs.gamepot.io/undefined/gamepot\_troubleshooting#unity-firebase-sdk-firebase-unity-8.7.0)
+<mark style="color:blue;">참고 페이지)</mark> [<mark style="color:blue;">https://docs.gamepot.io/undefined/gamepot\_troubleshooting#unity-firebase-sdk-firebase-unity-8.7.0</mark>](https://docs.gamepot.io/undefined/gamepot\_troubleshooting#unity-firebase-sdk-firebase-unity-8.7.0)
 
 * <mark style="color:red;">MissingMethodException: System.Collections.Generic.IEnumerable\`1 Google.IOSResolver.GetXcodeTargetGuids(object,bool)</mark>
 

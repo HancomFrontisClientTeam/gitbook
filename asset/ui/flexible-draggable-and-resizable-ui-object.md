@@ -14,7 +14,7 @@ coverY: 386
 > * 드래그 할 UI에 컴포넌트 추가
 > * 드래그 될 UI를 Target으로 지정
 
-![](<../../.gitbook/assets/image (4).png>) ![](<../../.gitbook/assets/image (7) (1).png>)
+![](<../../gitbook/.gitbook/assets/image (4).png>) ![](<../../gitbook/.gitbook/assets/image (7) (1).png>)
 
 ### 리사이즈
 
@@ -22,8 +22,8 @@ coverY: 386
 > * 리사이즈 될 UI를 Target으로 지정
 > * 위치와, min\&max 사이즈를 지정
 
-![](<../../.gitbook/assets/image (5) (1).png>) ![](<../../.gitbook/assets/image (7).png>)
+![](<../../gitbook/.gitbook/assets/image (5) (1).png>) ![](<../../gitbook/.gitbook/assets/image (7).png>)
 
 ### 결과
 
-![](../../.gitbook/assets/Animation.gif)\\
+![](../../gitbook/.gitbook/assets/Animation.gif)\\

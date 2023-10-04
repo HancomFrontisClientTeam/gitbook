@@ -11,25 +11,22 @@ description: 씬 구성도
   * 주로 회원가입, 로그인, 아바타설정 등의 씬이 존재
   * Scene\_Base\_Logo
     * 씬 최초 진입점
-    * PreMaster ->&#x20;
+    * PreMaster ->
     * 업데이트버전체크
-    * 매니저  클래스 셋팅
+    * 매니저 클래스 셋팅
     *
   * Scene\_Base\_Patch :
-  * Scene\_Base\_Title :&#x20;
-  * Scene\_Base\_Lobby :&#x20;
+  * Scene\_Base\_Title :
+  * Scene\_Base\_Lobby :
 * **In World**
   * **플레이어가 존재**하며 돌아다니며 **멀티플레이**
   * 계층관계 : Land > Zone > Room 순
   * Scene\_Room\_MyRoom
     * Out World에서 In World로 전환되는 최초 씬
-    * 마이룸 꾸미기, 액자친꾸미기,  친구 초대하기 ...
+    * 마이룸 꾸미기, 액자친꾸미기, 친구 초대하기 ...
   * Scene\_Land\_Arz
     * 모든 In World의 허브 씬
     *
   * Scene\_
 
-
-
-<img src="../../.gitbook/assets/file.excalidraw (4).svg" alt="씬 흐름도" class="gitbook-drawing">
-
+<img src="../../gitbook/.gitbook/assets/file.excalidraw (4).svg" alt="씬 흐름도" class="gitbook-drawing">

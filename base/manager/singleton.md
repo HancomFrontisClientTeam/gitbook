@@ -18,9 +18,7 @@ description: 일반적으로 사용하는 싱글톤 클래스를 간편하게 �
 
 #### 선언
 
-![](<../../.gitbook/assets/image (8).png>) -->![](../../.gitbook/assets/image.png)
-
-
+![](<../../gitbook/.gitbook/assets/image (8).png>) -->![](../../gitbook/.gitbook/assets/image.png)
 
 #### 캐싱
 
@@ -28,7 +26,7 @@ description: 일반적으로 사용하는 싱글톤 클래스를 간편하게 �
 
 <div align="left">
 
-<figure><img src="../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../gitbook/.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
 
 </div>
 
@@ -38,7 +36,7 @@ description: 일반적으로 사용하는 싱글톤 클래스를 간편하게 �
 
 <div align="left">
 
-<figure><img src="../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../gitbook/.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
 
 </div>
 
@@ -46,4 +44,4 @@ description: 일반적으로 사용하는 싱글톤 클래스를 간편하게 �
 
 > **Single.xxx.** 으로 사용
 
-![](<../../.gitbook/assets/image (6).png>)
+![](<../../gitbook/.gitbook/assets/image (6).png>)

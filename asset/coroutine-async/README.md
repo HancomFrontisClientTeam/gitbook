@@ -19,5 +19,5 @@ layout:
     visible: true
 ---
 
-# 🔄 Coroutine / Async
+# 🔁 Coroutine / Async
 

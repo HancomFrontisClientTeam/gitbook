@@ -9,14 +9,14 @@ description: ScrollRect를 사용할 때, Viewport 크기에 맞게 아이템을
 ## 사용 목적
 
 {% hint style="info" %}
-ScrollView Content 내의 각각의  Item의 사이즈가 유동적이어야 하는 경우 사용한다.
+ScrollView Content 내의 각각의 Item의 사이즈가 유동적이어야 하는 경우 사용한다.
 {% endhint %}
 
 ## 사용 방법
 
 1. ScrollRect를 사용하는 게임오브젝트에 Infinite Scroll 스크립트를 컴포넌트로 추가한다.
 2. Infinite Scroll 스크립트의 Item Prefab에 아이템 프리팹을 연결한다 ( 해당 아이템은 InfiniteScrollItem을 상속받고 있어야 한다. )
-3.  아이템 데이터는 InfiniteScrollItem을 상속받은 클래스 내에서 Content의 Data를 적용하여 사용&#x20;
+3.  아이템 데이터는 InfiniteScrollItem을 상속받은 클래스 내에서 Content의 Data를 적용하여 사용
 
     ```csharp
     public override void UpdateData(InfiniteScrollData scrollData) 
@@ -76,7 +76,4 @@ public void ResizeScrollView();
 
 ## 사용 구조도
 
-<img src="../../.gitbook/assets/file.excalidraw (2) (1).svg" alt="Infinite Scroll 사용 구조도" class="gitbook-drawing">
-
-
-
+<img src="../../gitbook/.gitbook/assets/file.excalidraw (2) (1).svg" alt="Infinite Scroll 사용 구조도" class="gitbook-drawing">

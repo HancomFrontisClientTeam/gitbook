@@ -6,8 +6,8 @@ description: 오브젝트 재활용 스크롤 뷰
 
 #### ○ 해당 스크롤 뷰를 사용하는 경우
 
-* 일반적인  스크롤 뷰 기능이 필요할 시
-* Loop가 필요하지 않을 시 (해당  스크롤뷰는 Loop 기능이 지원되지 않음)
+* 일반적인 스크롤 뷰 기능이 필요할 시
+* Loop가 필요하지 않을 시 (해당 스크롤뷰는 Loop 기능이 지원되지 않음)
 
 ***
 
@@ -29,7 +29,7 @@ description: 오브젝트 재활용 스크롤 뷰
 
 ## ● 구조도
 
-<img src="../../../../.gitbook/assets/file.excalidraw (8).svg" alt="" class="gitbook-drawing">
+<img src="../../../../gitbook/.gitbook/assets/file.excalidraw (8).svg" alt="" class="gitbook-drawing">
 
 ***
 
@@ -37,7 +37,7 @@ description: 오브젝트 재활용 스크롤 뷰
 
 #### ▷ ScrollView.cs
 
-<table><thead><tr><th width="418.3333333333333">변수</th><th>설명</th></tr></thead><tbody><tr><td>[SerializeField] float cellSize = 100f;</td><td>CellPrefab에 연결한 프리팹의 높이값과 일치시켜주어야 한다.</td></tr><tr><td>[SerializeField] GameObject cellPrefab = default;</td><td>FancyScrollRectCell을 상속받은 스크립트를 가진 프리팹을 연결</td></tr><tr><td>public int DataCount => ItemsSource.Count;</td><td>현재 생성된  셀의 총 개수를 알 수 있다.</td></tr></tbody></table>
+<table><thead><tr><th width="418.3333333333333">변수</th><th>설명</th></tr></thead><tbody><tr><td>[SerializeField] float cellSize = 100f;</td><td>CellPrefab에 연결한 프리팹의 높이값과 일치시켜주어야 한다.</td></tr><tr><td>[SerializeField] GameObject cellPrefab = default;</td><td>FancyScrollRectCell을 상속받은 스크립트를 가진 프리팹을 연결</td></tr><tr><td>public int DataCount => ItemsSource.Count;</td><td>현재 생성된 셀의 총 개수를 알 수 있다.</td></tr></tbody></table>
 
 <details>
 
@@ -144,7 +144,7 @@ public override void UpdateContent(ItemData itemData)
 
 ***
 
-## ● 실무 사용  ScrollView\_Custom
+## ● 실무 사용 ScrollView\_Custom
 
 (feat. 한효주 주임 연구원)
 
@@ -153,34 +153,32 @@ public override void UpdateContent(ItemData itemData)
 #### ○ 위치: Assets\\\_DEV\Script\UI\Scroll
 
 {% hint style="warning" %}
-&#x20;   기존 에셋 사용 시 ScrollView\<ItemData, Context>와 같이 TItemData의 형태를 ScrollView에서 지정하고 있다.&#x20;
+기존 에셋 사용 시 ScrollView\<ItemData, Context>와 같이 TItemData의 형태를 ScrollView에서 지정하고 있다.
 
-&#x20;   이 경우, 여러 곳에서 다른 형태의 Data를 사용하기 위해서는 부모 데이터 클래스를 상속받아 자식 데이터 클래스에서 필요 데이터를 추가 하는 형태로 변경되어야 한다.
+이 경우, 여러 곳에서 다른 형태의 Data를 사용하기 위해서는 부모 데이터 클래스를 상속받아 자식 데이터 클래스에서 필요 데이터를 추가 하는 형태로 변경되어야 한다.
 
-&#x20;   따라서 Custom 스크립트로 파생하여,  빈 클래스인 Item\_Data를 FancyScrollRect의  TItemData 속성으로 지정하고,  자식데이터 클래스에서 상속받는 방식으로 변경하였다.
+따라서 Custom 스크립트로 파생하여, 빈 클래스인 Item\_Data를 FancyScrollRect의 TItemData 속성으로 지정하고, 자식데이터 클래스에서 상속받는 방식으로 변경하였다.
 {% endhint %}
-
-
 
 ### ● 추가주요 변수 및 기능 메소드
 
 #### ▷ ScrollView\_Custom.cs
 
-상속한 FancyScrollRect\<TItemData, TContext>  클래스에 각 \<Item\_Data, Context>을 지정하여 상속받은 것 외 추가 변경 없음.
+상속한 FancyScrollRect\<TItemData, TContext> 클래스에 각 \<Item\_Data, Context>을 지정하여 상속받은 것 외 추가 변경 없음.
 
-![](<../../../../.gitbook/assets/image (13).png>)
+![](<../../../../gitbook/.gitbook/assets/image (13).png>)
 
 #### ▷ FancyScrollRectCell\_Custom.cs
 
-상속한 FancyScrollRectCell\<TItemData, TContext>  클래스에 각 \<Item\_Data, Context>을 지정하여 상속받았다.&#x20;
+상속한 FancyScrollRectCell\<TItemData, TContext> 클래스에 각 \<Item\_Data, Context>을 지정하여 상속받았다.
 
-![](<../../../../.gitbook/assets/image (14).png>)
+![](<../../../../gitbook/.gitbook/assets/image (14).png>)
 
 아이템 스크립트를 작성하여 FancyScrollRectCell\_Custom를 상속받아 사용한다.
 
-![](<../../../../.gitbook/assets/image (15).png>)
+![](<../../../../gitbook/.gitbook/assets/image (15).png>)
 
-<table><thead><tr><th width="418.3333333333333">변수</th><th>설명</th></tr></thead><tbody><tr><td>protected UIBase uIBase;</td><td>UIBase를 상속받지 못하므로 외부 컴포넌트에서 가져와 초기화 시킨다.<br>(기본적으로 RequireComponent가 설정되어  있음)</td></tr></tbody></table>
+<table><thead><tr><th width="418.3333333333333">변수</th><th>설명</th></tr></thead><tbody><tr><td>protected UIBase uIBase;</td><td>UIBase를 상속받지 못하므로 외부 컴포넌트에서 가져와 초기화 시킨다.<br>(기본적으로 RequireComponent가 설정되어 있음)</td></tr></tbody></table>
 
 <details>
 
@@ -263,29 +261,23 @@ public override void UpdateContent(ItemData itemData)
 
 </details>
 
-
-
 ### ● 구조도
 
 {% tabs %}
 {% tab title="ScrollView_Custom" %}
-<img src="../../../../.gitbook/assets/file.excalidraw (1).svg" alt="" class="gitbook-drawing">
+<img src="../../../../gitbook/.gitbook/assets/file.excalidraw (1).svg" alt="" class="gitbook-drawing">
 {% endtab %}
 
 {% tab title="예시 - View_FriendList" %}
-<img src="../../../../.gitbook/assets/file.excalidraw (7).svg" alt="" class="gitbook-drawing">
+<img src="../../../../gitbook/.gitbook/assets/file.excalidraw (7).svg" alt="" class="gitbook-drawing">
 {% endtab %}
 {% endtabs %}
 
+### ● 사용 방법
 
+1\) 스크롤 뷰의 아이템이 될 프리팹에 FancyScrollRectCell\_Custom을 상속받은 스크립트를 추가한다.
 
-### ● 사용 방법&#x20;
-
-1\)  스크롤 뷰의 아이템이 될 프리팹에 FancyScrollRectCell\_Custom을 상속받은 스크립트를 추가한다.
-
-2\) ScrollView\_Custom :  FancyScrollRect\<Item\_Data, Context>의 Cell Prefab에 1)을 연결한다. (오브젝트를 직접 끌어넣거나, 스크립트로 연결하는 것 모두 가능)
-
-
+2\) ScrollView\_Custom : FancyScrollRect\<Item\_Data, Context>의 Cell Prefab에 1)을 연결한다. (오브젝트를 직접 끌어넣거나, 스크립트로 연결하는 것 모두 가능)
 
 ### ● 컴포넌트 추가 예시
 
@@ -299,10 +291,10 @@ public override void UpdateContent(ItemData itemData)
 
 ※ Scroll View\_Custom 컴포넌트 추가 예시
 
-![](<../../../../.gitbook/assets/image (10).png>)
+![](<../../../../gitbook/.gitbook/assets/image (10).png>)
 
 ※ Cell 스크립트(FancyScrollRectCell\_Custom를 상속받음) 프리팹 오브젝트 예시
 
-![](<../../../../.gitbook/assets/image (11).png>)
+![](<../../../../gitbook/.gitbook/assets/image (11).png>)
 
 5\) Scroll View의 Cell Size의 값과 Cell Prefab의 높이 값을 일치시켜주어야 한다

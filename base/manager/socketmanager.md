@@ -4,7 +4,7 @@ description: 채팅(룸 채팅, 1:1채팅), 시스템 알림(친구 요청, 오�
 
 # SocketManager
 
-### WebSocketServer 문서 (손재명  연구원님)
+### WebSocketServer 문서 (손재명 연구원님)
 
 {% embed url="https://jaemyeongson.gitbook.io/arzmeta-socketserver-docs/" %}
 
@@ -12,11 +12,11 @@ description: 채팅(룸 채팅, 1:1채팅), 시스템 알림(친구 요청, 오�
 
 <summary>스크립트 특징 및 사용 방법</summary>
 
-*   #### Singleton으로 작성되어 어디서든 접근 가능
+*   **Singleton으로 작성되어 어디서든 접근 가능**
 
     <pre><code><strong>Single.socket.[사용하고자 하는 함수]
     </strong></code></pre>
-*   #### Method 이름 설명
+*   **Method 이름 설명**
 
     ```
     C_[함수기능] : 클라이언트 -> 서버
@@ -25,7 +25,7 @@ description: 채팅(룸 채팅, 1:1채팅), 시스템 알림(친구 요청, 오�
 
 <!---->
 
-*   #### 소켓 연결 - 최초 로그인 할 때, 한 번만 연결함
+*   **소켓 연결 - 최초 로그인 할 때, 한 번만 연결함**
 
     ```
     Single.socket.SocketIO3Connect();
@@ -84,7 +84,7 @@ public void C_ChangeNickname();
 {% endtab %}
 
 {% tab title="Chatting" %}
-<pre class="language-csharp"><code class="lang-csharp">// <a data-footnote-ref href="#user-content-fn-2">채팅이 가능한 Scene</a> 로드 시, <a data-footnote-ref href="#user-content-fn-3">전체(룸) 채팅</a>의 경우에만 추가됨 (SceneLogic.cs)
+<pre class="language-csharp"><code class="lang-csharp">// 채팅이 가능한 Scene 로드 시, <a data-footnote-ref href="#user-content-fn-2">전체(룸) 채팅</a>의 경우에만 추가됨 (SceneLogic.cs)
 private void C_EnterChatRoom();
 
 // 전체(룸) 채팅의 경우, 클라이언트가 보내는 메세지 패킷
@@ -153,8 +153,8 @@ Dev Server Port : 3910, Staging Server Port : 3920
 Live Server
 {% endembed %}
 
+1. SceneLogic.instance.isPanelChat == true
+
 [^1]: S\_SET\_NICKNAME\_NOTICE
 
-[^2]: SceneLogic.instance.isPanelChat == true
-
-[^3]: CHAT\_TYPE.ALL
+[^2]: CHAT\_TYPE.ALL
