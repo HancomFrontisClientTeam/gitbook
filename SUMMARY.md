@@ -6,13 +6,12 @@
 ## 🔍 BASE
 
 * [🎞 Scene](base/scene/README.md)
-  * [Scene 구성도](base/scene/scene.md)
   * [SceneLogic](base/scene/scenelogic.md)
+  * [Scene 구성도](base/scene/scene.md)
 * [🪄 Manager](base/manager/README.md)
   * [GamePotManager](base/manager/gamepotmanager.md)
   * [MasterDataManager](base/manager/masterdatamanager.md)
   * [RealtimeManager](base/manager/realtimemanager.md)
-  * [Page 1](base/manager/resourcesmanager.md)
   * [Singleton](base/manager/singleton.md)
   * [SocketManager](base/manager/socketmanager.md)
   * [SoundManager](base/manager/soundmanager.md)
