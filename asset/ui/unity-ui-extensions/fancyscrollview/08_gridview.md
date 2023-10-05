@@ -29,15 +29,15 @@ description: 그리드 오브젝트 재활용 스크롤 뷰
 
 ## ● 구조도
 
-<img src="../../../../gitbook/.gitbook/assets/file.excalidraw (8).svg" alt="" class="gitbook-drawing">
+<img src="../../../../.gitbook/assets/file.excalidraw (8).svg" alt="" class="gitbook-drawing">
 
 ***
 
 ## ● 주요 변수 및 기능 메소드
 
-#### ▷ ScrollView.cs
+#### ▷ GridView.cs
 
-<table><thead><tr><th width="418.3333333333333">변수</th><th>설명</th></tr></thead><tbody><tr><td>[SerializeField] float cellSize = 100f;</td><td>CellPrefab에 연결한 프리팹의 높이값과 일치시켜주어야 한다.</td></tr><tr><td>[SerializeField] GameObject cellPrefab = default;</td><td>FancyScrollRectCell을 상속받은 스크립트를 가진 프리팹을 연결</td></tr><tr><td>public int DataCount => ItemsSource.Count;</td><td>현재 생성된 셀의 총 개수를 알 수 있다.</td></tr></tbody></table>
+<table><thead><tr><th width="418.3333333333333">변수</th><th>설명</th></tr></thead><tbody><tr><td>[SerializeField] float cellSize = 100f;</td><td>CellPrefab에 연결한 프리팹의 높이값과 일치시켜주어야 한다.</td></tr><tr><td>[SerializeField] GameObject cellPrefab = default;</td><td>FancyGridViewCell을 상속받은 스크립트를 가진 프리팹을 연결</td></tr><tr><td>public int DataCount => ItemsSource.Count;</td><td>현재 생성된 셀의 총 개수를 알 수 있다.</td></tr></tbody></table>
 
 <details>
 
@@ -45,14 +45,14 @@ description: 그리드 오브젝트 재활용 스크롤 뷰
 
 ```csharp
 // 셀 선택 시 액션 호출
-scrollview.OnCellClicked((int) => { /*선택된 셀의 인덱스가 넘어온다*/ });
+gridView.OnCellClicked((int) => { /*선택된 셀의 인덱스가 넘어온다*/ });
 ```
 
 </details>
 
 <details>
 
-<summary>public void UpdateData(IList items)</summary>
+<summary>public virtual void UpdateContents(IList&#x3C;TItemData> items);</summary>
 
 ```csharp
 // 아이템(셀)을 스크롤뷰에 생성
@@ -61,7 +61,7 @@ scrollview.OnCellClicked((int) => { /*선택된 셀의 인덱스가 넘어온다
 List<ItemData> datas = new List<ItemData>();
 datas.add(new ItemData()); // 아이템 전체 데이터를 리스트로 만든다
 
-scrollview.UpdateData(datas);
+gridView.UpdateData(datas);
 ```
 
 </details>
@@ -74,7 +74,7 @@ scrollview.UpdateData(datas);
 // 지정한 인덱스의 셀까지 스크롤링
 // (지정한 인덱스, 걸리는 시간, 이동 방식, 기준 피벗)
 
-scrollView.ScrollTo(1, 0.3f, Ease.InOutQuint, Alignment.Lower);
+gridView.ScrollTo(1, 0.3f, Ease.InOutQuint, Alignment.Lower);
 ```
 
 </details>
@@ -87,7 +87,7 @@ scrollView.ScrollTo(1, 0.3f, Ease.InOutQuint, Alignment.Lower);
  // 지정한 인덱스의 셀까지 바로 스크롤
  // (지정한 인덱스, 기준 피벗)
  
- scrollView.JumpTo(10, Alignment.Lower);
+ gridView.JumpTo(10, Alignment.Lower);
 ```
 
 </details>
@@ -144,39 +144,133 @@ public override void UpdateContent(ItemData itemData)
 
 ***
 
-## ● 실무 사용 ScrollView\_Custom
+## ● 실무 사용 GridView\_Custom
 
 (feat. 한효주 주임 연구원)
 
-#### ○ 스크립트명: ScrollView\_Custom
+#### ○ 스크립트명: GridView\_Custom
 
-#### ○ 위치: Assets\\\_DEV\Script\UI\Scroll\UIExtensions\_Custom\ScrollView\_Custom
+#### ○ 위치: Assets\\\_DEV\Script\UI\Scroll\UIExtensions\_Custom\GridView\_Custom
 
 {% hint style="warning" %}
-기존 에셋 사용 시 ScrollView\<ItemData, Context>와 같이 TItemData의 형태를 ScrollView에서 지정하고 있다.
+기존 에셋 사용 시 GridView\<ItemData, Context>와 같이 TItemData의 형태를 GridView에서 지정하고 있다.
 
 이 경우, 여러 곳에서 다른 형태의 Data를 사용하기 위해서는 부모 데이터 클래스를 상속받아 자식 데이터 클래스에서 필요 데이터를 추가 하는 형태로 변경되어야 한다.
 
-따라서 Custom 스크립트로 파생하여, 빈 클래스인 Item\_Data를 FancyScrollRect의 TItemData 속성으로 지정하고, 자식데이터 클래스에서 상속받는 방식으로 변경하였다.
+따라서 Custom 스크립트로 파생하여, 빈 클래스인 Item\_Data를 FancyGridViewCell의 TItemData 속성으로 지정하고, 자식데이터 클래스에서 상속받는 방식으로 변경하였다.
 {% endhint %}
 
 ### ● 추가주요 변수 및 기능 메소드
 
-#### ▷ ScrollView\_Custom.cs
+#### ▷ GridView\_Custom.cs
 
-상속한 FancyScrollRect\<TItemData, TContext> 클래스에 각 \<Item\_Data, Context>을 지정하여 상속받은 것 외 추가 변경 없음.
+상속한 FancyScrollRect\<TItemData, TContext> 클래스에 각 \<Item\_Data, Context>을 지정하여 상속받았다.
 
-![](<../../../../gitbook/.gitbook/assets/image (13).png>)
+<figure><img src="../../../../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
 
-#### ▷ FancyScrollRectCell\_Custom.cs
+<details>
 
-상속한 FancyScrollRectCell\<TItemData, TContext> 클래스에 각 \<Item\_Data, Context>을 지정하여 상속받았다.
+<summary>public void ChangeValueSelection(int index)</summary>
 
-![](<../../../../gitbook/.gitbook/assets/image (14).png>)
+```csharp
+// UpdateSelection 없이 현재 선택한 값만 바꿈
+public void ChangeValueSelection(int index)
+{
+    if (Context.SelectedIndex == index)
+    {
+        return;
+    }
+    Context.SelectedIndex = index;
+}
+```
 
-아이템 스크립트를 작성하여 FancyScrollRectCell\_Custom를 상속받아 사용한다.
+</details>
 
-![](<../../../../gitbook/.gitbook/assets/image (15).png>)
+<details>
+
+<summary>public void ChangeValuePreSelection(int index)</summary>
+
+```csharp
+// UpdateSelection 없이 이전 선택했던 값만 바꿈
+public void ChangeValuePreSelection(int index)
+{
+    if (Context.PreSelectIdx == index)
+    {
+        return;
+    }
+    Context.PreSelectIdx = index;
+}
+```
+
+</details>
+
+<details>
+
+<summary>public void ScrollToWithOutUpdate(int index, float duration, Ease easing, Alignment alignment = Alignment.Upper)</summary>
+
+```csharp
+// UpdateSelection 없이 스크롤 위치만 바꿈 (스크롤링 o)
+public void ScrollToWithOutUpdate(int index, float duration, Ease easing, Alignment alignment = Alignment.Upper)
+{
+    ScrollTo(index, duration, easing, GetAlignment(alignment));
+}
+```
+
+</details>
+
+<details>
+
+<summary>public void JumpToWithOutUpdate(int index, Alignment alignment = Alignment.Upper)</summary>
+
+```csharp
+// UpdateSelection 없이 스크롤 위치만 바꿈 (스크롤링 x)
+public void JumpToWithOutUpdate(int index, Alignment alignment = Alignment.Upper)
+{
+    JumpTo(index, GetAlignment(alignment));
+}
+```
+
+</details>
+
+<details>
+
+<summary>public void SetCellSize(Vector2 newSize)</summary>
+
+```csharp
+// 셀 사이즈 런타임에서 변경
+// 기본적으론 컴포넌트에서 변경
+public void SetCellSize(Vector2 newSize)
+{
+    cellSize = newSize;
+}
+```
+
+</details>
+
+<details>
+
+<summary>public void SetAxisCellCount(int count)</summary>
+
+```csharp
+// 그리드 그룹 개수 런타임에서 변경
+// 기본적으론 컴포넌트에서 변경
+public void SetAxisCellCount(int count)
+{
+    startAxisCellCount = count;
+}
+```
+
+</details>
+
+#### ▷ FancyGridViewCell\_Custom.cs
+
+상속한 FancyGridViewCell\<TItemData, TContext> 클래스에 각 \<Item\_Data, Context>을 지정하여 상속받았다.
+
+<figure><img src="../../../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
+
+아이템 스크립트를 작성하여 FancyGridViewCell\_Custom를 상속받아 사용한다.
+
+<figure><img src="../../../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
 
 <table><thead><tr><th width="418.3333333333333">변수</th><th>설명</th></tr></thead><tbody><tr><td>protected UIBase uIBase;</td><td>UIBase를 상속받지 못하므로 외부 컴포넌트에서 가져와 초기화 시킨다.<br>(기본적으로 RequireComponent가 설정되어 있음)</td></tr><tr><td>private bool isInit = false;</td><td>UIBase 최초 1회 초기화</td></tr></tbody></table>
 
@@ -187,16 +281,11 @@ public override void UpdateContent(ItemData itemData)
 ```csharp
 // 기존 UIBase를 상속받는 스크립트와 마찬가지로 SetMemberUI를 호출할 수 있다.
 
-// Item_Friend.cs
+// Item_Costume.cs
     protected override void SetMemberUI()
     {
-        #region TMP_Text
-        txtmp_Nickname = uIBase.GetUI_TxtmpMasterLocalizing(nameof(txtmp_Nickname));
-        txtmp_StateMessage = uIBase.GetUI_TxtmpMasterLocalizing(nameof(txtmp_StateMessage));
-
-        uIBase.GetUI_TxtmpMasterLocalizing("txtmp_Follow", new MasterLocalData("arztalk_friend_follow"));
-        uIBase.GetUI_TxtmpMasterLocalizing("txtmp_Spawn", new MasterLocalData("arztalk_friend_bring"));
-        uIBase.GetUI_TxtmpMasterLocalizing("txtmp_Offline", new MasterLocalData("arztalk_friend_break"));
+        #region Button
+        uIBase.GetUI_Button("btn_Costume", () => { if (!IsLock()) SelectIndex(); });
         #endregion
 
          (생략)
@@ -214,10 +303,10 @@ public override void UpdateContent(ItemData itemData)
 // 기본적으로 SetContent()를 호출하므로 
 // 오버라이딩 시 데이터를 받고난 후 base.UpdateContent(itemData)를 호출해야 한다.
 
-// Item_Friend.cs
+// Item_Costume.cs
     public override void UpdateContent(Item_Data itemData)
     {
-        if (itemData is Item_FriendData _data)
+        if (itemData is Item_CostumeData _data)
         {
             data = _data;
 
@@ -235,12 +324,13 @@ public override void UpdateContent(ItemData itemData)
 ```csharp
 // 받아온 데이터로 아이템 콘텐츠 세팅한다.
 
-// Item_Friend.cs
+// Item_Costume.cs
     protected override void SetContent()
     {
-        if (txtmp_Nickname != null)
+           if (go_Glow != null)
         {
-            txtmp_Nickname.text = data.nickname;
+            bool b = IsSelected() && !IsLock();
+            go_Glow.SetActive(b);
         }
 
         (생략)
@@ -254,7 +344,7 @@ public override void UpdateContent(ItemData itemData)
 <summary>public void InitModule()</summary>
 
 ```csharp
-// UIBase 초기화 및 FancyScrollRectCell_Custom에 있는 SetMemberUI() 호출
+// UIBase 초기화 및 FancyGridViewCell_Custom에 있는 SetMemberUI() 호출
 // 기본적으로 Awake()에서 호출한다.
 // 강제로 초기화 시켜주어야 하는 경우 직접 호출한다.
 ```
@@ -265,36 +355,36 @@ public override void UpdateContent(ItemData itemData)
 
 {% tabs %}
 {% tab title="ScrollView_Custom" %}
-<img src="../../../../.gitbook/assets/file.excalidraw (1).svg" alt="" class="gitbook-drawing">
+<img src="../../../../.gitbook/assets/file.excalidraw (7).svg" alt="" class="gitbook-drawing">
 {% endtab %}
 
-{% tab title="예시 - View_FriendList" %}
-<img src="../../../../.gitbook/assets/file.excalidraw (7).svg" alt="" class="gitbook-drawing">
+{% tab title="예시 - Panel_CostumeInven" %}
+<img src="../../../../.gitbook/assets/file.excalidraw (9).svg" alt="" class="gitbook-drawing">
 {% endtab %}
 {% endtabs %}
 
 ### ● 사용 방법
 
-1\) 스크롤 뷰의 아이템이 될 프리팹에 FancyScrollRectCell\_Custom을 상속받은 스크립트를 추가한다.
+1\) 스크롤 뷰의 아이템이 될 프리팹에 FancyGridViewCell\_Custom을 상속받은 스크립트를 추가한다.
 
-2\) ScrollView\_Custom : FancyScrollRect\<Item\_Data, Context>의 Cell Prefab에 1)을 연결한다. (오브젝트를 직접 끌어넣거나, 스크립트로 연결하는 것 모두 가능)
+2\) GridView\_Custom : FancyGridView\<Item\_Data, Context>의 Cell Prefab에 1)을 연결한다. (오브젝트를 직접 끌어넣거나, 스크립트로 연결하는 것 모두 가능)
 
 ### ● 컴포넌트 추가 예시
 
 1\) 하이라키에서 Unity 기본 제공 Scroll View를 Panel / Popup / View 등의 하위에 추가
 
-2\) 기존 UI에서 Scroll Rect 컴포넌트를 삭제하고 Scroller와 Scroll View\_Custom 컴포넌트 추가
+2\) 기존 UI에서 Scroll Rect 컴포넌트를 삭제하고 Scroller와 GridView\_Custom 컴포넌트 추가
 
-3\) Scroll View\_Custom 의 Cell Container에 하위의 Content를 연결
+3\) GridView\_Custom 의 Cell Container에 하위의 Content를 연결
 
-4\) Cell Prefab에 FancyScrollRectCell\_Custom을 상속받은 스크립트를 가지고 있는 프리팹 오브젝트 연결
+4\) Cell Prefab에 FancyGridViewCell\_Custom을 상속받은 스크립트를 가지고 있는 프리팹 오브젝트 연결
 
-※ Scroll View\_Custom 컴포넌트 추가 예시
+※ GridView\_Custom 컴포넌트 추가 예시
 
-![](<../../../../gitbook/.gitbook/assets/image (10).png>)
+<figure><img src="../../../../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
 
-※ Cell 스크립트(FancyScrollRectCell\_Custom를 상속받음) 프리팹 오브젝트 예시
+※ Cell 스크립트(FancyGridViewCell\_Custom를 상속받음) 프리팹 오브젝트 예시
 
-![](<../../../../gitbook/.gitbook/assets/image (11).png>)
+<figure><img src="../../../../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
 
-5\) Scroll View의 Cell Size의 값과 Cell Prefab의 높이 값을 일치시켜주어야 한다
+5\) GridView의 Cell Size의 값과 Cell Prefab의 높이와 너비 값을 일치시켜주어야 한다

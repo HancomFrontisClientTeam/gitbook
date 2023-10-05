@@ -29,7 +29,7 @@ description: 오브젝트 재활용 스크롤 뷰
 
 ## ● 구조도
 
-<img src="../../../../gitbook/.gitbook/assets/file.excalidraw (8).svg" alt="" class="gitbook-drawing">
+<img src="../../../../.gitbook/assets/file.excalidraw (4).svg" alt="" class="gitbook-drawing">
 
 ***
 
@@ -269,7 +269,7 @@ public override void UpdateContent(ItemData itemData)
 {% endtab %}
 
 {% tab title="예시 - View_FriendList" %}
-<img src="../../../../.gitbook/assets/file.excalidraw (7).svg" alt="" class="gitbook-drawing">
+<img src="../../../../gitbook/.gitbook/assets/file.excalidraw (7).svg" alt="" class="gitbook-drawing">
 {% endtab %}
 {% endtabs %}
 

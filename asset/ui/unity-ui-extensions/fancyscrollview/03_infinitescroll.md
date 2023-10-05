@@ -309,11 +309,11 @@ protected virtual void SetAnimatorHash() { }
 
 {% tabs %}
 {% tab title="LoopScrollView_Custom" %}
-<img src="../../../../.gitbook/assets/file.excalidraw (1).svg" alt="" class="gitbook-drawing">
+<img src="../../../../.gitbook/assets/file.excalidraw (5).svg" alt="" class="gitbook-drawing">
 {% endtab %}
 
 {% tab title="예시 - Panel_Preset" %}
-<img src="../../../../.gitbook/assets/file.excalidraw (7).svg" alt="" class="gitbook-drawing">
+<img src="../../../../.gitbook/assets/file.excalidraw (6).svg" alt="" class="gitbook-drawing">
 {% endtab %}
 {% endtabs %}
 
