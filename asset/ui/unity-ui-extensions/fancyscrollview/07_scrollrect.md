@@ -137,7 +137,7 @@ public override void UpdateContent(ItemData itemData)
 <summary>protected override void UpdatePosition(float normalizedPosition, float localPosition)</summary>
 
 ```csharp
-// Some code
+// 해당 셀의 위치값을 얻을 수 있다.
 ```
 
 </details>
@@ -150,7 +150,7 @@ public override void UpdateContent(ItemData itemData)
 
 #### ○ 스크립트명: ScrollView\_Custom
 
-#### ○ 위치: Assets\\\_DEV\Script\UI\Scroll
+#### ○ 위치: Assets\\\_DEV\Script\UI\Scroll\UIExtensions\_Custom\ScrollView\_Custom
 
 {% hint style="warning" %}
 기존 에셋 사용 시 ScrollView\<ItemData, Context>와 같이 TItemData의 형태를 ScrollView에서 지정하고 있다.
@@ -178,7 +178,7 @@ public override void UpdateContent(ItemData itemData)
 
 ![](<../../../../gitbook/.gitbook/assets/image (15).png>)
 
-<table><thead><tr><th width="418.3333333333333">변수</th><th>설명</th></tr></thead><tbody><tr><td>protected UIBase uIBase;</td><td>UIBase를 상속받지 못하므로 외부 컴포넌트에서 가져와 초기화 시킨다.<br>(기본적으로 RequireComponent가 설정되어 있음)</td></tr></tbody></table>
+<table><thead><tr><th width="418.3333333333333">변수</th><th>설명</th></tr></thead><tbody><tr><td>protected UIBase uIBase;</td><td>UIBase를 상속받지 못하므로 외부 컴포넌트에서 가져와 초기화 시킨다.<br>(기본적으로 RequireComponent가 설정되어 있음)</td></tr><tr><td>private bool isInit = false;</td><td>UIBase 최초 1회 초기화</td></tr></tbody></table>
 
 <details>
 
@@ -265,11 +265,11 @@ public override void UpdateContent(ItemData itemData)
 
 {% tabs %}
 {% tab title="ScrollView_Custom" %}
-<img src="../../../../gitbook/.gitbook/assets/file.excalidraw (1).svg" alt="" class="gitbook-drawing">
+<img src="../../../../.gitbook/assets/file.excalidraw (1).svg" alt="" class="gitbook-drawing">
 {% endtab %}
 
 {% tab title="예시 - View_FriendList" %}
-<img src="../../../../gitbook/.gitbook/assets/file.excalidraw (7).svg" alt="" class="gitbook-drawing">
+<img src="../../../../.gitbook/assets/file.excalidraw (7).svg" alt="" class="gitbook-drawing">
 {% endtab %}
 {% endtabs %}
 
