@@ -27,6 +27,7 @@
   * [Cons](base/util/cons.md)
   * [Enums](base/util/enums.md)
   * [Utils](base/util/utils.md)
+* [🔱 Launcher](base/launcher.md)
 
 ## 🔥 ASSET
 
