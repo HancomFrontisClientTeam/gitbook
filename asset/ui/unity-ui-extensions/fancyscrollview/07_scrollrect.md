@@ -9,6 +9,8 @@ description: 오브젝트 재활용 스크롤 뷰
 * 일반적인 스크롤 뷰 기능이 필요할 시
 * Loop가 필요하지 않을 시 (해당 스크롤뷰는 Loop 기능이 지원되지 않음)
 
+<figure><img src="../../../../.gitbook/assets/ScrollRect.gif" alt=""><figcaption></figcaption></figure>
+
 ***
 
 <details>

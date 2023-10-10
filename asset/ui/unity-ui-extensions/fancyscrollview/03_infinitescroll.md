@@ -9,6 +9,8 @@ description: 애니메이션 오브젝트 재활용 스크롤 뷰
 * Loop 기능이 필요할 시
 * 애니메이션 등 효과가 필요할 시
 
+<figure><img src="../../../../.gitbook/assets/InfiniteScroll (2).gif" alt=""><figcaption></figcaption></figure>
+
 ***
 
 <details>
