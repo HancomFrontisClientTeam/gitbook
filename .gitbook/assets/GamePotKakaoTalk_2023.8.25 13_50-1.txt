@@ -1,0 +1,1176 @@
+﻿Talk_2023.8.25 13:50-1.txt
+Date Saved : Sep 25, 2023 3:42 PM
+
+
+
+Wednesday, January 11, 2023
+Jan 11, 2023 6:34 PM: 한컴프론티스 조금식 본부장님 invited 주은.
+Jan 11, 2023 6:34 PM, 한컴프론티스 조금식 본부장님 : 저희 개발자들 초대 했습니다.
+
+Thursday, January 12, 2023
+Jan 12, 2023 11:37 AM, 주은 : 안녕하세요, GAMEPOT SDK 연동시키고 있는 송주은 연구원입니다 :) SDK 연동 중에 문의사항이 있어 연락드립니다.
+Unity SDK를 import해서 안드로이드 빌드를 하고 있는데 build.gradle에서 GamePotResources 폴더를 찾지 못하는 오류가 발생하고 있습니다. GamePotResources 폴더는 Plugins/Android에 있습니다. 오류는 다음 사진과 같습니다.
+Jan 12, 2023 11:37 AM, 주은 : Photo
+Jan 12, 2023 11:40 AM, wook : 안녕하세요. 게임팟 지원팀 이민욱입니다.
+문의 내용 확인을 위하여 사용중인 유니티 버전과 import하신 게임팟 패키지 이름을 알 수 있을까요?
+Jan 12, 2023 11:40 AM, 주은 : GAMEPOT_UNITY_SDK_20220217.unitypackage 입니다
+Jan 12, 2023 11:41 AM, 주은 : 유니티 버전은 2020.3.35f1 입니다
+Jan 12, 2023 11:45 AM, wook : 확인 감사합니다.
+유니티 2020 이상에서는 추가적인 수정사항이 있어 일부 내용의 변경이 필요합니다. 
+../Assets/Plugins/Android/Firebase
+-> ../Assets/Plugins/Android/FirebaseApp.androidlib
+../Assets/Plugins/Android/GamePotResources
+-> ../Assets/Plugins/Android/GamePotResources.androidlib
+위와 같이 폴더 이름 변경 및 mainTemplate.gradle 내 
+	implementation project('GamePotResources')
+	implementation project('Firebase')
+내용을
+	implementation project('GamePotResources.androidlib')
+	implementation project('FirebaseApp.androidlib')
+변경이 필요합니다.
+
+문의주신 내용으로 보아 위 변경조치를 통하여 해당 gradle 에러는 발생하지 않을 것으로 판단되나, 그 외 추가적인 수정사항이 있어 아래 링크 내 
+[ Unity 2019.3.7 이상 버전 또는 이후 버전 (신규로 작업하는 경우) ]
+5. Unity 202X.X 버전을 사용하시는 경우 추가 수정사항
+항목 내 절차 상 누락되는 부분이 없을지 확인 부탁드립니다.
+ (https://docs.gamepot.io/undefined/gamepot_faq#ver-unity-2.1.1-to-ver-unity-2.1.2-or-new-version)
+Jan 12, 2023 11:46 AM, 주은 : 넵 감사합니다. 확인해보겠습니다
+Jan 12, 2023 11:46 AM, wook : 추가적으로 유니티 패키지
+GAMEPOT_UNITY_SDK_20220217.unitypackage
+버전에서 사용된 구글 결제 라이브러리가 정책상 수정이 필요하여 아래 패치를 적용하시어 관련 버전 업그레이드를 권장드립니다.
+
+[첨부파일 : google_inappV5_0823_Unity.zip]
+1. 첨부파일의 4개 파일 ./Assets/Plugins/Android/libs 경로에 붙여넣기 및 교체
+2. 패치 후 billing-3.0.3.aar 파일은 삭제 
+Jan 12, 2023 11:46 AM, wook : File: google_inappV5_0823_Unity.zip
+Jan 12, 2023 1:47 PM, 주은 : 해당 파일을 교체한 후에 생기는 오류입니다. 이건 어떻게 해결하면 될까요?
+Jan 12, 2023 1:47 PM, 주은 : Photo
+Jan 12, 2023 1:48 PM, wook : libs 폴더 내 billing-3.0.3.aar 라이브러리가 빌드시 제외 혹은 삭제가 안되신 사항은 아니실지 확인 부탁드립니다.
+Jan 12, 2023 1:49 PM, 주은 : Photo
+Jan 12, 2023 1:49 PM, 주은 : 삭제는 됐습니다..! 
+Jan 12, 2023 1:52 PM, wook :  빌드 캐시로 인하여 기존 빌드 내용이 남아 현상이 발생 했을 수 있습니다.
+빌드 툴 관련하여 모두 종료 후 재시작 후 빌드 해보시거나
+ 혹 gradle 및 다른 부분에 billing 관련 추가 정의 및 라이브러리가 남아있지 않을지 확인 부탁드립니다.
+implementation 'com.android.billingclient:billing:3.0.3' 이와 같은 정의를 하고 계신다면 삭제 부탁드립니다.
+
+Friday, January 13, 2023
+Jan 13, 2023 5:00 PM, 주은 : 해당 이슈는 해결했습니다. 감사합니다:) 
+Unity Editor에서는 구글 로그인이 안되는게 맞나요..? Unity 안드로이드 빌드를 위해서는 Unity_Android 코드를 사용해야 하는게 맞나요??
+Jan 13, 2023 5:04 PM, wook : 안녕하세요.
+게임팟SDK는 유니티 에디터 상 동작을 지원하지 않습니다.
+번거로우시더라도 실 디바이스에 빌드하시어 기능 확인을 부탁드립니다.
+ 컴파일 구분을 위함이라면 UNITY_ANDROID 사용을 하시는 것이 맞습니다.
+Jan 13, 2023 5:07 PM, 주은 : 넵, 그리고 Firebase 파일 수정을 했는데 Unity 재실행을 해도 res 폴더가 생성이 되지 않아서요..!
+Jan 13, 2023 5:07 PM, 주은 : Photo
+Jan 13, 2023 5:12 PM, wook : 이전 unity 202x 수정사항 반영 시 Firebase 폴더 경로를 FirebaseApp.androidlib 으로 변경하셨을 것으로 판단이 되는데요.
+ 혹시 FirebaseApp.androidlib/res 폴더 생성 및
+values 내 google-services.xml 확인이 되실까요?
+Jan 13, 2023 5:14 PM, 주은 : 아 죄송합니다ㅠ 제가 헷갈렸네요ㅠㅠㅠ
+Jan 13, 2023 5:14 PM, wook : 아닙니다. 확인 되셨다면 다행입니다!
+
+Monday, January 16, 2023
+Jan 16, 2023 4:49 PM, 주은 : Photo
+Jan 16, 2023 4:50 PM, 주은 : GamePotUnityPluginAOS.login(loginType)에서 터지는 오류같습니다. 혹시 해결방법이 있을까요?
+Jan 16, 2023 4:57 PM, wook : 안녕하세요.
+문의주신 현상에 대해 확인을 위해 관련 정보를 받을 수 있을까요?
+ - 발생 환경 ( 기기 모델, OS 버전)
+ - 어떤 플로우로 어떤 함수를 호출 시 발생하는지
+Jan 16, 2023 5:00 PM, 주은 : 발생환경 : Galaxy Note20 Ultra 5G, Windows 10
+구글 로그인 버튼 클릭 -> GamePot.login(NCommon.LoginType.GOOGLE); 호출하고 있습니다.
+Jan 16, 2023 5:03 PM, 주은 : Login.cs 예제와 동일하게 Awake에서 GamePot.initPlugin(); GamePot.setListener(this); 실행하고, Start에서도 동일하게 코드 하용하고 있습니다.(사진참고바랍니다.)
+Jan 16, 2023 5:03 PM, 주은 : Photo
+Jan 16, 2023 5:07 PM, wook : 확인 감사합니다.
+추가적으로 아래 내용을 추가로 요청드리는 부분 양해부탁드립니다.
+1. 게임팟 대시보드 > 화이트 유저 등록
+ - 종류 : 개발
+ - IP : 테스트 환경의 IP
+2. 앱 재실행하여 이슈 발생시까지의 logcat 내역
+
+ 위 화이트 유저 등록을 통하여 앱 실행 시 하단 개발자 모드 활성화 토스트 알림 및 게임팟 내 추가적인 로그를 확인 가능하며 관련 정보의 공유를 부탁드립니다.
+Jan 16, 2023 5:11 PM, wook : 추가로 현재 프로젝트 내 사용중이신 gamepot-bridge.aar 라이브러리도 공유 부탁드립니다.
+Jan 16, 2023 5:12 PM, 주은 : File: log_230116_1711.txt
+Jan 16, 2023 5:12 PM, 주은 : File: gamepot-bridge.aar
+Jan 16, 2023 5:13 PM, 주은 : 하단 개발자 모드 활성화 토스트 알림 및 게임팟 내 추가적인 로그를 확인 가능하며 관련 정보의 공유를 부탁드립니다.
+
+화이트 유저 등록은 했는데 이 부분은 어떻게 확인을 할 수 있나요??
+Jan 16, 2023 5:15 PM, wook :  화이트 유저 종류 개발로 설정 하신 뒤 앱 재실행하시면 하단 토스트 메시지가 노출되실겁니다.
+
+Jan 16, 2023 5:16 PM, wook : 추가로 게임팟 유니티 플러그인상  io.gamepot.unity.plugin.GamePotSDKActivity 가 메인 액티비티로 설정되어야 하는데, 관련하여 변경한 사항이 있으실지 확인 요청 드립니다.
+Jan 16, 2023 5:18 PM, 주은 : 어디에 토스트 메시지가 뜨는건지 알수있을까요? 
+Jan 16, 2023 5:20 PM, 주은 : 게임팟 대시보드에 뜬다는건가요?
+Jan 16, 2023 5:21 PM, wook : 앱 내에 토스트 메시지로 노출되게 됩니다.
+다만 현 상황에서 노출되는 것을 확인하지 못하고 계신다면 게임팟 기능이 정상적으로 초기화되고 있는 것이 아닐지 확인이 우선 되어야 할 것 같습니다.
+ 위 io.gamepot.unity.plugin.GamePotSDKActivity를 메인 액티비티가 아닌 다른 방식으로 변경하신 부분이 있으실지 확인 부탁드립니다.
+Jan 16, 2023 5:28 PM, 주은 : 메인 액티비티는 어떻게 확인할 수 있나요? AndroidManifest에서 확인하는게 맞나요..?
+Jan 16, 2023 5:35 PM, wook : AndroidManifest에서 
+com.unity3d.player.UnityPlayerActivity 내용으로 확인이 되실지 확인 부탁드립니다.
+Jan 16, 2023 5:35 PM, 주은 : 넵 되어있습니다
+Jan 16, 2023 5:35 PM, 주은 : Photo
+Jan 16, 2023 5:37 PM, wook : 게임팟 플러그인 사용 시 
+android:name="io.gamepot.unity.plugin.GamePotSDKActivity"
+를 메인으로 사용하게끔 설정 부탁드립니다.
+Jan 16, 2023 5:37 PM, wook : 변경 후 기존과 같이 이슈가 발생하실지 확인 부탁드립니다.
+Jan 16, 2023 5:49 PM, 주은 : 해결되었습니다. 감사합니다:)
+Jan 16, 2023 5:50 PM, wook : 해결되셔서 다행입니다!
+
+Wednesday, January 18, 2023
+Jan 18, 2023 10:11 AM, 주은 : Photo
+Jan 18, 2023 10:11 AM, 주은 : 구글 로그인 버튼 클릭시 생기는 에러입니다. 
+Jan 18, 2023 10:17 AM, wook : 안녕하세요. 문의주신 에러의 경우 아래와 같은 내용을 확인 부탁드립니다.
+
+1. google-services.json 가 정상적으로 포함되어 있을지
+2. 해당 소셜 로그인에 필요한 라이브러리가 정상적으로 빌드에 포함되어 있을지
+ - gamepot-channel-base.aar
+ - gamepot-channel-google-signin.aar
+3. minify와 같은 기능이 설정되어 있으나 예외처리가 되지 않은 경우일지
+4. 소셜 로그인 진행 전 게임팟 초기화가 되지 않은 부분일지
+Jan 18, 2023 11:29 AM, 주은 : 로그인 예제에서 
+Jan 18, 2023 11:29 AM, 주은 : Photo
+Jan 18, 2023 11:29 AM, 주은 : 해당 에러가 발생합니다..!
+Jan 18, 2023 11:29 AM, 주은 : 이부분은 확인해봤는데 동일한 상태입니다..!
+Jan 18, 2023 11:49 AM, wook : 해당부분은 에러가 발생하는 프로젝트의 assets/plugins/android 폴더를 공유 받을 수 있을까요?
+Jan 18, 2023 11:49 AM, 주은 : 폴더 내역을요? 아니면 폴더 자체를요?
+Jan 18, 2023 11:49 AM, wook : 폴더와 그 안에 포함된 파일들입니다.
+Jan 18, 2023 11:55 AM, 주은 : File: Android.zip
+Jan 18, 2023 12:06 PM, wook : 공유 감사드립니다. 내부적으로 확인 후 점심시간 이후 회신드리겠습니다.
+Jan 18, 2023 12:14 PM, 주은 : 넵!!
+Jan 18, 2023 1:35 PM, wook : 안녕하세요.
+ 공유주신 내용 확인 결과 게임팟 SDK 사용함에 있어 기본적으로 사용을 권장드리는 방식으로 작성되어 있지 않아 내부 테스트 시에 사용되는 방식으로 일부 변경한 gradle 및 androidmanifest를 전달드리오니 관련하여 참고하여 사용하시는 프로젝트에 적용 부탁드립니다.
+ 또한 현재 gamepot-channel-google-signin.aar과 같은 라이브러리가 libs가 아닌 nativeLibs 와 같은 폴더에서 관리되고 있는 것으로 확인이 되었습니다.
+ 가급적 사용하시는 라이브러리들은 libs 폴더로 이동하시어 libs 폴더 전체가 빌드 시 포함되도록 적용 부탁드리며, nativeLibs 폴더 내 모든 라이브러리는 삭제 혹은 빌드시 포함되지 않게 설정 부탁드립니다.
+Jan 18, 2023 1:35 PM, wook : File: 230118_AndroidForHancom.zip
+Jan 18, 2023 1:35 PM, wook : Photo
+Jan 18, 2023 1:36 PM, wook : 유니티 에디터 내 위와 같은 스크린샷에서 libs 폴더 내 라이브러리들은 Android 체크 후 Apply
+nativeLibs 내의 라이브러리들은 체크 해제 후 Apply 부탁드립니다.
+Jan 18, 2023 1:37 PM, 주은 : 넵 확인해보겠습니다. 감사합니다!
+Jan 18, 2023 2:04 PM, 주은 : File: buildError_230118_1404.txt
+Jan 18, 2023 2:04 PM, 주은 : 적용 후 해당 에러가 말생합니다..ㅠ
+Jan 18, 2023 2:08 PM, 주은 : launcherTemplate.gradle 내용과 mainTemplate.gradle 내용이 서로 바뀌었던게 그게 맞나요??
+Jan 18, 2023 2:09 PM, wook :  해당 부분은 빌드 설정에 따라 달라질 수 있는 부분으로 명확히 안내드리기 어려운 내용인데요.
+ 혹 AndroidManifest.xml상 정의하신 uses-sdk 내용을 굳이 남기시지 않아도 된다면 삭제 후 재 빌드 부탁드립니다.
+ 관련하여 minSdkVersion, targetSdkVersion을 따로 관리하시는 부분이 있다면 빌드 환경에 맞게끔 확인 후 빌드 하시면 될 것 같습니다.
+Jan 18, 2023 2:09 PM, wook : launcherTemplate.gradle 내 정의하시어 사용하시는 것이 맞습니다.
+Jan 18, 2023 2:10 PM, 주은 : 넵 다시 해보겠습니다
+Jan 18, 2023 2:14 PM, wook : Android/GamePotResources.androidlib/AndroidManifest.xml 내 
+android:minSdkVersion="10" 내용도 삭제 후 확인 부탁드립니다.
+
+ex)
+
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="io.itssdk.resources"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:targetSdkVersion="23" />
+
+</manifest>
+
+Jan 18, 2023 2:15 PM, 주은 : 넵 
+Jan 18, 2023 5:05 PM, 주은 : GamePotGooglePlaygame initialization failed. Please input the ID of GPG in build.gradle. 에러가 뜨면서 앱실행이 안됩니다
+Jan 18, 2023 5:05 PM, wook : 사용하시는 프로젝트 내 GPGS 를 사용 예정이실까요?
+Jan 18, 2023 5:05 PM, 주은 : 아니요!
+Jan 18, 2023 5:07 PM, wook : 빌드 시 
+gamepot-channel-google-playgame.aar 와 같은 사용하지 않을 예정인 소셜의 라이브러리가 포함되지 않았을지 확인 후 재빌드하여 확인 부탁드립니다.
+Jan 18, 2023 5:08 PM, 주은 : 사용하지 않을 예정인 라이브러리 삭제후 빌드했는데 해당 오류가 발생하고 있습니다.
+Jan 18, 2023 5:09 PM, 주은 : facebook도 같은 오류가 계속 뜹니다! 이또한 사용하지 않을 예정입니다
+Jan 18, 2023 5:10 PM, wook : 이전과 동일하게 기존 빌드 내용이 캐시로 인하여 노출되는 부분일 수 있습니다. 유니티를 비롯한 빌드 툴들을 모두 종료 후 재시작 후 빌드 해보심이 어떠실까 합니다.
+Jan 18, 2023 5:10 PM, 주은 : 네 감사합니다.
+
+Friday, January 20, 2023
+Jan 20, 2023 9:14 AM, 주은 : 구글 로그인 시 Google Cloud의 OAuth 2.0 클라이언트 ID가 있어야 로그인이 되는건가요?
+Jan 20, 2023 9:24 AM, wook : 안녕하세요. 문의주신 것과 같이 Google Cloud 콘솔 내 관련 값이 있어야 구글 로그인이 정상 동작하는 부분입니다.
+ 또한 API 및 서비스 > Auth 동의 화면 내
+게시 상태
+ - 프로덕션 단계
+사용자 유형
+ - 외부
+두가지 설정을 추가로 설정 부탁드립니다.
+Jan 20, 2023 9:26 AM, 주은 : 해당 설정은 되어있는 상태이며, "Android 패키지 이름과 디지털 지문이 이미 사용중이므로 요청이 실패했습니다" 라는 에러때문에 생성이 되지 않고 있습니다.. 혹시 이 부분에 대해서도 해결책을 알고 계실까요??
+Jan 20, 2023 9:30 AM, wook : 보통은 firebase 프로젝트 생성 시 자동생성되는 내용들도 있어 관련하여 기존에 있는 프로젝트 등의 내용을 확인하시어 중복으로 추가하시는 부분이 아닐지 확인 부탁드립니다.
+Jan 20, 2023 9:31 AM, 주은 : firebase의 SHA 인증서 지문과 OAuth 클라이언트 ID의 SHA-1 인증서 디지털 지문이 동일해야되는게 아닌가요??
+Jan 20, 2023 9:33 AM, 주은 : OAuth 클라이언트 ID 쪽에만 해당 인증서 디지털 지문을 등록하면 되는것같네요! 감사합니다 :)
+Jan 20, 2023 9:34 AM, wook : firebase 디지털 지문 추가하시면 cloud 콘솔에서도 동일한 내용이 생성되실 것으로 확인이 됩니다.
+ 일치하지 않을 경우 구글 로그인 시도시 취소로 리턴될 수 있어 이후 구글 로그인 확인 시 sha-1 값을 재확인 부탁드립니다.
+Jan 20, 2023 9:35 AM, 주은 : 넵 확인해보겠습니다
+Jan 20, 2023 10:06 AM, 주은 : firebase 디지털 지문 추가해도 cloud 콘솔에서 동일한 내용이 생성되지 않습니다..! 
+Jan 20, 2023 10:25 AM, wook : firebase 프로젝트 생성 시 연동되어 생성된 프로젝트가 아니시라면 firebase 변경사항이 동일하게 적용되지 않을 수 있습니다.
+ google-services.json 내 oauth client id와 패키지 이름이 정상적인지 확인 후 구글 로그인 진행해보시면 될 것 같습니다.
+Jan 20, 2023 10:26 AM, 주은 : 넵 다시 확인해보겠습니다 감사합니다
+Jan 20, 2023 10:57 AM, 한컴프론티스 조금식 본부장님 : 안녕하세요. 기술지원 감사합니다. 궁금한점이 있어 문의 드립니다. GAMEPOT 로그인이 PC(Windows)에서도 동작하는지 궁금합니다.
+Jan 20, 2023 10:59 AM, wook : 안녕하세요.
+게임팟 PC에서의 동작은 유니티 에디터 상 일부 지원하고 있으며,
+로그인은 JS SDK를 통하여 로그인 -> PC 클라이언트로의 정보 전달 및 로그인 하는 방식으로 진행됩니다.
+- Unity SDK for Standalone
+( https://docs.gamepot.io/undefined/gamepot_standalone )
+- Javascript SDK
+( https://guide.ncloud-docs.com/docs/game-gamepot-javascriptsdk )
+Jan 20, 2023 11:05 AM, 한컴프론티스 조금식 본부장님 : 에디터에서만 동작 한다는 말씀이신지, 저희가 유니티에서 PC(Windows)로 빌드를 했을 때 게임팟 로그인이 정상 동작하는지가 궁금합니다 ^^;;
+Jan 20, 2023 11:08 AM, wook : 아 오해가 있게 안내드린 부분이 있었네요. 죄송합니다.
+유니티 에디터 상에서는 정상적인 로그인 지원하고 있지 않으며, 말씀주신 방식처럼 유니티에서 PC Standalone으로 빌드 했을 때 로그인 동작이 가능합니다.
+ 다만 위 안내드린 것과 같이 로그인을 PC Standalone 상 단독으로 기능하는 것이 아닌 JS SDK를 거쳐 로그인하는 방식입니다.
+Jan 20, 2023 11:10 AM, 한컴프론티스 조금식 본부장님 : 넵 ^^ PC에서 웹으로 별도 로그인을 띄워야 하나 고민했는데, 가능하다고 하니 다행입니다 ^^;;
+Jan 20, 2023 11:16 AM, wook : 웹 사이트 띄워서 로그인 후 발생하는 값들을 스탠드얼론으로 받아서 로그인 하시는 방식이 맞습니다.
+ 예시로 아래와 같은 영상을 공유드립니다.
+Jan 20, 2023 11:17 AM, wook : Video
+Jan 20, 2023 11:45 AM, 한컴프론티스 조금식 본부장님 : 넵 ^^ 이해했습니다. 감사합니다~
+Jan 20, 2023 1:33 PM, 주은 : google cloud에 프로젝트를 생성하고 그걸로 firebase 프로젝트를 생성하면 안드로이드 앱이 추가가 되는데 안드로이드 OAuth ID는 생성이 안되네요..ㅠ
+Jan 20, 2023 1:33 PM, 주은 : Photo
+Jan 20, 2023 1:44 PM, wook : 안녕하세요. firebase콘솔 내 화면은 어떤식으로 구성하셨을까요?
+Jan 20, 2023 1:45 PM, wook : Photo
+Jan 20, 2023 1:49 PM, 주은 : Photo
+Jan 20, 2023 1:49 PM, 주은 : 이렇게 되어 있습니다
+Jan 20, 2023 2:16 PM, wook : 구글 클라우드 > firebase 프로젝트 생성 이후 안드로이드 앱 추가 및 sha-1 입력 후 OAuth 생성되는 것을 확인 했습니다.
+ 자동으로 생성되는 프로젝트가 있고 아닌 프로젝트가 있는지 이는 구글 측 기능으로 게임팟 지원팀에서 안내드리기 어려운 부분이 있습니다.
+ 불편하시더라도 수동으로 사용자 인증 정보를 생성하시어 구성하셔야 할 것으로 보입니다.
+
+Jan 20, 2023 2:26 PM, 주은 : 넵 참고해서 재생성해보겠습니다
+
+Wednesday, January 25, 2023
+Jan 25, 2023 11:08 AM, 주은 : 안녕하세요, firebase 디지털 지문과 cloud 콘솔의 안드로이드 클라이언트 ID의 디지털 지문이 일치함에도 불구하고 onCancel 처리가 됩니다
+Jan 25, 2023 11:09 AM, 주은 : 게임팟 대쉬보드에도 이와같이 입력하는게 맞나요?
+Jan 25, 2023 11:09 AM, 주은 : Photo
+Jan 25, 2023 11:18 AM, wook : 안녕하세요. 전달주신 대시보드 내용은 해당 내용과 같이 입력하는 부분이 맞으나, 이는 로그인 추가 검증을 위한 영역으로서 필수적인 부분은 아닙니다.
+ 현재 캔슬 처리되는 내용의 확인을 위해서 아래와 같은 내용 확인이 필요할 것으로 보입니다.
+1. 구글 외 다른 소셜 로그인의 정상 여부
+2. firebase sha-1 값과 빌드에 사용된 키의 sha-1 값이 일치하는지 (apk로 빌드하여 확인도 가능합니다)
+3. https://console.cloud.google.com 프로젝트 내 API 및 서비스 > OAuth 동의 화면
+ - 게시상태 > 프로덕션
+ - 사용자 유형 > 외부
+설정되어 있을지
+4. 구글 플레이 콘솔에 업로드하여 진행하는 경우 앱서명 기능을 사용하고 있을지
+Jan 25, 2023 11:28 AM, 한컴프론티스 김지수 선임님 : 4번의 경우 keystore를 말씀하시는 건가요^^?
+Jan 25, 2023 11:30 AM, wook : 구글 플레이 콘솔의 앱 서명 키 인증서의 내용입니다.
+Jan 25, 2023 11:31 AM, wook : Photo
+Jan 25, 2023 11:51 AM, 주은 : keytool -keystore path-to-debug-or-production-keystore -list -v 명령어로 디지털 지문을 확인했을 때, SHA1는 SHA256 값인것으로 보이는데요. SHA1 길이만큼만 사용하는게 맞나요?
+Jan 25, 2023 12:03 PM, wook : 해당 명령어 사용 시 인증서 지문 : 항목에
+SHA256값만 노출되실까요?
+Jan 25, 2023 12:05 PM, 주은 : 적혀있는건 SHA1 값으로 노출되어있는데 키값길이가 SHA256 길이더라구요
+Jan 25, 2023 12:26 PM, wook : 확인 감사합니다. 임시로 키스토어를 하나 추가 생성하시어 동일하게 sha-1값이 노출되지 않으신지 확인 요청드립니다.
+Jan 25, 2023 12:31 PM, 주은 : Photo
+Jan 25, 2023 12:32 PM, 주은 : 이런 식으로 출력됩니다
+Jan 25, 2023 12:59 PM, wook : 무언가의 오류로 나와야 할 내용이 위로 한줄 씩 밀린 것으로 추정됩니다.
+ MD5 내용에 들어가는 값이 본래의 sha-1값이 아닐까 판단이 됩니다. 해당 내용으로 firebase 내 등록 및 구글 클라우드 콘솔 > 클라이언트 ID 내 등록 완료 후 확인 부탁드립니다.
+Jan 25, 2023 1:01 PM, 주은 : 네 재등록 후 확인해보겠습니다.
+Jan 25, 2023 3:25 PM, 주은 : 4번에 대해서는 구글 플레이 콘솔에 업로드해서 진행하고 있는 상황이 아니라면, 앱서명 기능 사용 여부가 상관없는거죠??
+Jan 25, 2023 3:26 PM, wook : 네 맞습니다.
+구글 플레이스토어에서 받는 방식이 아니라면 괜찮습니다.
+Jan 25, 2023 3:29 PM, 주은 : firebase 콘솔 디지털 지문에 SHA-256도 추가해야하나요??
+Jan 25, 2023 3:30 PM, wook : 기능상 필수는 아닌 것으로 알고있습니다.
+Jan 25, 2023 3:40 PM, 주은 : 네이버는 onLoginSuccess로 넘어가는데 구글이 여전히 onLoginCancel로 넘어가네요..
+Jan 25, 2023 3:42 PM, 주은 : 2번 apk로 빌드하여 확인도 가능하다는건 무슨 뜻인가요? 빌드된 apk 상세 내용 같은거를 확인할 수 있는건가요?
+Jan 25, 2023 3:47 PM, wook : 네 이해하신 부분이 맞습니다.
+문의 내용 확인을 위하여 문제가 발생하시는 프로젝트의 apk 빌드 버전 공유와 firebase sha-1 설정화면,
+게임팟 대시보드 프로젝트 id를 공유 받을 수 있을까요?
+Jan 25, 2023 3:47 PM, 주은 : 마지막으로 한번 더 확인해보고 안되면 공유드리겠습니다! 
+Jan 25, 2023 4:02 PM, 주은 : 프로젝트 apk 빌드 버전은 bundle version code가 맞나요..?
+Jan 25, 2023 4:03 PM, wook : 위 말씀드린 내용의 apk 빌드 버전은 apk로 빌드된 패키지입니다.
+Jan 25, 2023 4:04 PM, 주은 : 패키지명을 말하시는 건가요?
+Jan 25, 2023 4:04 PM, wook : 아닙니다. 실제 apk를 말씀드린 사항입니다.
+Jan 25, 2023 4:05 PM, 주은 : 그럼 프로젝트 apk 파일을 공유해달라는 말씀이신거죠?
+Jan 25, 2023 4:05 PM, wook : 네 맞습니다.
+Jan 25, 2023 4:05 PM, 주은 : - 게임팟 대시보드 프로젝트 id : 6a7cee0f-d29c-43bf-8785-aff62f17a356
+Jan 25, 2023 4:05 PM, 주은 : Photo
+Jan 25, 2023 4:06 PM, 주은 : apk 파일 용량이 커서 카톡으로 전송드리기가 어려울것같습니다. 공유받으실 수 있는 메일 하나 요청드려도 될까요?
+Jan 25, 2023 4:07 PM, wook : help@itsb.io 메일로 부탁드립니다.
+Jan 25, 2023 4:09 PM, 주은 : 메일 전달드렸습니다!
+Jan 25, 2023 4:10 PM, wook : 공유 감사드립니다. 확인 되는 내용 있으면 회신드리겠습니다!
+Jan 25, 2023 4:10 PM, 주은 : 넵 감사합니다 :)
+Jan 25, 2023 4:43 PM, wook : 안녕하세요. 해당 apk 빌드시에 서명키 사용하시어 빌드하신 부분이 맞으실까요?
+ 위 공유주신 키스토어 관련 내용이 확인이 되지 않습니다.
+Jan 25, 2023 4:50 PM, 주은 : Photo
+Jan 25, 2023 4:50 PM, 주은 : 서명키 사용해서 빌드하고 있습니다..!
+Jan 25, 2023 4:59 PM, wook : keystore를 임시로 하나 생성하시어 해당 keystore내용으로 빌드된 apk와 keystore를 공유 받을 수 있을까요?
+Jan 25, 2023 5:00 PM, 주은 : 넵 빌드해서 공유드리겠습니다
+Jan 25, 2023 5:58 PM, 주은 : 전송해드렸습니다.
+Jan 25, 2023 6:21 PM, wook : 공유 감사합니다.
+ 키스토어의 sha-1 확인은 되나 apk는 서명되지 않은 것으로 보입니다.
+혹 빌드시에 Developement Build 설정 후 빌드되었을지, 서명되지 않은 방식으로 빌드가 되도록 설정되어 있을지 확인 부탁드립니다.
+Jan 25, 2023 6:22 PM, 주은 : 넵 내일 확인해보겠습니다. 그렇게 설정이 안되어있었던것같네요.. 감사합니다 
+
+Thursday, January 26, 2023
+Jan 26, 2023 9:40 AM, 주은 : Development Build 설정 후 빌드해도 동일하네요..ㅠ apk 서명 여부를 어떻게 확인할 수 있나요?
+Jan 26, 2023 9:41 AM, 주은 : keytool -printcert -jarfile [APK 파일 이름] 
+해당 명령어로 확인했을때 키값이 출력이 되야하나요?
+Jan 26, 2023 9:42 AM, wook : 안녕하세요. 말씀주신 keytool을 이용하여 확인이 가능한 내용으로 관련 키 값이 출력되는 것이 맞습니다.
+Jan 26, 2023 9:47 AM, 주은 : 혹시 서명되지 않은 방식으로 빌드가 되도록 설정될 수 있는 부분들이 뭐가 있나요..?
+Jan 26, 2023 10:41 AM, wook : 해당 사항은 현 내부 프로젝트에서 재현되지 않는 부분으로
+
+ gradle 내 
+signingConfigs{
+        releaseWithSignedKey {
+            storeFile file("KEYSTORE_PATH")
+            storePassword "XXXX"
+            keyAlias "XXXX"
+            keyPassword "XXXX"
+            v1SigningEnabled true
+            v2SigningEnabled false
+        }
+    }
+
+위와 같은 방식으로 정의하시어 v1을 강제해보시겠어요?
+ 전달해주신 keystore로 빌드시 정상적으로 v1 sign이 되는것으로 보아 귀사에서 사용하는 빌드 환경 혹은 붙이신 다른 패키지들에 의해 V2 Signing이 강제되는 부분이 있을 것으로 추정됩니다.
+Jan 26, 2023 10:52 AM, wook : 내부 테스트를 위해 아래 인증서 지문을 firebase와 cloud에 입력 가능하실까요?
+	 SHA1: CC:2D:DF:4C:8B:70:C5:93:B7:B0:13:E3:19:26:C0:78:30:F8:77:43
+	 SHA256: AF:23:A8:E7:B4:D2:0C:D3:34:A4:87:72:87:55:DF:8D:26:38:78:0A:1D:16:09:C2:68:A4:DC:AC:CA:00:CF:F9
+Jan 26, 2023 10:53 AM, 주은 : cloud에도 SHA256 입력할 수 있는 부분이 있나요?
+Jan 26, 2023 10:53 AM, wook : cloud에는 sha-1만 입력 부탁드립니다.
+Jan 26, 2023 10:57 AM, 주은 : 입력해두었습니다.
+Jan 26, 2023 10:59 AM, 주은 : launcherTemplate.gradle에서 android 안에 작성하는게 맞나요?
+Jan 26, 2023 11:01 AM, wook : launcherTemplate에서 입력 부탁드립니다.
+Jan 26, 2023 11:11 AM, wook : V2 와 별개로, V1 방식의 인증서를 사용한 경우에도 정상적으로 구글 동작이 되지 않는 것으로 보입니다.
+구글 cloud 콘솔과 firebase 콘솔 내
+아래 내용을 추가로 확인 부탁드립니다.
+1. 구글 cloud > 사용자 인증 정보 > API 키 모두 클릭하여 제한사항 해제
+2. 구글 cloud > OAuth 동의 화면 게시 상태 확인
+3. firebase 콘솔 > FCM, CMA 기존 방식이 사용 설정 되어 있을지 확인
+Jan 26, 2023 11:12 AM, wook : Photo
+Jan 26, 2023 11:12 AM, wook : Photo
+Jan 26, 2023 11:12 AM, wook : Photo
+Jan 26, 2023 11:12 AM, wook : Photo
+Jan 26, 2023 11:15 AM, 주은 : CMA가 되어있지 않았네요 다시 해보겠습니다.
+Jan 26, 2023 11:20 AM, wook : 확인 감사합니다.
+설정 후 google-services.json파일을 새로 받아 적용 부탁드립니다.
+ 또한 해당 json파일도 공유받을 수 있을까요?
+Jan 26, 2023 11:22 AM, 주은 : File: google-services.json
+Jan 26, 2023 11:23 AM, wook : 공유 감사드립니다.
+Jan 26, 2023 11:29 AM, 주은 : 그래도 안되네요.. 혹시 정상적으로 구글 동작이 되시나요??
+Jan 26, 2023 11:30 AM, wook : 정상 로그인 확인했습니다.
+Jan 26, 2023 11:31 AM, wook : 빌드에 사용된 키는 아래와 같습니다. 이전 공유주신 인증서를 사용했습니다.
+Jan 26, 2023 11:31 AM, wook : 서명자 #1:
+
+서명:
+
+소유자: O=hancomfrontis
+발행자: O=hancomfrontis
+일련 번호: 17b89893
+적합한 시작 날짜: Wed Jan 25 17:31:46 KST 2023 종료 날짜: Thu Jan 12 17:31:46 KST 2073
+인증서 지문:
+	 SHA1: CC:2D:DF:4C:8B:70:C5:93:B7:B0:13:E3:19:26:C0:78:30:F8:77:43
+	 SHA256: AF:23:A8:E7:B4:D2:0C:D3:34:A4:87:72:87:55:DF:8D:26:38:78:0A:1D:16:09:C2:68:A4:DC:AC:CA:00:CF:F9
+서명 알고리즘 이름: SHA1withRSA(약함)
+주체 공용 키 알고리즘: 2048비트 RSA 키
+버전: 3
+Jan 26, 2023 11:33 AM, 주은 : 네 저도 공유드린 keystore로 계속 해보고있는데 안되네요ㅠ
+Jan 26, 2023 11:36 AM, wook : json파일과 구글 측 설정은 문제 없는 것으로 판단됩니다.
+ 인증서 혹은 구글 로그인에 관계되어 문제가 되는 부분이 없을지 프로젝트 내부적으로 확인을 부탁드립니다.
+Jan 26, 2023 11:56 AM, 주은 : 로그인 예제로 확인해봤을때도 동일하게 로그인 취소가 됩니다 저는.. 
+Jan 26, 2023 11:56 AM, wook : 예제 프로젝트를 공유 받을 수 있을까요?
+Jan 26, 2023 11:57 AM, 주은 : gamepot 기본 예제입니다..! Login 씬이요!
+Jan 26, 2023 11:58 AM, 주은 : Photo
+Jan 26, 2023 11:58 AM, 주은 : 해당 씬을 빌드하여 확인했습니다.
+Jan 26, 2023 11:58 AM, wook : 샘플 기준으로 작업해서 공유드리겠습니다. 
+Jan 26, 2023 11:58 AM, 주은 : 넵 알겠습니다. 감사합니다.
+Jan 26, 2023 12:30 PM, wook : 샘플 프로젝트 기준으로 구글 로그인 확인된 프로젝트 공유드립니다.
+https://drive.google.com/file/d/160yRr0v-Xf-JhdW-QKu9SIULXgKGxluW/view?usp=share_link
+Jan 26, 2023 12:49 PM, 주은 : 넵 감사합니다. 확인해보겠습니다.
+Jan 26, 2023 3:05 PM, 주은 : Build Settings - Player Settings - Other Settings - Configuration - Scripting Backend는 꼭 Mono로 해야하나요??
+Jan 26, 2023 3:08 PM, wook : 게임팟 SDK측면에서 제한은 없습니다.
+개발 방향성에 맞게 선택하여 사용하시면 됩니다.
+Jan 26, 2023 3:08 PM, 주은 : 넵 계속 비교해서 확인해보겠습니다
+
+Friday, January 27, 2023
+Jan 27, 2023 12:59 PM, 주은 : 안녕하세요, 덕분에 구글 로그인 연동은 하였습니다. 감사합니다 :) 현재 안드로이드에서 애플로그인시, invalid_request
+Invalid cliend id or web redirect url 에러가 뜹니다. FAQ대로 Returen URL은 재확인해본 상태입니다. Firebase ios 앱의 GoogleService-Info.plist는 따로 적용을 하지 않아도 되는 부분인가요?
+Jan 27, 2023 1:43 PM, wook : 안녕하세요.
+ GoogleService-Info.plist는 iOS 앱에서 사용되며 안드로이드에서의 애플 로그인과는 무관합니다.
+ 위 공유주신 에러는 프로젝트 설정 > 일반 > Apple ID Login 내 정상적이지 않은 값이 있지 않을까 추정이 되는데요.
+Private Key 항목에 
+-----BEGIN PRIVATE KEY-----
+~~~
+-----END PRIVATE KEY-----
+를 포함한 p8의 모든 내용이 포함되었을지, 오기입 된 내용은 없을지
+애플 콘솔 상 Return URL가 오기입 된 내용은 아닐지 검토 부탁드립니다.
+Jan 27, 2023 1:44 PM, 주은 : ~~~ 부분만 기입하면 되는거죠??
+Jan 27, 2023 1:45 PM, wook : -----BEGIN PRIVATE KEY-----
+-----END PRIVATE KEY-----
+모두 포함되어야 합니다.
+Jan 27, 2023 1:46 PM, wook : Invalid cliend id or web redirect url 에러의 경우는 애플 콘솔 쪽 설정 내용으로, Return URL 내용이 정상적으로 설정되셨을지 다시 한번 검토 부탁드립니다.
+Jan 27, 2023 2:52 PM, 주은 : launcherTemplate에 작성해야하는 애플 로그인 관련 설정값이 있나요?
+Jan 27, 2023 2:53 PM, wook : 별도로 없습니다.
+Jan 27, 2023 2:56 PM, 주은 : Photo
+Jan 27, 2023 2:56 PM, 주은 : sdk 예제에서 해당 오류가 발생합니다
+Jan 27, 2023 2:58 PM, wook : gamepot-channel-apple-signin.aar 라이브러리가 빌드 시에 포함되었을지 확인 부탁드립니다.
+Jan 27, 2023 2:58 PM, 주은 : libs  폴더에 포함되어 있습니다.
+Jan 27, 2023 2:59 PM, 주은 : 아 샘플프로젝트에는 없네요 감사합니다
+Jan 27, 2023 3:00 PM, wook : 확인 감사합니다. libs 폴더 이동 및 빌드시에 포함되도록 유니티 에디터 상 설정을 부탁드립니다.
+Jan 27, 2023 3:00 PM, wook : Photo
+Jan 27, 2023 3:19 PM, 주은 : 몇번 검토해도 동일한 오류가 납니다.
+Jan 27, 2023 3:21 PM, 주은 : private key 부분은 원래 실제 내용과 다르게 자동으로 변경되는건가요?
+Jan 27, 2023 3:21 PM, 주은 : Photo
+Jan 27, 2023 3:22 PM, wook : 문의 주신 것과 같이 자동으로 변경되는 내용이 맞습니다.
+Return URL 부분의 설정 내용을 공유 받을 수 있을까요?
+Jan 27, 2023 3:22 PM, 주은 : Photo
+Jan 27, 2023 3:25 PM, 주은 : 앗 해결했습니다 감사합니다 
+Jan 27, 2023 3:26 PM, wook : 해결되셨다니 다행입니다.
+Jan 27, 2023 3:41 PM, 주은 : OnLoginFailure - Error occurs from apple server 에러가 발생합니다.
+Jan 27, 2023 3:43 PM, wook : 프로젝트 설정 > 일반 > Apple ID Login 내 입력하신
+Client Id와 위 Return URLs 설정하신 Services ID의 'Identifier'가 동일한게 맞을지 확인 부탁드립니다.
+Jan 27, 2023 3:53 PM, 주은 : 넵 동일합니다
+Jan 27, 2023 4:03 PM, wook :  Error occurs from apple server의 경우 Apple ID Login 입력 정보를 기반으로 애플 서버에서 전달 받은 값이 일치 하지 않아 에러메시지가 발생하는 경우로서
+ 동일하게 메시지가 노출되신다면 관련 값들에 대해 전체적으로 검토를 부탁드리며, 값 변경 후 일정 시간 후 다시 확인 부탁드립니다.
+Jan 27, 2023 4:03 PM, 주은 : 넵 감사합니다
+
+Monday, January 30, 2023
+Jan 30, 2023 2:11 PM, 주은 : GoogleService-Info. plist는 iOS폴더 밑에 넣으면 되나요? GamePotConfig-Info.plist의 google app id와 google url schemes 값은 어떤걸 넣어야 하는건가요?
+Jan 30, 2023 2:16 PM, wook : 안녕하세요.
+ GamePotConfig-Info.plist
+ GoogleService-Info.plist
+모두 ../Assets/Plugins/IOS 경로 내 위치해주시면 되며
+gamepot_google_app_id의 값은 
+> GoogleService-Info 파일의 CLIENT_ID 값
+gamepot_google_url_schemes 값은
+> GoogleService-Info 파일의 REVERSED_CLIENT_ID 값
+각각 입력 부탁드립니다.
+Jan 30, 2023 2:16 PM, wook : Photo
+Jan 30, 2023 2:17 PM, 주은 : 문서에 있는 내용인가요..? 문서 url을 알수 있을까요?
+Jan 30, 2023 2:22 PM, wook : https://guide.ncloud-docs.com/docs/game-gamepotunity#ios-%ED%99%98%EA%B2%BD-%EC%84%A4%EC%A0%95
+ 위 링크에서 확인이 가능합니다.
+Jan 30, 2023 2:24 PM, 주은 : 감사합니다
+
+Tuesday, January 31, 2023
+Jan 31, 2023 4:18 PM, 주은 : 안녕하세요, NUserInfo 개체 생성을 어디에서 하는지 알 수 있을까요??
+Jan 31, 2023 4:21 PM, 주은 : 그리고 onLoginSuccess에서 UserInfo 받아올때 email은 리턴이 안되던데 email 값은 못받아오는 건가요?
+Jan 31, 2023 4:25 PM, wook : 안녕하세요.
+로그인 성공 때 관련 값을 전달합니다.
+또한 NUserInfo의 email값 및 profileUrl과 같은 값은 각 소셜 SDK에서 관련 값을 전달 받을 때에만 노출되는 부분으로 이는 각 소셜마다 상이한 결과를 보입니다.
+Jan 31, 2023 4:25 PM, wook : Photo
+Jan 31, 2023 4:32 PM, 주은 : 감사합니다!
+
+Wednesday, February 1, 2023
+Feb 1, 2023 11:01 AM, 주은 : 안녕하세요, Gamepot.getMemberId()와 같은 함수들은 Gamepot 예제에서만 사용가능한 함수인건가요?? 
+Feb 1, 2023 11:10 AM, wook : 안녕하세요.
+ 문의주신 함수는 예제 프로젝트 내 제한되는 함수는 아닙니다. 혹시 사용 시 문제를 겪고 계실까요?
+Feb 1, 2023 11:11 AM, 주은 : UserInfo 데이터를 받아오고 싶은데 접근이 잘 안되서요..!
+Feb 1, 2023 11:14 AM, wook : 예제에서는 정상적으로 작동되나 본 프로젝트에서는 확인이 안되시는 부분이라면 관련 호출 구현 부분을 공유 받을 수 있을까요?
+Feb 1, 2023 11:28 AM, wook :  혹은 로그인 성공 시 전달되는 NUserInfo 의 userinfo.memberid 의 형태로 관련 값을 받아서 별도 관리하시는 방향성도 있어 관련 구현 내용을 내부적으로 검토 부탁드립니다.
+Feb 1, 2023 11:29 AM, 주은 : Photo
+Feb 1, 2023 11:29 AM, 주은 : 특정 소셜 로그인 버튼 클릭시 호출되는 함수 내용입니다!
+Feb 1, 2023 11:35 AM, wook : 공유 감사드립니다.
+ 로그인 이후 소셜 ID를 획득하시고자 하시는 부분이라면 로그인 성공 후 onLoginSuccess에서 userinfo.userid 를 별도로 저장 관리하시어 사용 부탁드립니다.
+Feb 1, 2023 11:35 AM, 주은 : 넵 감사합니다.
+
+Thursday, February 2, 2023
+Feb 2, 2023 9:55 AM, 주은 : 안녕하세요, iOS 빌드 중에 해당 오류가 발생합니다. 혹시 해결방법을 아실까요?
+Feb 2, 2023 9:55 AM, 주은 : iOS framework addition failed due to a CocoaPods installation failure. This will will likely result in an non-functional Xcode project.
+Feb 2, 2023 9:57 AM, wook : 안녕하세요.
+ 해당 내용은 빌드환경에 따라 다를 수 있으나 환경에 맞게 재설치하신뒤 확인해보시면 해결되실 것으로 판단됩니다.
+Feb 2, 2023 9:58 AM, 주은 : CocoaPods을 재설치하라는 말씀이신건가요?
+Feb 2, 2023 9:59 AM, wook : 네 맞습니다.
+Feb 2, 2023 10:03 AM, 주은 : MacOS환경에서 1.11.x 버전 버그라는 말이 많아서 1.10.2로 다운그레이드를 했는데 동일한 상태입니다. 혹시 Unity iOS Resolver에서 재설치해야하나요?
+Feb 2, 2023 10:07 AM, wook : 재설치 하셔도 cocoapods 관련해서 에러는 동일하실 것으로 추정됩니다.
+ 생성된 xcode 프로젝트 폴더 내 수동으로 pod install 하시어 정상적으로 관련 부분이 생성되시는지 확인을 우선 해보시는 것을 권장드립니다.
+Feb 2, 2023 10:08 AM, 주은 : 그렇게 했을 때는 duplicate symbols for architecture arm64 라는 에러가 발생합니다.
+Feb 2, 2023 10:09 AM, wook : 해당 내용은 pod와 별개의 건으로 판단됩니다. 혹시 podfile 내 어떤 정의가 되어있으실까요?
+Feb 2, 2023 10:11 AM, 주은 : Photo
+Feb 2, 2023 10:11 AM, 주은 : 이렇게 정의되어있습니다.
+Feb 2, 2023 10:16 AM, wook : 별도의 firebase를 붙여서 사용하시는 경우 게임팟 기능을 위하여 이미 포함되어있는 일부 라이브러리와 충돌이 있을 수 있습니다.
+아래 링크의 가이드 내용과 같이 중복되는 라이브러리 삭제,
+ - FirebaseAnalytics.unitypackage
+ - FirebaseMessaging.unitypackage
+적용 및 podfile 내
+:modular_headers => true
+적용이 필요합니다.
+
+ https://docs.gamepot.io/undefined/gamepot_troubleshooting#unity-firebase-sdk-firebase-unity-8.7.0
+
+또한 추가로 Auth 관련 내용은 게임팟 내부 기능과 충돌이 있어 사용하실 수 없습니다.
+Feb 2, 2023 10:25 AM, 주은 : AOS에서는 발생하지 않던 Firebase 오류가 iOS에서 발생하는 이유가 있나요?
+Feb 2, 2023 10:33 AM, wook : Android에 관련 처리를 하셨더라도 iOS 빌드시에 추가적인 작업이 되지 않았다면 발생하실 수 있습니다.
+ 또한 개발사마다 환경, 붙이신 SDK가 달라 가이드 내에는 대표적인 케이스만 안내를 드리는 점 양해 부탁드립니다. 중복에 의한 에러는 관련 내용 확인하시어 어떤 부분이 중복인지 내부적으로 확인해보셔야 합니다.
+Feb 2, 2023 10:39 AM, 주은 :  - FirebaseAnalytics.unitypackage
+ - FirebaseMessaging.unitypackage
+
+해당 라이브러리 위치를 알 수 있을까요? 
+Feb 2, 2023 10:41 AM, wook : https://developers.google.com/unity/archive?hl=ko
+위 아카이브에서 관련 패키지를 다운로드 가능하십니다.
+사용 예정이신 버전에 맞춰서 적용해주시면 됩니다.
+Feb 2, 2023 11:47 AM, 주은 : 해당 코드를 주석처리 해도 약관동의 화면이 계속 뜨는데 다른 곳에도 약관 동의 코드가 있나요??
+Feb 2, 2023 11:47 AM, 주은 : Photo
+Feb 2, 2023 11:49 AM, wook : 기본적으로 GamePot.setAutoAgree(false); 설정되어 있지 않다면 자동적으로 약관 동의가 노출됩니다.
+GamePot.setAutoAgree(false); 정의 후 확인 부탁드립니다.
+Feb 2, 2023 1:52 PM, 주은 : AOS에서 발생하는 에러입니다.
+Feb 2, 2023 1:52 PM, 주은 : 2023-02-02 12:00:36.343 22640 22688 Error Unity DllNotFoundException: Unable to load DLL 'FirebaseCppApp-10_3_0': The specified module could not be found.
+2023-02-02 12:00:36.343 22640 22688 Error Unity   at Firebase.AppUtilPINVOKE+SWIGExceptionHelper.SWIGRegisterExceptionCallbacks_AppUtil (Firebase.AppUtilPINVOKE+SWIGExceptionHelper+ExceptionDelegate applicationDelegate, Firebase.AppUtilPINVOKE+SWIGExceptionHelper+ExceptionDelegate arithmeticDelegate, Firebase.AppUtilPINVOKE+SWIGExceptionHelper+ExceptionDelegate divideByZeroDelegate, Firebase.AppUtilPINVOKE+SWIGExceptionHelper+ExceptionDelegate indexOutOfRangeDelegate, Firebase.AppUtilPINVOKE+SWIGExceptionHelper+ExceptionDelegate invalidCastDelegate, Firebase.AppUtilPINVOKE+SWIGExceptionHelper+ExceptionDelegate invalidOperationDelegate, Firebase.AppUtilPINVOKE+SWIGExceptionHelper+ExceptionDelegate ioDelegate, Firebase.AppUtilPINVOKE+SWIGExceptionHelper+ExceptionDelegate nullReferenceDelegate, Firebase.AppUtilPINVOKE+SWIGExceptionHelper+ExceptionDelegate outOfMemoryDelegate, Firebase.AppUtilPINVOKE+SWIGExceptionHelper+ExceptionDelegate overflowDelegate
+2023-02-02 12:00:36.601 22640 22748 Error Unity DllNotFoundException: Unable to load DLL 'FirebaseCppApp-10_3_0': The specified module could not be found.
+2023-02-02 12:00:36.601 22640 22748 Error Unity   at Firebase.AppUtilPINVOKE.SetLogFunction (Firebase.LogUtil+LogMessageDelegate jarg1) [0x00000] in <00000000000000000000000000000000>:0 
+2023-02-02 12:00:36.601 22640 22748 Error Unity   at Firebase.AppUtil.SetLogFunction (Firebase.LogUtil+LogMessageDelegate arg0) [0x00000] in <00000000000000000000000000000000>:0 
+2023-02-02 12:00:36.601 22640 22748 Error Unity   at Firebase.LogUtil.Dispose (System.Boolean disposing) [0x00000] in <00000000000000000000000000000000>:0 
+2023-02-02 12:00:36.601 22640 22748 Error Unity   at Firebase.LogUtil.Finalize () [0x00000] in <00000000000000000000000000000000>:0 
+2023-02-02 12:00:36.601 22640 22748 Error Unity UnityEngine.DebugLogHandler:Internal_LogException(Exception, Object)
+2023-02-02 12:00:36.601 22640 22748 Error Unity UnityEngine.DebugLogHandler:LogException(Exception, Object)
+2023-02-02 12:00:36.601 22640 22748 Error Unity UnityEngine.Logger:LogException(Exception, Object)
+2023-02-02 12:00:36.601 22640 22748 Error Unity UnityEngine.Debug:LogException(Exception)
+2023-02-02 12:00:36.601 22640 22748 Error Unity UnityEngine.<>c:<RegisterUECatcher>b__0_0(Object, UnhandledExceptionEventArgs)
+2023-02-02 12:00:36.601 22640 22748 Error Unity System.UnhandledExceptionEventHandler:Invoke(Object, UnhandledExceptionEventArgs)
+
+Feb 2, 2023 2:04 PM, wook : 해당 부분은 Firebase 연동 시 발생한 부분으로 내부에서 연동 시 현상이 확인이 되지 않아 이는 개발 환경 및 프로젝트 연동 패키지에 따라 달라지는 부분으로 판단됩니다. 아래와 같은 확인을 해보심이 어떠실까 합니다.
+ 1. 패키지를 re import
+ 2. 서로 다른버전의 firebase 패키지들을 붙이지 않았을지
+ 3. Target Architecture > arm64 활성화
+ 4. resolve 시 관련 정보를 정상적으로 받아올 수 있거나, 빌드시에 포함되는지 확인 (Android Resolver > Patch mainTemplate.gradle 체크 해제 하여 resolve시 확인 가능)
+추가적으로 프로젝트 내 설정하신 부분들에 대해서 연동시 누락된 과정이 없을지 내부적으로 검토 부탁드립니다.
+Feb 2, 2023 3:37 PM, 주은 : GamePotUnityPluginAOS.login(loginType);로 로그인 함수를 호출한 후에 onLoginSuccess()가 호출되는 로직을 알 수 있을까요??
+Feb 2, 2023 3:52 PM, wook : GamePot.login(NCommon.LoginType);를 통하여 파라미터로 로그인 타입을 입력하여 게스트 혹은 각 소셜 SDK 로그인을 진행합니다.
+ 해당 부분은 게임팟 및 각 소셜 SDK의 내부 로직으로 진행되며 성공 했을시 
+public void onLoginSuccess(NUserInfo userInfo)
+{
+}
+
+실패시
+public void onLoginFailure(NError error)
+{
+}
+를 호출합니다.
+Feb 2, 2023 4:41 PM, 주은 : mGamePotClass.CallStatic("login", loginType.ToString());
+
+여기에서 실행파일 내부적으로 GamePotEventListener를 호출해서 onLoginSuccess()를 호출하게 되는건가요?
+Feb 2, 2023 4:55 PM, wook : 내부 코드는 직접적으로 건드리시지 않으시고 샘플 씬 프로젝트와 같이 아래와 같이
+
+GamePot.login(NCommon.LoginType);
+
+// 로그인 성공
+public void onLoginSuccess(NUserInfo userInfo)
+{
+}
+// 로그인 실패
+public void onLoginFailure(NError error)
+{
+    // error.message를 사용하여 메시지를 표시해 주십시오.
+}
+// 로그인 취소
+public void onLoginCancel()
+{
+    // 사용자가 로그인을 취소
+}
+// 강제 업데이트(스토어 버전과 클라이언트 버전이 다를 경우 호출)
+public void onNeedUpdate(NAppStatus status)
+{
+    // 파라미터로 넘어온 status 정보를 토대로 팝업을 만들어 표시해야 합니다. 아래 두 가지 방식 중 한 가지를 선택하여 팝업을 구성해 주십시오.
+    // case 1: 개발사에서 직접 UI를 구현한 인게임 팝업 사용
+    // case 2: 아래 코드를 호출하여 SDK 자체 팝업 사용
+    // GamePot.showAppStatusPopup(status.ToJson());
+}
+// 점검(대시보드에 점검이 활성화되어 있는 경우 호출)
+public void onMainternance(NAppStatus status)
+{
+     // 파라미터로 넘어온 status 정보를 토대로 팝업을 만들어 표시해야 합니다. 아래 두 가지 방식 중 한 가지를 선택하여 팝업을 구성해 주십시오.
+    // case 1: 개발사에서 직접 UI를 구현한 인게임 팝업 사용
+    // case 2: 아래 코드를 호출하여 SDK 자체 팝업 사용
+    // GamePot.showAppStatusPopup(status.ToJson());
+}
+// 앱 종료
+public void onAppClose()
+{
+    // 강제 업데이트나 점검 기능을 case 2 방식으로 구현하는 경우 앱을 강제 종료할 수 있으므로 이 곳에서 앱을 종료할 수 있도록 구현해 주십시오.
+}
+
+사용하시거나, 콜백 방식의 형태로 사용 부탁드립니다.
+
+GamePot.login(NCommon.LoginType, (resultState, userInfo, appStatus, error) => {
+    switch (resultState)
+    {
+        case NCommon.ResultLogin.SUCCESS:
+        // login success
+        break;
+        case NCommon.ResultLogin.CANCELLED:
+        // login cancel
+        break;
+        case NCommon.ResultLogin.FAILED:
+        // login fail
+        break;
+        case NCommon.ResultLogin.NEED_UPDATE:
+            // 파라미터로 넘어온 appStatus 정보를 토대로 팝업을 만들어 표시해야 합니다. 아래 두 가지 방식 중 한 가지를 선택하여 팝업을 구성해 주십시오.
+            // case 1: 개발사에서 직접 UI를 구현한 인게임 팝업 사용
+            // case 2: 아래 코드를 호출하여 SDK 자체 팝업 사용
+            // GamePot.showAppStatusPopup(status.ToJson());
+        break;
+        case NCommon.ResultLogin.MAINTENANCE:
+            // 파라미터로 넘어온 appStatus 정보를 토대로 팝업을 만들어 표시해야 합니다. 아래 두 가지 방식 중 한 가지를 선택하여 팝업을 구성해 주십시오.
+            // case 1: 개발사에서 직접 UI를 구현한 인게임 팝업 사용
+            // case 2: 아래 코드를 호출하여 SDK 자체 팝업 사용
+            // GamePot.showAppStatusPopup(status.ToJson());
+        break;
+        case NCommon.ResultLogin.APP_CLOSE:
+            // 강제 업데이트나 점검 기능을 case 2 방식으로 구현하는 경우 앱을 강제 종료할 수 있으므로 이 곳에서 앱을 종료할 수 있도록 구현해 주십시오.
+        break;
+        default:
+        break;
+    }
+});
+Feb 2, 2023 5:00 PM, 주은 : Photo
+Feb 2, 2023 5:01 PM, 주은 : AOS 로그인 함수에서 오류가 발생하는 것 같은데 어디서 Null인지를 모르겠네요..
+Feb 2, 2023 5:09 PM, wook : 해당 부분은 코드 내부적으로 잘못 정의된 부분은 없을지 확인 해주셔야 할 것 같습니다.
+ 확인이 어려우실 경우 샘플 씬상 한번 진행을 해보시고 이상 여부 확인 후 본 프로젝트로 적용 시 비교하여 누락된 부분이 없으실지 검토해보심이 어떠실까 합니다.
+
+Friday, February 3, 2023
+Feb 3, 2023 9:28 AM, 주은 : 안녕하세요, 아래 오류는 iOS 빌드 중 발생하는 오류 입니다.
+
+MissingMethodException: System.Collections.Generic.IEnumerable`1<string> Google.IOSResolver.GetXcodeTargetGuids(object,bool)
+
+Feb 3, 2023 9:49 AM, wook : 안녕하세요.
+ 위 내용은 유니티, firebase 관련 하여 해당 버전의 이슈로 추정되며 이전 동일 에러 상황에서 에러 문구 노출과 관계없이 정상적으로 iOS 빌드는 가능했던 것으로 리포트 되었습니다.
+ 혹 해당 내용으로 문제가 되는 부분이 있다면 프로젝트 내 firebase 버전을 업데이트 하면서 이전 버전 iOSResolver와 신규 iOSResolver가 동시에 존재 하고 있지 않은지 확인이 필요할 것 같습니다.
+Feb 3, 2023 9:57 AM, 주은 : 뭔가 firebase가 꼬인것같네요ㅠ 다시 해보겠습니다..
+Feb 3, 2023 10:17 AM, 주은 : 여기서 말하신 onLoginSuccess가 GamePotEventListener.cs에 있는 onLoginSuccess가 맞나요?? 
+Feb 3, 2023 10:24 AM, wook : GamePotEventListener.cs에 있는 내용을 말씀드린 것이 아닌 GamePot.login(LoginType); 호출하시는 씬 상 아래와 같은 콜백 정의 후 해당 영역에서 userInfo.userid 사용하시어 관련 값을 확인 하실 수 있습니다.
+public void onLoginSuccess(NUserInfo userInfo)
+{
+}
+Feb 3, 2023 10:50 AM, 주은 : Photo
+Feb 3, 2023 10:51 AM, 주은 : 유니티에서 iOS 빌드 후 XCode에서 빌드할 시 발생하는 오류입니다. 해당 오류도 firebase 연동 문제인것같은데 해결 방안이 있을까요?
+Feb 3, 2023 11:03 AM, wook : firebase dynamicLink 연동 과정에서 문제가 있지 않았을까 추정이 됩니다. 관련 내용을 삭제 후 pod install 해보시는 것이 어떠실까 합니다.
+Feb 3, 2023 1:53 PM, 주은 : ios 빌드 시 cocoapods을 꼭 사용해야하나요??
+Feb 3, 2023 2:07 PM, wook : 말씀주신 cocoapod는 게임팟 측면에서는 필수는 아닙니다.
+ 다만 다른 서드파티 SDK를 붙여 사용하시는 경우는 안내드리기 어렵습니다. 
+Feb 3, 2023 2:15 PM, 주은 : Photo
+Feb 3, 2023 2:16 PM, 주은 : 해당 에러는 xcode 빌드 후 info.plist 파일을 수정해야하는 부분인가요? 아니면 유니티 빌드시 설정이 덜 된부분이 있는건가요??
+Feb 3, 2023 2:19 PM, wook : 유니티 -> Xcode 빌드 이전 아래 경로
+../Assets/Plugins/IOS/GamePotConfig-Info.plist 내 관련 설정을 하시면 됩니다.
+gamepot_naver_clientid // 네이버에서 사용할 client ID
+gamepot_naver_secretid // 네이버에서 사용할 secret ID
+gamepot_naver_urlscheme // 네이버에서 사용할 URL Scheme
+Feb 3, 2023 2:20 PM, 주은 : 저게 구글, 애플에서도 동일하게 뜹니다
+Feb 3, 2023 2:27 PM, wook : GamePotConfig-Info.plist 내 관련 설정을 하신 부분이 맞으실지 확인 부탁드리며
+
+../Assets/Plugins/IOS/etcFrameworks 폴더에서 아래 필요한 프레임워크를 찾아
+../Assets/Plugins/IOS/Frameworks 경로 내 프레임워크들이 위치하도록 확인 및 빌드시에 포함되도록 유니티 에디터 상 설정 부탁드립니다.
+- 각 로그인에 필요한 프레임워크
+Google Sign In
+ > GamePotGoogleSignIn.framework
+ > GoogleSignIn.framework
+ > GoogleSignInDependencies.framework
+
+NAVER
+ > GamePotNaver.framework
+ > NaverThirdPartyLogin.framework
+
+APPLE
+ > GamePotApple.framework
+Feb 3, 2023 3:30 PM, 주은 : Photo
+Feb 3, 2023 3:30 PM, 주은 : Photo
+Feb 3, 2023 3:30 PM, 주은 : 잘 들어가 있는데 동일하게 오류가 발생합니다..
+Feb 3, 2023 3:34 PM, wook : UnityAppController를 상속받는 다른 파일이 있을지 확인 요청드립니다.
+ 게임팟 유니티 플러그인 상 GamePotAppDelegate.h 에서 상속을 받고 있으나 서드파티 라이브러리 등으로 UnityAppController를 상속받는 다른 파일이 있을 경우 게임팟 SDK 가 정상적으로 초기화 되지 않을 수 있습니다.
+
+Monday, February 6, 2023
+Feb 6, 2023 9:41 AM, 주은 : 안녕하세요, Plugins/IOS/Frameworks/NaverThirdPartyLogin.framework를 추가해서 빌드를 했는데 빌드시 생성되는 폴더/Frameworks/Plugins/IOS/Frameworks에 NaverThirdPartyLogin.framework가 생성되지 않습니다.
+Feb 6, 2023 9:42 AM, 주은 : 설정을 추가로 해줘야하는 부분이 있는건가요?
+Feb 6, 2023 9:45 AM, wook : 안녕하세요.
+유니티 에디터 상 빌드 시 포함되게끔 설정이 되었을지 확인 부탁드립니다.
+Feb 6, 2023 9:45 AM, wook : Photo
+Feb 6, 2023 9:48 AM, 주은 : 넵
+Feb 6, 2023 10:14 AM, 주은 : GamePotAppDelegate.h는 어디에 위치하고 있는 파일인가요?
+Feb 6, 2023 10:16 AM, 주은 : Deleted Message
+Feb 6, 2023 10:16 AM, 주은 : UnityAppController를 전체검색 해봤을때 안나오는걸로 봐선 상속받고 있는게 없는것같습니다.
+Feb 6, 2023 10:22 AM, wook : GamePotAppDelegate.h
+../Assets/Plugins/IOS/Source 내 위치하고 있습니다.
+타 SDK의 내용 상 확인이 되지 않으신다면 프레임워크가 정상적으로 포함되셨을지 확인 후 각 소셜이 정상적일지 테스트 해보시면 될 것 같습니다.
+Feb 6, 2023 11:43 AM, 주은 : 빌드시 해당 소셜 프레임워크들이 정상적으로 생성이 된 것과 GamePotConfig-Info 설정값들도 확인하였으나 Gamepot 예제에서도 네이버, 구글, 애플 모두 동일한 오류가 발생합니다. 
+Feb 6, 2023 11:44 AM, wook : 예제에서 동일하게 문제 발생하는 프로젝트를 공유 받을 수 있을까요?
+Feb 6, 2023 11:47 AM, 주은 : 저희 프로젝트 내에 포함시켜서 쓰고 있었는데 저번에 공유주셨던 프로젝트에 해보고 그걸 공유드리도록 하겠습니다.
+Feb 6, 2023 11:47 AM, wook : 네 알겠습니다. 공유 주시면 내부에서도 확인해보겠습니다.
+Feb 6, 2023 2:46 PM, 주은 : 주셨던 예제 프로젝트에서는 되고 저희 프로젝트 내 예제에서는 안되네요.. 
+Feb 6, 2023 2:50 PM, wook : 프로젝트 내 사용하시는 다른 SDK에 따라 다른 부분이 있지 않을까 추정이 됩니다.
+ 예제 프로젝트와 비교하여 정의 혹은 포함된 내용이 다르거나, 위 안내드린 바와 같이 UnityAppController를 상속하는 다른 부분이 있다면 하나의 파일만 UnityAppController를 상속하도록 처리 후 확인 부탁드립니다.
+
+Tuesday, February 7, 2023
+Feb 7, 2023 10:24 AM, 주은 : Deleted Message
+Feb 7, 2023 10:25 AM, 주은 : UnityAppController를 상속하는 다른 부분을 발견했는데 GamePotAppDelegate.h에서 UnityAppController를 상속받는 부분을 지우면 되는건가요??
+Feb 7, 2023 10:26 AM, wook : File: fixed_appsflyer632.zip
+Feb 7, 2023 10:27 AM, wook : 하나의 예시파일을 전달드립니다.
+위와 같이 하나의 파일에서만 상속받도록 처리 부탁드립니다.
+
+Friday, February 10, 2023
+Feb 10, 2023 10:15 AM, 주은 : Photo
+Feb 10, 2023 10:15 AM, 주은 : 안녕하세요, iOS Xcode 빌드 중 발생하는 에러입니다.
+Feb 10, 2023 10:25 AM, wook : 안녕하세요.
+빌드하시는 프로젝트 내 게임팟 관련 프레임워크가 누락된 부분은 없을지 확인 부탁드립니다.
+ 포함은 되어있도록 설정되어 있으나 경로 이상으로 빌드시 포함되지 못하는 부분일지도 내부적으로 확인을 부탁드립니다.
+
+Monday, February 13, 2023
+Feb 13, 2023 4:24 PM, 주은 : 안녕하세요, AOS 빌드 중 발생하는 오류입니다.
+Feb 13, 2023 4:24 PM, 주은 : A failure occurred while executing com.android.build.gradle.internal.tasks.Workers$ActionFacade
+
+Feb 13, 2023 4:28 PM, wook : 안녕하세요.
+ 해당 내용은 게임팟 SDK 외 다른 빌드 환경 이슈나 설정 문제 등으로 광범위하게 발생할 수 있는 내용으로 명확히 안내드리기 어려운 점이 있습니다.
+ 관련 부분에 대해서는 빌드 환경 측면에서 내부적으로 검토를 부탁드립니다.
+
+Wednesday, February 15, 2023
+Feb 15, 2023 9:15 AM, 주은 : 안녕하세요, iOS 빌드 중에 발생하는 오류입니다.
+Feb 15, 2023 9:15 AM, 주은 : Photo
+Feb 15, 2023 9:22 AM, wook : 안녕하세요.
+Build Phases->Copy Bundle Resources 내 위 에러 내용인 NaverThirdPartyLogin 관련 부분을 삭제 해보신 후 Clean Build Folder 진행 및 빌드를 다시 해보셨으면 합니다.
+Feb 15, 2023 9:56 AM, 주은 : 똑같이 안됩니다!
+Feb 15, 2023 9:57 AM, 주은 : Photo
+Feb 15, 2023 9:57 AM, 주은 : 저기에 NaverThirdPartyLogin이 생겨야하나요?
+Feb 15, 2023 10:02 AM, wook : 아닙니다. 어딘가에서 중복 된 내용이 있을 것으로 추정되는데요.
+해당 프로젝트 내 NaverThirdPartyLogin 파일의 중복으로 포함된 부분이 없을지 확인해보셔야 하실 것으로 판단됩니다.
+
+Thursday, February 16, 2023
+Feb 16, 2023 5:03 PM, 주은 : 안녕하세요, 안드로이드 빌드시 발생하는 오류인데 기능에 영향을 미치지는 않는 오류지만 해결방안을 알 수 있을까요?
+Feb 16, 2023 5:03 PM, 주은 : Photo
+Feb 16, 2023 5:12 PM, wook : 안녕하세요. 게임팟 SDK내에서 발생되는 부분이 아니라 말씀드리기 어렵지만 firebase 의 버전차이 등으로 인하여 발생하는 부분이 아닐까 추정이 됩니다.
+위 내용은 내부적으로 확인을 해보셨으면 합니다.
+
+Tuesday, February 21, 2023
+Feb 21, 2023 11:37 AM, 주은 : 안녕하세요, iOS 빌드시 발생하는 오류입니다.
+Feb 21, 2023 11:37 AM, 주은 : XmlException: Data at the root level is invalid. Line 36, position 9.
+Firebase.Editor.XcodeProjectPatcher.ReadConfig (System.Boolean errorOnNoConfig, System.String filename) (at /Users/runner/work/firebase-unity-sdk/firebase-unity-sdk/editor/app/src/XcodeProjectPatcher.cs:136)
+Firebase.Editor.XcodeProjectPatcher.AddGoogleServicePlist (UnityEditor.BuildTarget buildTarget, System.String pathToBuiltProject) (at /Users/runner/work/firebase-unity-sdk/firebase-unity-sdk/editor/app/src/XcodeProjectPatcher.cs:344)
+Firebase.Editor.XcodeProjectPatcher.OnPostProcessAddGoogleServicePlist (UnityEditor.BuildTarget buildTarget, System.String pathToBuiltProject) (at /Users/runner/work/firebase-unity-sdk/firebase-unity-sdk/editor/app/src/XcodeProjectPatcher.cs:335)
+System.Reflection.MonoMethod.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at <695d1cc93cca45069c528c15c9fdd749>:0)
+UnityEngine.GUIUtility:ProcessEvent(Int32, IntPtr, Boolean&) (at /Users/bokken/buildslave/unity/build/Modules/IMGUI/GUIUtility.cs:189)
+Feb 21, 2023 11:54 AM, wook : 안녕하세요. firebase를 붙여서 빌드 때 위와 같은 내용은 확인 되지 않았었는데요. 
+GoogleService-Info.plist이 정상적일지
+1개만 존재하는지
+XmlException: Data at the root level is invalid. Line 36, position 9.
+ 에러 상 내부적으로 검토해보실 만한 부분은 없을지 확인 부탁드립니다.
+추가로 내부적으로도 관련 내용을 확인해보고자 합니다. 붙이신 서드파티 SDK와 버전 등을 알 수 있을까요?
+Feb 21, 2023 1:16 PM, 주은 : FirebaseMessaging, FirebaseAnalytics, FirebaseDynamicLinks 모두 10.3.0입니다. 
+Feb 21, 2023 2:24 PM, wook : 공유 감사합니다.
+ 위 firebase 모두 10.3.0버전 연동 후에도 위와 같은 현상이 확인 되지 않았습니다.
+ 관련한 내용은 환경이나 프로젝트 내부적으로 검토를 해보셔야 하실 사항으로 판단됩니다.
+
+Wednesday, March 8, 2023
+Mar 8, 2023 11:38 AM, 한컴프론티스 조금식 본부장님 : 안녕하세요. 한컴프론티스 조금식 입니다 ^^
+Mar 8, 2023 11:38 AM, 한컴프론티스 조금식 본부장님 : 저희가 GAMEPOT 연동 개발이 잘 되어서, 
+Mar 8, 2023 11:39 AM, 한컴프론티스 조금식 본부장님 : 유료화 부분 요금제에 대해 안내가 가능하시면 안내를 부탁 드립니다.
+Mar 8, 2023 11:49 AM, wook : 안녕하세요.
+ 게임팟에서는 대시보드 하단 유료 전환 버튼을 누르시는 시점부터 과금이 진행되며, 일일 DAU제한이 해제됩니다. 서비스 오픈 시점 전에 해당 버튼을 반드시 확인 부탁드립니다.
+ 요금 관련 측면은 기본적으로 네이버 클라우드 플랫폼 상품 설명 측에 명시가 되어 있으나
+( https://www.ncloud.com/product/game/gamepot )
+ 추가적으로 궁금한 점이 있으시다면 번거로우시더라도 네이버 클라우드 플랫폼 측에 관련 문의를 해주시면 보다 정확한 답변을 받으실 수 있습니다.
+( https://www.ncloud.com/support/question/general )
+Mar 8, 2023 11:52 AM, wook : 추가로 하기 서비스 이용시 비용은 별도로 부과됩니다.
+ Simple & Easy Notification Service (SENS) - 푸시 
+ 오브젝트 스토리지 - 이용약관 및 고객문의 첨부파일  
+ Cloud Outbound Mailer - 인증 메일 관련
+
+Thursday, March 9, 2023
+Mar 9, 2023 1:33 PM, 한컴프론티스 김지수 선임님 : 안녕하세요! 한컴프론티스 김지수 선임 입니다!
+저번에 유료화 관련 질문에서 또 궁금한점이 있는데요!
+네이버 단체아이디로는 가입이 불가한가요^^?
+Mar 9, 2023 1:33 PM, 한컴프론티스 김지수 선임님 : 문의하기를 통해 문의드렸는데 답 메일이 오지 않아서요^^;;
+Mar 9, 2023 1:41 PM, wook : 안녕하세요.
+ 네이버 클라우드 콘솔은 저희가 관리하지 않는 부분이라 답변이 어렵습니다.
+ 해당 문의는 게임팟 대시보드를 생성하신 네이버 클라우드 콘솔 계정으로 문의를 진행해보시는 것이 어떨까 싶습니다.
+Mar 9, 2023 1:43 PM: 이용현 invited 최수혁.
+Mar 9, 2023 1:43 PM, 이용현 : 저희 NCP 한컴그룹 담당 최수혁 과장님 방에 초대 드렸습니다.
+Mar 9, 2023 1:43 PM, 이용현 : 단체 아이디라는게 어떤거를 말씀 주시는 걸까요 ?
+Mar 9, 2023 1:44 PM, 최수혁 : Deleted Message
+Mar 9, 2023 1:45 PM, 최수혁 : 안녕하세요. 한컴그룹 영업담당 최수혁입니다. 잘 부탁드립니다. 
+
+이름: 최수혁 회사: 네이버클라우드 부서: Commercial Sales / DX / MFG 직책: 과장 휴대폰: 010-4949-0411 이메일: suhyuk.choi@navercorp.com 주소: 서울특별시 강남구 테헤란로 129 강남 N타워 19층  리멤버에 저장하시려면 아래 링크를 클릭하세요.  https://app.rmbr.in/qMujpKEEZxb
+Mar 9, 2023 1:57 PM, 한컴프론티스 김지수 선임님 : Photo
+Mar 9, 2023 1:58 PM, 한컴프론티스 김지수 선임님 : 네이버클라우드플랫폼에 네이버아이디로 가입이 안되더라구요^^..
+Mar 9, 2023 1:58 PM, 한컴프론티스 김지수 선임님 : Photo
+Mar 9, 2023 1:59 PM, 한컴프론티스 김지수 선임님 : Photo
+Mar 9, 2023 2:19 PM, 이용현 : 아... 아무래도 해당부분은 저희 콘솔에 문의하기에다 문의해주셔야 될거같은데요...
+
+다만, 대부분 정식 기업 고객은
+회원 가입 절차로 기업으로 가입해주셔서 마케팅 동의하면 30만원크레딧을 받거든요... 그렇게 가입해주셔서 이용하고계셔서
+가급
+Mar 9, 2023 2:19 PM, 이용현 : 가급적이면 정식회원 가입을 요청 드립니다.
+Mar 9, 2023 2:55 PM, 주은 : 30만원이 아닌 10만원 인가요??
+Mar 9, 2023 2:55 PM, 주은 : Photo
+Mar 9, 2023 2:55 PM, 주은 : 그리고 크레딧은 신규 가입 며칠안에 결제 수단을 등록해야 받을 수 있다는 제한이 있는지 알 수 있을까요?
+Mar 9, 2023 3:05 PM, 이용현 : 마케팅 동의를 하시면 30만원인걸로 알고 있는데요. 가입할때 결제수단을 등록해야 하는 걸로 알고 있습니다. 
+Mar 9, 2023 3:06 PM, 주은 : 마케팅 동의는 어디서 하나요?
+Mar 9, 2023 3:08 PM, 이용현 : 가입하실 때 프로세스에 있으신 거로 알고 있어요
+Mar 9, 2023 3:09 PM, 이용현 : 제가 알기로는 사업자로 가입하셔서 동의하면 그렇게 지원이 되는 걸로 알고 있거든요
+
+프로세스 문의는 문의하기통해서 회원팀 통해서 답변 받으시는게 가장 정확하세요.
+Mar 9, 2023 3:09 PM, 주은 : 네 알겠습니다. 감사합니다!
+
+Tuesday, March 28, 2023
+Mar 28, 2023 4:57 PM, 주은 : 저 에러는 게임팟 내부에서 띄우는 에러인가요?? 
+Mar 28, 2023 4:57 PM, 주은 : 저 에러를 안보이게 할 순 없나요?? 
+Mar 28, 2023 5:00 PM, 주은 : 일반 사용자에게도 저 에러가 보여서 안보이게 할 수 있나해서요..!
+Mar 28, 2023 5:00 PM, wook : 게임팟 내부 라이브러리에서 노출시키는 부분이 맞습니다.
+ 말씀주신 토스트 메시지 출력 여부를 별도로 설정 하는 부분은 지원되고 있지 않습니다.
+Mar 28, 2023 5:03 PM, 주은 : 네 알겠습니다.
+
+Tuesday, April 4, 2023
+Apr 4, 2023 4:16 PM, 한컴프론티스 조금식 본부장님 : 안녕하세요. 한컴프론티스 입니다. ^^
+Apr 4, 2023 4:17 PM, 한컴프론티스 조금식 본부장님 : 공지사항 이미지를 띄워주려고 하는데, 저희 플랫폼 자체 로그인인 경우, 현재 Gamepot.login 을 호출하지 않고 있습니다.
+Apr 4, 2023 4:17 PM, 한컴프론티스 조금식 본부장님 : 이럴 경우, 공지사항이 안뜨는걸로 알고 있는데...
+Apr 4, 2023 4:17 PM, 한컴프론티스 조금식 본부장님 : 어떤 로그인으로 대체해서 게임팟으로 로그인을 하면 될지요...
+Apr 4, 2023 4:18 PM, 한컴프론티스 조금식 본부장님 : 현재 로그인은 아래와 같습니다.
+1. 자체 로그인
+2. 네이버
+3. 구글
+4. 애플
+Apr 4, 2023 5:18 PM, wook : 안녕하세요.
+ 자체 로그인을 통한 정보를 게임팟 3자 로그인을 통해 로그인 되도록 구현 진행이 되어야 하실 것으로 판단이 됩니다.
+ 사용하시려면 아래와 같은 방식으로 자체 로그인 정보를 넣어 호출해주셔야 하시며, 관련 가이드를 참고 부탁드립니다.
+GamePot.loginByThirdPartySDK("thirdpartysdk-memberid");
+( https://guide.ncloud-docs.com/docs/game-gamepotunity#3rd-party-sdk-%EC%97%B0%EB%8F%99 )
+
+다만 위 기능을 사용하기에 앞서 내부 엔지니어의 작업이 필요한 부분이 있어, 사용 예정인 게임팟 프로젝트id를 전달 주시면 관련 작업 후 공유드리겠습니다.
+Apr 4, 2023 5:21 PM, 한컴프론티스 조금식 본부장님 : 프로젝트 ID 입니다.
+34687e3f-7c50-44a8-86e6-9836b47e1c21
+Apr 4, 2023 5:23 PM, wook : 공유 감사드립니다.
+내부 작업 완료되었으며, 관련해서 ThirdPartySDK를 확인해보시면 되실 것입니다.
+
+Thursday, April 6, 2023
+Apr 6, 2023 4:04 PM, 주은 : 안녕하세요, ios 빌드 시 etcFrameworks에 있는 파일이 Plugins-IOS-etcFrameworks에 생성되는데 생성안되게 하는 방법이 있을까요? 다른건 생성이 안되는데 GamePotFacebook.framework만 생성이 되네요 
+Apr 6, 2023 4:19 PM, wook : 안녕하세요.
+문의내용 중 Plugins-IOS-etcFrameworks 경로는 어떤 경로를 문의주신 것인지 알 수 있을까요?
+ 게임팟 패키지 상 Assets/Plugins/IOS/extcFrameworks 경로 내 
+GamePotFacebook.framework를 포함하고 있지 않습니다.
+Apr 6, 2023 4:21 PM, 주은 : etcFrameworks 폴더가 사용하지 않는 framework들을 넣은 폴더가 아닌가요?? Facebook 관련 기능을 사용하고 있지 않아 그쪽으로 옮겨뒀었습니다.
+Apr 6, 2023 4:21 PM, 주은 : 관련 framework를 아예 삭제해야하는 부분인가요?
+Apr 6, 2023 4:23 PM, wook : 유니티 에디터 상 포함되지 않게 처리를 해두셨을지 확인 부탁드립니다.
+Apr 6, 2023 4:23 PM, wook : Photo
+Apr 6, 2023 4:23 PM, 주은 : 넵 감사합니다.
+
+Friday, April 7, 2023
+Apr 7, 2023 1:15 PM, 한컴프론티스 조금식 본부장님 : 안녕하세요~
+Apr 7, 2023 1:16 PM, 한컴프론티스 조금식 본부장님 : 궁금한 점이 있어 질문을 드립니다.
+Apr 7, 2023 1:16 PM, 한컴프론티스 조금식 본부장님 : 저희가 게임팟 공지사항하고 이벤트 팝업을 연동했는데
+Apr 7, 2023 1:16 PM, 한컴프론티스 조금식 본부장님 : 혹시, 팝업 리소스를 저희가 커스터마이징 할 수 있을까요?
+Apr 7, 2023 1:16 PM, 한컴프론티스 조금식 본부장님 : SDK 라이브러리쪽, 리소스를 저희가 수정해서, 커스터마이징 할 수 있는지 문의 드립니다.
+Apr 7, 2023 1:39 PM, wook : 안녕하세요.
+ 문의주신 공지사항 API로 호출하여 보여지는 UI를 변경하는 부분에 대해 지원드리는 내용이 없습니다.
+Apr 7, 2023 1:44 PM, 한컴프론티스 조금식 본부장님 : 넵 답변 감사드립니다 ^^
+
+Tuesday, April 18, 2023
+Apr 18, 2023 3:58 PM, 주은 : 안녕하세요, iOS에서는 잘 되는데, 안드로이드에서 구글 로그인을 시도할 시 OnLoginCancel()로 넘어가는데 해결방법이 있을까요? 다른 소셜(네이버, 애플) 로그인은 잘 됩니다
+Apr 18, 2023 4:02 PM, wook : 안녕하세요.
+ 해당 부분은 구글 SDK측에서 로그인 환경이 올바르지 않은 경우 해당 현상이 발생 할 수 있습니다.
+ 기존에는 잘 되셨던 부분이었으나 스토어버전에서 구글 로그인이 되지 않는 경우 각 스토어 콘솔의  앱 서명으로 인해 sha-1값이 변경되지 않았을지 확인을 부탁드립니다.
+ 빌드에 사용되는 keystore 가 변경되는 경우에도 firebase 내 sha-1 값을 갱신해주셔야 하십니다.
+
+Thursday, April 20, 2023
+Apr 20, 2023 10:44 AM, 주은 : 안녕하세요, 특정 iphone에서 네이버 로그인이 안되는 이슈가 있습니다. 
+Failed to process com.hancomfrontis.arzmeta://thirdPartyLoginResult?version=2&code=0&authCode=0eYG34gqqukwG2lCgf 라고 뜹니다.
+Apr 20, 2023 10:49 AM, wook : 안녕하세요.
+현상에 대해 추가적인 정보를 받을 수 있을까요?
+(ex. 특정할 수 있는 기기 버전 및 기종, 재현로직 등)
+Apr 20, 2023 10:54 AM, 주은 : 아이폰 13 pro max(버전 16.1)에서 네이버 로그인을 네이버 앱을 통해 로그인할때 동의 팝업 뜬 뒤 해당 에러가 발생하면서 로그인이 되지 않습니다.
+Apr 20, 2023 11:27 AM, wook : 공유주신 로그만으로는 확인이 어려우며, 
+저희가 보유한 ios os 16.1 ( ipad mini 5세대 ) , 16.3.1 - ios iphon11 기반으로 네이버 로그인시 크래시가 발생하지 않아 현상 확인에 어려움이 있습니다.
+
+기기확보가 되신 사항이시라면
+화이트 유저 : 종류 -개발 / IP : 테스트 기기의 IP  등록 후 앱 종료 
+
+앱 실행 부터 문제 발생구간 까지의 로그를 공유 부탁드립니다. 
+
+내부적으로도 체크를 추가로 해보겠으나 재현되지 않는 현상이다보니 게임팟 SDK 이슈일지 네이버 SDK 내부 이슈일지 말씀을 드리기 어려울 것 같습니다.
+
+Wednesday, April 26, 2023
+Apr 26, 2023 10:28 AM: 게임팟/게임쳇 고객지원 invited 게임팟 고객지원팀.
+
+Thursday, April 27, 2023
+Apr 27, 2023 11:06 AM, 한컴프론티스 김지수 선임님 : 안녕하세요! 질문이 있습니다.
+저희쪽에서 게임팟쪽 비번이 여러번 틀려서 비밀번호 초기화 하라는 문구가 뜨더라구요.
+Apr 27, 2023 11:06 AM, 한컴프론티스 김지수 선임님 : Photo
+Apr 27, 2023 11:06 AM, 한컴프론티스 김지수 선임님 : 해당메일 인증버튼 누른후
+Apr 27, 2023 11:07 AM, 한컴프론티스 김지수 선임님 : Photo
+Apr 27, 2023 11:07 AM, 한컴프론티스 김지수 선임님 : 비번설정시 사이트에서 비밀번호 초기화를 진행해주세요. 부분에서 막혀서
+Apr 27, 2023 11:08 AM, 한컴프론티스 김지수 선임님 : 되었습니다!
+Apr 27, 2023 11:09 AM, 한컴프론티스 김지수 선임님 : 비번재설정메일을 2개 날려서.. 처음껄로 재설정하려고 했네요.
+Apr 27, 2023 11:10 AM, wook : 안녕하세요. 해결되셨다니 다행입니다.
+변경 측면에서 추가적인 지원이 필요하신 부분이 있으실까요?
+Apr 27, 2023 11:14 AM, 한컴프론티스 김지수 선임님 : 아니오 큰 문제가 아니었습니다. 문의사항 생기면 말씀드리겠습니다 감사합니다 :)
+Apr 27, 2023 2:28 PM: 게임팟/게임쳇 고객지원 invited NaverCloud-CS.
+
+Friday, April 28, 2023
+Apr 28, 2023 6:15 PM: wook left this chatroom.
+
+Thursday, June 1, 2023
+Jun 1, 2023 9:16 PM, 한컴프론티스 김지수 선임님 : 안녕하세요! 혹시 게임팟 내부 파이어베이스를 사용중에 있는데요~
+Firebase DynamicLink버전은 10.3.0으로 확인되고 있습니다.
+
+현재 버전에서 다이나믹 링크 생성, 링크를 클릭하면 앱 실행 및 DynamicLinks.DynamicLinkReceived의 콜백까지 실행하는것을 확인했는데요!
+
+앱을 백그라운드상태에서 포그라운드상태로 전환해도 DynamicLinks.DynamicLinkReceived 의 콜백이 실행되더라구요.
+
+방법을 찾아보았는데 FirebaseDynamicLinks.DynamicLinkReceived를 사용하라고 하더라구요. 근데 이 클래스는 존재하지 않아..
+검색해보다 문의 드립니다!
+
+Friday, June 2, 2023
+Jun 2, 2023 9:19 AM, 게임팟 고객지원팀 : 안녕하세요.
+Jun 2, 2023 9:20 AM, 게임팟 고객지원팀 : Firebase SDK 를 별도로 연동하신 케이스로 보여지는데요. 
+문의주신 사항 관련해서는 구글 측으로 문의를 해보셔야 할 것 같습니다. 
+Jun 2, 2023 3:34 PM, 한컴프론티스 김지수 선임님 : 답변주셔서 감사합니다.
+이와같은 현상을 가진 사람이 쓴 글이 있어서 보고 참조하였습니다! 감사합니다^^
+
+Wednesday, June 7, 2023
+Jun 7, 2023 10:15 AM, 주은 : 안녕하세요, 
+"FBSDKLog: Missing [FBSDKAppEvents appID] for [FBSDKAppEvents publishInstall:]" 에러가 발생해서 문의드립니다. 
+페이스북 관련 에러로 보이는데 저희는 현재 페이스북 로그인을 사용하고 있지 않습니다. 
+Jun 7, 2023 10:39 AM, 게임팟 고객지원팀 : Deleted Message
+Jun 7, 2023 10:40 AM, 게임팟 고객지원팀 : Photo
+Jun 7, 2023 10:40 AM, 게임팟 고객지원팀 : 안녕하세요. 
+페이스북 로그인을 사용하지 않으시면, 페이스북 관련 라이브러리 삭제 후 다시 진행 바랍니다.
+
+Android
+Assets > Plugins > Android > libs 내 페이스북 관련 삭제
+Jun 7, 2023 10:40 AM, 게임팟 고객지원팀 : Photo
+Jun 7, 2023 10:42 AM, 게임팟 고객지원팀 : iOS > Frameworks
+- FBAEMKit.xcframework
+- FBSDKCoreKit.xcframework
+- FBSDKCoreKit_Basics.xcframework
+- FBSDKLoginKit.xcframework
+- GamePotFacebook
+Jun 7, 2023 10:42 AM, 게임팟 고객지원팀 : Photo
+Jun 7, 2023 10:44 AM, 게임팟 고객지원팀 : facebook-android-sdk-13.2.0
+facebook-applinks-13.2.0
+facebook-bolts-13.2.0
+facebook-common-13.2.0
+facebook-core-13.2.0
+facebook-gamingservices-13.2.0
+facebook-login-13.2.0
+facebook-messenger-13.2.0
+facebook-share-13.2.0
+gamepot-channel-facebook
+
+해당 파일들 삭제 후 다시 진행 부탁드립니다.
+Jun 7, 2023 11:20 AM, 주은 : 감사합니다. 
+
+Monday, June 19, 2023
+Jun 19, 2023 10:34 AM, 주은 : 안녕하세요, IDFA 값 획득을 위한 권한 요청 팝업을 설정하려고 하는데요, 
+해당 페이지(https://guide.ncloud-docs.com/docs/game-gamepotunity)에서 Assets/GamePot/SDK/Scripts/GamePot.cs의 login 메소드를 수정하라고 나와있는데 
+해당 코드 위치로 가보니 "2021.06.04 자동 tracking 팝업 로직 native 안으로 이전." 이라고 적혀있어서요.
+해당 사항에 대해서 설명 좀 해주실 수 있으실까요?
+Jun 19, 2023 11:03 AM, 게임팟 고객지원팀 : 안녕하세요. 
+GamePot.cs 파일은 수정하지 않으셔두 되구요, 
+GamePot.requestTrackingAuthorization API 호출을 진행해 주시면 될 것 같습니다.
+Jun 19, 2023 11:04 AM, 주은 : 기본적으로 호출되고 있는 부분은 없는건가요?
+Jun 19, 2023 11:07 AM, 게임팟 고객지원팀 : 명확한 사유는 확인이 어렵지만, ios에서 호출되는 시점에 따라 반려는 경우가 있어서 자동으로 호출하는 부분은 제거하였으며, 고객사에서 원하는 시점에 호출할 수 있도록 API를 제공한 것 입니다.
+
+그래서 위에서 알려드른 API로 호출을 하시면 될 것 같습니다.
+
+Thursday, August 10, 2023
+Aug 10, 2023 1:20 PM, 주은 : Photo
+Aug 10, 2023 1:20 PM, 주은 : 해당 팝업이 뜨고있는데 해결방법을 알 수 있을까요?
+Aug 10, 2023 1:22 PM: 이용현 left this chatroom.
+Aug 10, 2023 1:26 PM, 게임팟 고객지원팀 : 안녕하세요.
+빌드 당시에 GoogleService-Info.plist 파일이 Assets/Plugins/IOS 폴더 안에 포함된 상태로 빌드가 된 것 일까요?
+Aug 10, 2023 1:29 PM, 주은 : Photo
+Aug 10, 2023 1:29 PM, 주은 : 네 되어있습니다.
+Aug 10, 2023 1:30 PM, 게임팟 고객지원팀 : 해당 메시지가 앱을 실행하지마자 뜨는 것일까요?
+Aug 10, 2023 1:30 PM, 주은 : 네 처음 앱을 실행했을 때 뜹니다.
+Aug 10, 2023 1:30 PM, 주은 : 로그인 하기 전입니다
+Aug 10, 2023 1:31 PM, 게임팟 고객지원팀 : 네 잠시만요
+Aug 10, 2023 1:34 PM, 게임팟 고객지원팀 : 로그인 API 호출 시 빈파라미터로 호출하는 것은 없는지 확인 부탁드리며 
+혹, UnityAppController 를 상속받는 파일이 GamePotAppDelegate.h 이외의 파일에서도 상속받아 사용하고 있는지도 확인해 주시기 바랍니다.
+Aug 10, 2023 1:35 PM, 주은 : 넵 확인해보겠습니다. 감사합니다
+
+Wednesday, August 16, 2023
+Aug 16, 2023 2:08 PM, 주은 : 안녕하세요, 지난주에 여쭤봤던 메세지가 유니티 빌드 후에 Xcode 워크스페이스를 열어서 아무 변경 없이 빌드를 했을때는 뜨지 않고, Build Settings - User-Defined - PRODUCT_NAME_APP을 변경했을 때 해당 메세지가 뜨는것으로 확인이 되었습니다. 
+해당 작업은 구글 로그인 시 권한 관련 팝업에서 뜨는 이름을 저희 앱 이름으로 뜨게 하기 위해서 하고 있습니다.
+전에 말씀해주셨던 부분은 다 확인해봤는데 이상이 없었습니다. 관련해서 해당 메세지를 안뜨게 할 다른 방법이 있을까요?
+Aug 16, 2023 2:15 PM, 주은 : 변경하는 ProductName을 한글로 사용하고 있었는데 영어로 변경해서 해보니까 해결이 됐습니다...! 감사합니다.
+Aug 16, 2023 2:20 PM, 게임팟 고객지원팀 : 안녕하세요. 
+혹시 해당 부분에 대해서는 확인 되셨을까요?
+
+UnityAppController 는 하나의 파일에서만 상속을 받아야 하는데, 현재 게임팟 SDK 내부적으로 상속을 받고 있는 부분이 있어 혹 다른 곳에서 상속받아 사용하시면 문제가 될 수 있어서 문의드렸던 부분입니다. 
+Aug 16, 2023 2:21 PM, 주은 : 네네 이전에 관련 이슈가 있었어서 다른 쪽에서 하나 더 사용하고 있는 부분이 있어서 하나의 파일에서만 상속받게 수정했었습니다.
+Aug 16, 2023 2:21 PM, 게임팟 고객지원팀 : 네 확인 감사합니다.
+
+Thursday, August 17, 2023
+Aug 17, 2023 3:20 PM, 주은 : 해결된줄 알았는데 안됐더라구요..ㅠ 다른 해결방법이 혹시 또 있을까요?
+Aug 17, 2023 3:23 PM, 게임팟 고객지원팀 : 안녕하세요. 
+좀 더 확인하기 위해 Xcode 빌드를 공유해 주실 수 있을까요?
+Aug 17, 2023 3:24 PM, 주은 : xcode 워크스페이스는 공유드리면 될까요?
+Aug 17, 2023 3:26 PM, 게임팟 고객지원팀 : 폴더를 전체 압축하여 전달 부탁드립니다.
+아마 용량 문제로 카톡으로는 전송이 안될거라 구글 드라이브 등을 통해 공유해 주시길 바랍니다.
+Aug 17, 2023 3:27 PM, 주은 : 빌드한 폴더가 아닌 프로젝트 폴더 전체를 말하시는게 맞을까요? 
+Aug 17, 2023 3:28 PM, 게임팟 고객지원팀 : 유니티로 빌드 하신 폴더(워크페이스가 있는 폴더)를 압축해서 보내주시면 됩니다. 
+Aug 17, 2023 3:31 PM, 주은 : 넵
+Aug 17, 2023 3:44 PM, 주은 : https://drive.google.com/drive/folders/1Nge7mB2AgwampmQQ-GsGTQ8TwuKG89Bc?usp=sharing
+Aug 17, 2023 3:44 PM, 주은 : 구글 드라이브 링크로 공유드립니다.
+Aug 17, 2023 3:44 PM, 게임팟 고객지원팀 : 네 감사합니다.
+Aug 17, 2023 4:01 PM, 게임팟 고객지원팀 : ../Plugins/IOS/Source/GamePotManager.mm
+../Plugins/IOS/Source/GamePotManager.h
+../Plugins/IOS/Source/GamePotBinding.mm
+../Plugins/IOS/Source/GamePotAppDelegate.mm
+../Plugins/IOS/Source/GamePotAppDelegate.h
+../Plugins/IOS/Source/dummy.swift
+
+관련 파일이 보이지 않습니다. 
+
+UnityAppController 는 하나의 파일에서만 상속하도록 수정하셨다고 하셨는데
+어떤 라이브러리가 문제였고 수정을 어떻게 하신것인지 공유 가능하실까요?
+Aug 17, 2023 4:07 PM, 주은 : VXWebViewAppController에서 사용하고 있어서 VXWebViewAppController가 UnityAppController를 상속받게 하고, amePotAppDelegate.h가 VXWebViewAppController를 상속받게 수정하였습니다
+Aug 17, 2023 4:20 PM, 게임팟 고객지원팀 : VXWebViewAppController 관련 라이브러리와 수정하신 파일공유 가능하실까요
+Aug 17, 2023 4:27 PM, 주은 : 아까 그 링크에 Vuplex 압축파일 추가해두었습니다. Assets\Vuplex\WebView\iOS\Plugins\VXWebViewAppController.h 파일만 수정하였습니다.
+Aug 17, 2023 4:31 PM, 게임팟 고객지원팀 : 네
+Aug 17, 2023 5:30 PM, 게임팟 고객지원팀 : 내부 프로젝트 대상으로 
+../Assets/Vuplex/WebView/iOS/Plugins/VXWebViewAppController.h  파일을 수정하지 않고 
+
+../Assets/Plugins/IOS/Source/GamePotAppDelegate.h 파일에서 아래와 같이 VXWebViewAppController 를 상속하도록 변경 후 확인 해보았을 때 
+
+앱 실행 시 Please check if you have set the "" channel before using it. Did you import or set "" information in info.plist file? 관련 토스트 팝업이 발생하지 않습니다.
+ (PRODUCT_NAME_APP 값을 한글로 바꾸어도 문제는 되지 않았습니다.)
+
+혹시 수정이 아래와 같이 변경 된 상태에서 확인하신 사항이 맞는지 확인 부탁드립니다. 
+
+//
+//  NSDKAppDelegate.h
+//  NSDKSample
+//
+//  Created by Danial on 2018. 4. 20..
+//  Copyright © 2018년 itsB. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "UnityAppController.h"
+#import <UIKit/UIKit.h>
+#import "UI/UnityView.h"
+#import "UI/UnityViewControllerBase.h"
+#import "VXWebViewAppController.h"
+
+// @interface GamePotAppDelegate : UnityAppController
+@interface GamePotAppDelegate : VXWebViewAppController
+{
+
+}
+@end
+Aug 17, 2023 5:33 PM, 주은 : //
+//  NSDKAppDelegate.h
+//  NSDKSample
+//
+//  Created by Danial on 2018. 4. 20..
+//  Copyright © 2018년 itsB. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "UI/UnityView.h"
+#import "UI/UnityViewControllerBase.h"
+#import "VXWebViewAppController.h"
+
+@interface GamePotAppDelegate : VXWebViewAppController
+{
+
+}
+@end
+Aug 17, 2023 5:33 PM, 주은 : 제 코드는 이상태입니다. 저거 외에는 수정한적이 없는데 import가 좀 다르네요?
+Aug 17, 2023 6:14 PM, 게임팟 고객지원팀 : #import "UnityAppController.h" 부분이 제외되어있다고 하더라도 큰 문제는 될 것 같지는 않습니다만, 저희와 다른 부분이 UnityAppController.h 부분이라 해당 부분을 추가한 뒤 한번 확인을 부탁드립니다.
+
+Friday, August 18, 2023
+Aug 18, 2023 9:40 AM, 주은 : 추가해서 확인해봤는데 동일하게 메세지가 뜨고있습니다.
+Aug 18, 2023 10:00 AM, 게임팟 고객지원팀 : 조금 더 확인이 필요 할 것 같습니다. 아래 폴더를 압축해서 전달 부탁드립니다.
+/Assets/Plugins
+/Assets/GamePot
+Aug 18, 2023 10:02 AM, 게임팟 고객지원팀 : 현재 내부적으로는 재현이 되지 않아 확인하는데에 다소 시간이 많이 소요되는 점 양해 부탁드립니다.
+Aug 18, 2023 10:02 AM, 게임팟 고객지원팀 : 추가적으로 빌드를 진행하실 때 클린 빌드 후에 진행하시는지도 확인 부탁드립니다.
+Aug 18, 2023 10:04 AM, 주은 : 구글 드라이브에 업로드하였습니다.
+Aug 18, 2023 10:04 AM, 주은 : 클린 빌드 후에 진행하고 있지는 않습니다.
+Aug 18, 2023 10:05 AM, 게임팟 고객지원팀 : 기존 앱을 지우신 뒤 클린 빌드 후에 다시 한번 확인 부탁드립니다.
+Aug 18, 2023 10:05 AM, 게임팟 고객지원팀 : 네 확인해보겠습니다.
+Aug 18, 2023 10:05 AM, 주은 : 네 확인해보겠습니다.
+Aug 18, 2023 10:11 AM, 주은 : 기존 앱 삭제, 클린 빌드 했지만 동일한 상황입니다.
+Aug 18, 2023 10:12 AM, 게임팟 고객지원팀 : 네 확인 감사합니다
+Aug 18, 2023 10:39 AM, 게임팟 고객지원팀 : @주은 혹시 Firebase SDK는 어떤 버전을 탑재하셨을까요
+Aug 18, 2023 10:42 AM, 주은 : gamepod에서 사용하지 않는 추가적인 Firebase SDK 말하시는게 맞으실까요?
+Aug 18, 2023 10:44 AM, 게임팟 고객지원팀 : 게임팟에 탑재된 Firebase가 아닌 Firebase SDK 라이브러리를 추가하신 것을 보여지게에 관련 버전에 대해 문의드린 것 입니다.
+Aug 18, 2023 10:48 AM, 주은 : Firebase DynamicLink 10.3.0 버전 사용하고 있습니다.
+Aug 18, 2023 10:52 AM, 주은 : Deleted Message
+Aug 18, 2023 10:52 AM, 주은 : 음 그런데 pod install을 해줄때는 최신 버전이 설치되서 다 10.10.0 버전이 설치되고 있는것으로 확인됩니다.
+Aug 18, 2023 11:04 AM, 게임팟 고객지원팀 : 네 
+Aug 18, 2023 5:38 PM, 게임팟 고객지원팀 : 빈프로젝트 + 게임팟 SDK 3.4.2+구글 인앱 V5 관련 라이브러리 패치내용 + Firebase SDK 10.3.0 - ( FirebaseAnalytics / FirebaseDynamicLinks FirebaseMessaging ) + Vuplex 라이브러리 탑재 및  GamePotAppDelegate.h 
+변경 /   (../Assets/GamePot 에 수정하여 넣으신 부분도 포함)
+후 IOS 버전 테스트를 진행을 해보았으나 문의 주신 케이스가 발생하지 않아 확인이 어려운 사항입니다.
+
+저희가 IOS 만 테스트 진행했던 부분을 공유드립니다. 
+https://drive.google.com/file/d/12PrtbIyfZP0XsIjyfhPvgOBRg1xstTyh/view?usp=sharing
+(export_ios 폴더는 추츨된 파일에 info.plist 쪽에 추가에 일부 정보만 수정한 상태입니다. )
+
+우선 위 프로젝트로 빌드 시 이상이 없는지 체크를 한번 해주시길 바랍니다.
+
+위 내용 외 추가로 탑재하시는 라이브러리가 있는 것으로 알고 있는데  공유드리는 프로젝트에 관련 라이브러리를 하나씩 추가 하시면서 문제를 유발하는 3rd party sdk 를 찾아야 하지 않을까 합니다.
+
+공유드리는 프로젝트에 나머지 3rd party sdk를 탑재하여 빌드를 할 수 있게 유니티 프로젝트를 주시면 저희도 테스트를 진행보겠습니다.  
+
+참고로 Please check if you have set the "" channel before using it. Did you import or set "" information in info.plist file?
+위 오류는 로그인/ 로그아웃/회원탈퇴/ 계정연동 등을 할때 채널 타입 정보를 체크를 하는데 저희가 지원하지 않는 로그인 타입이거나 빈값으로 들어오는 경우입니다. 
+
+게임팟 SDK가 초기화가 완료 되기전에 로그인 API가 호출되는 부분이 있는지 로그인 API를 호출하시는 시점에 잘못된 파라미터를 넣는 부분은 없는지도 체크를 해주시면 감사하겠습니다. 
+
+명쾌한 답변을 드리지 못하는 점 너른 양해 부탁드립니다.
+Aug 18, 2023 5:43 PM, 게임팟 고객지원팀 : 참고로 전달드린 프로젝트는 2020.3.32f 버전에서 빌드된 것이나 2020.3.35f 버전에서도 정상 동작될 것 입니다. 
+따로 유니티 에디터를 바꾸실 필요는 없습니다.
+
+Monday, August 21, 2023
+Aug 21, 2023 9:07 AM, 주은 : 넵 확인해보겠습니다. 감사합니다
+Aug 21, 2023 10:10 AM, 주은 : 공유주신 프로젝트 확인할때 추가로 변경해야하는 부분이 있을까요? xcode빌드할때 Framework not found FBLPromises 에러가 발생해서요!
+Aug 21, 2023 11:23 AM, 주은 : FBLPromises가 페이스북 관련된 것으로 보이는데 저희는 페이스북 로그인을 사용하지 않아서 관련 라이브러리들을 삭제한 상태입니다. 추출한 빌드에서 Pods/PromisesObjC/S
+ources/FBLPromises 가 생성되고 있는데 어디에서 생성되는 건지 알 수 있을까요? 저희 본 프로젝트에서도 동일하게 생성되고 있는데 그때는 해당 에러가 발생하지는 않았습니다.
+Aug 21, 2023 11:34 AM, 게임팟 고객지원팀 : 유니티 iOS Resolver 설정에서 이미지와 같이 use_framework! to Podfile / Always add the main target to Podfile 옵션이 해제된 상태에서 빌드를 진행하신 것인지 확인 부탁드립니다. 
+
+iOS Resolver 설정 방법 
+Assets > External Dependency Manager > iOS Resolver > Settings 로 이동하여 스크린샷의 옵션 확인
+Aug 21, 2023 11:34 AM, 게임팟 고객지원팀 : Photo
+Aug 21, 2023 12:02 PM, 주은 : 공유주신 프로젝트는 빌드가 정상적으로 되고 로그인도 정상적으로 되는 것으로 확인하였습니다. 게임팟 SDK 초기화 시점과 로그인 API 호출되는 부분은 다시 한번 확인해보겠습니다. 감사합니다.
+
+Tuesday, August 22, 2023
+Aug 22, 2023 9:40 AM, 주은 : 안녕하세요, 혹시 게임팟 로그인 여부를 알 수 있는 변수가 있을까요??
+Aug 22, 2023 9:45 AM, 주은 : 게임팟 로그인이 되어 있는 경우에만 게임팟 로그아웃을 호출하고 싶어서요
+Aug 22, 2023 10:00 AM, 게임팟 고객지원팀 : 안녕하세요.
+사용자의 마지막 로그인 일자는 확인할 수 있지만, 해당 사용자가 현재 로그인 중인지에 대한 여부에 대해서는 확인이 어렵습니다.
+Aug 22, 2023 10:01 AM, 주은 : 아하.. 알겠습니다. 감사합니다.
+Aug 22, 2023 5:52 PM, 한컴프론티스 김지수 선임님 : Deleted Message
+
+Thursday, August 24, 2023
+Aug 24, 2023 11:14 AM, 주은 : 안녕하세요, 게임팟 Standalone 버전에서는 소셜 로그인과 공지사항 기능을 지원하지 않는게 맞나요?
+Aug 24, 2023 11:21 AM, 게임팟 고객지원팀 : 구글, 페이스북, 애플 로그인 기능은 지원하고 있습니다. 
+다만 PC 환경은 모바일 환경에 비해 지원 범위가 많지 않아 로그인/점검체크/쿠폰사용/게임로그 api만 지원하고 있는 점 참고 부탁드립니다.
+Aug 24, 2023 11:23 AM, 한컴프론티스 김지수 선임님 : pc버전은 공지사항은 안되는 것이지요?
+Aug 24, 2023 11:25 AM, 게임팟 고객지원팀 : 소셜 로그인의 경우 JS SDK로 우선 로그인을 진행한 후 게임팟 사용자 아이디 + 토큰 정보를 이용하여 유니티 플러그인의 Standalone  로그인을 진행하여 로그인을 하는 방식 입니다.
+
+공지사항 기능은 지원이 되지 않고 있습니다.
+Aug 24, 2023 11:30 AM, 주은 : Standalone 소셜 로그인 관련 설명 링크 알수있을까요?
+Aug 24, 2023 11:42 AM, 한컴프론티스 김지수 선임님 : 구글, 페이스북, 애플 로그인 기능은 지원하고 있습니다.  => 네이버로그인은 지원하지 않을까요?
+Aug 24, 2023 11:44 AM, 게임팟 고객지원팀 : JS SDK 로그인 관련하여 해당 가이드를 참고 부탁 드리며, 
+https://guide.ncloud-docs.com/docs/game-gamepot-javascriptsdk#%EB%A1%9C%EA%B7%B8%EC%9D%B8
+
+JS SDK 에서 확인한 사용자 ID와 token 값으로 유니티 플러그인 Standalone 로그인을 진행하시면 됩니다 
+https://docs.gamepot.io/undefined/gamepot_standalone#3.
+Aug 24, 2023 11:46 AM, 게임팟 고객지원팀 : 앞서 말씀드린 구글, 페이스북, 애플 로그이만 지원하고 있으며 네이버 로그인은 따로 지원하고 있지 않습니다.
+Aug 24, 2023 12:00 PM, 주은 : Photo
+Aug 24, 2023 12:00 PM, 주은 : PC버전의 경우 스토어ID를 뭘 넣어야하나요??
+Aug 24, 2023 12:00 PM, 게임팟 고객지원팀 : store 부분에는 pc 만 입력하시면 됩니다. 
+Aug 24, 2023 12:03 PM, 주은 : 넵 감사합니다
+Aug 24, 2023 1:43 PM, 주은 : JS SDK 에서 해당 api_key는 어디서 확인할 수 있을까요?
+Aug 24, 2023 1:43 PM, 주은 : Photo
+Aug 24, 2023 1:45 PM, 주은 : 아 확인했습니다. 
+Aug 24, 2023 1:45 PM, 게임팟 고객지원팀 : Photo
+Aug 24, 2023 1:45 PM, 게임팟 고객지원팀 : api_key 값은 대시보드 > 프로젝트 설정 > API Key 항목으로 이동하여 추가해서 사용해주시면 됩니다. 
+
+Aug 24, 2023 1:46 PM, 주은 : 감사합니다
+Aug 24, 2023 1:46 PM, 게임팟 고객지원팀 : 네 !
+Aug 24, 2023 2:39 PM, 주은 : 네이버 로그인은 Windows App 환경에서 네이버 로그인을 개발하기 위한 가이드를 보고 별도로 연동해야하는 건가요..?
+Aug 24, 2023 2:43 PM, 게임팟 고객지원팀 : 윈도우 환경에서는 네이버 로그인을 지원하고 있지 않아 별도로 네이버 로그인을 추가하신다고 해도 게임팟과는 연동이 되지 않아 사용이 어려운 점 양해 부탁드립니다.
+Aug 24, 2023 4:42 PM, 게임팟 고객지원팀 : JS SDK로 구글 로그인 시 현재 가이드와 다르게 변경할 부분이 있어 가이드를 전달 드립니다. 
+
+Aug 24, 2023 4:42 PM, 게임팟 고객지원팀 : File: 구글원탭로그인_개선방안.pdf
+Aug 24, 2023 4:45 PM, 주은 : 네 감사합니다.
+
+Friday, August 25, 2023
+Aug 25, 2023 1:30 PM, 주은 : 안녕하세요, GamePotStandalone_Config.json 파일을 코드로 위치를 옮겨주는 방법이 있을까요?
+Aug 25, 2023 1:30 PM, 주은 : Photo
+Aug 25, 2023 1:31 PM, 게임팟 고객지원팀 : 안녕하세요
+GamePotStandalone_Config.json 파일이 생성되는 위치를 변경하기는 어렵습니다.
+Aug 25, 2023 1:32 PM, 주은 : 빌드시 ~/build/bin/{Build_Name}_Data 경로에 넣을 수 있는 방법은 없다는 건가요?
+Aug 25, 2023 1:33 PM, 게임팟 고객지원팀 : Deleted Message
+Aug 25, 2023 1:35 PM, 게임팟 고객지원팀 : 빌드 하신 뒤에 GamePotStandalone_Config.json 파일을 해당 위치에 수동으로 이동 시켜 주신 후 빌드를 진행해 주시면 됩니다.
+Aug 25, 2023 1:36 PM, 주은 : 빌드후 앱을 실행하면 해당 에러가 발생하고 있습니다. 추가로 설정이 필요한 것이 있을까요?
+Aug 25, 2023 1:36 PM, 주은 : Unable to load Firebase app options ([C:/Users/s/Desktop/PCBuild/아즈메타_Data/StreamingAssets\google-services-desktop.json, C:/Users/s/Desktop/PCBuild/아즈메타_Data/StreamingAssets\google-services.json] are missing or malformed)
+UnityEngine.Debug:LogError(Object)
+Firebase.AppUtil:PollCallbacks()
+Firebase.Platform.FirebaseHandler:Update()
+Firebase.Platform.FirebaseMonoBehaviour:Update()
+Aug 25, 2023 1:40 PM, 게임팟 고객지원팀 : Assets 폴더 안에 google-services.json 파일도 추가해 놓으신 걸까요?
+Aug 25, 2023 1:40 PM, 게임팟 고객지원팀 : 해당 파일도 추가하신 후 빌드하여 다시 한번 확인을 부탁드립니다.
+Aug 25, 2023 1:42 PM, 게임팟 고객지원팀 : 그리고 폴더를 생성하실 때 시스템상 문제가 있을 수도 있으니 한글명으로 사용하시는 것은 자제해 주시기 바랍니다. 
+Aug 25, 2023 1:47 PM, 주은 : 넵 감사합니다. 확인해보겠습니다.
+Aug 25, 2023 1:48 PM, 주은 : /Plugins/Android 에만 있는데 해당 파일을 복사해서 Assets 폴더 하위에 추가하면 될까요??
+Aug 25, 2023 1:50 PM, 게임팟 고객지원팀 : [C:/Users/s/Desktop/PCBuild/아즈메타_Data/StreamingAssets\google-services-desktop.json, C:/Users/s/Desktop/PCBuild/아즈메타_Data/StreamingAssets\google-services.json] are missing or malformed)
+
+보내주신 오류 내용 중 해당 경로에 google-sservices.json 파일이 누락된 것 같습니다.

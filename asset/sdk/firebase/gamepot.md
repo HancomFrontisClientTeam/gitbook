@@ -25,6 +25,8 @@ GamePot Sample Project with arzMETA
 
 <summary>GamePot 관련 핵심 페이지</summary>
 
+*
+*
 * GamePot Docs : [https://docs.gamepot.io/](https://docs.gamepot.io/)
 
 <!---->
@@ -41,11 +43,173 @@ GamePot Sample Project with arzMETA
 
 </details>
 
+#### GamePot 고객센터 카카오톡방 내역(230111\~230825)
+
+관련 내용을 해당 페이지에 필요해보이는 부분을 중심으로 정리해두긴 하였으나 참고자료로 올려두었습니다.
+
+{% file src="../../../.gitbook/assets/GamePotKakaoTalk_2023.8.25 13_50-1.txt" %}
+
 ***
 
-## GamePot Social Login Setting
+## GamePot Social Login
 
-### Unity Android Setting
+```
+GamePot.login(NCommon.LoginType);
+
+// 로그인 성공
+public void onLoginSuccess(NUserInfo userInfo)
+{
+}
+
+// 로그인 실패
+public void onLoginFailure(NError error)
+{
+    // error.message를 사용하여 메시지를 표시해 주십시오.
+}
+
+// 로그인 취소
+public void onLoginCancel()
+{
+    // 사용자가 로그인을 취소
+}
+
+// 강제 업데이트(스토어 버전과 클라이언트 버전이 다를 경우 호출)
+public void onNeedUpdate(NAppStatus status)
+{
+    // 파라미터로 넘어온 status 정보를 토대로 팝업을 만들어 표시해야 합니다. 아래 두 가지 방식 중 한 가지를 선택하여 팝업을 구성해 주십시오.
+    // case 1: 개발사에서 직접 UI를 구현한 인게임 팝업 사용
+    // case 2: 아래 코드를 호출하여 SDK 자체 팝업 사용
+    // GamePot.showAppStatusPopup(status.ToJson());
+}
+
+// 점검(대시보드에 점검이 활성화되어 있는 경우 호출)
+public void onMainternance(NAppStatus status)
+{
+     // 파라미터로 넘어온 status 정보를 토대로 팝업을 만들어 표시해야 합니다. 아래 두 가지 방식 중 한 가지를 선택하여 팝업을 구성해 주십시오.
+    // case 1: 개발사에서 직접 UI를 구현한 인게임 팝업 사용
+    // case 2: 아래 코드를 호출하여 SDK 자체 팝업 사용
+    // GamePot.showAppStatusPopup(status.ToJson());
+}
+
+// 앱 종료
+public void onAppClose()
+{
+    // 강제 업데이트나 점검 기능을 case 2 방식으로 구현하는 경우 앱을 강제 종료할 수 있으므로 이 곳에서 앱을 종료할 수 있도록 구현해 주십시오.
+}
+
+사용하시거나, 콜백 방식의 형태로 사용 부탁드립니다.
+
+GamePot.login(NCommon.LoginType, (resultState, userInfo, appStatus, error) => {
+    switch (resultState)
+    {
+        case NCommon.ResultLogin.SUCCESS:
+        // login success
+        break;
+        case NCommon.ResultLogin.CANCELLED:
+        // login cancel
+        break;
+        case NCommon.ResultLogin.FAILED:
+        // login fail
+        break;
+        case NCommon.ResultLogin.NEED_UPDATE:
+            // 파라미터로 넘어온 appStatus 정보를 토대로 팝업을 만들어 표시해야 합니다. 아래 두 가지 방식 중 한 가지를 선택하여 팝업을 구성해 주십시오.
+            // case 1: 개발사에서 직접 UI를 구현한 인게임 팝업 사용
+            // case 2: 아래 코드를 호출하여 SDK 자체 팝업 사용
+            // GamePot.showAppStatusPopup(status.ToJson());
+        break;
+        case NCommon.ResultLogin.MAINTENANCE:
+            // 파라미터로 넘어온 appStatus 정보를 토대로 팝업을 만들어 표시해야 합니다. 아래 두 가지 방식 중 한 가지를 선택하여 팝업을 구성해 주십시오.
+            // case 1: 개발사에서 직접 UI를 구현한 인게임 팝업 사용
+            // case 2: 아래 코드를 호출하여 SDK 자체 팝업 사용
+            // GamePot.showAppStatusPopup(status.ToJson());
+        break;
+        case NCommon.ResultLogin.APP_CLOSE:
+            // 강제 업데이트나 점검 기능을 case 2 방식으로 구현하는 경우 앱을 강제 종료할 수 있으므로 이 곳에서 앱을 종료할 수 있도록 구현해 주십시오.
+        break;
+        default:
+        break;
+    }
+});
+```
+
+### 각 로그인에 필요한 프레임워크
+
+사용하지 않는 프레임워크는 삭제하는 것을 추천드립니다.
+
+<details>
+
+<summary>ex) 사용하지  않는 Facebook 관련 프레임워크</summary>
+
+#### Android
+
+* facebook-applinks-13.2.0
+* facebook-bolts-13.2.0&#x20;
+* facebook-common-13.2.0&#x20;
+* facebook-core-13.2.0&#x20;
+* facebook-gamingservices-13.2.0&#x20;
+* facebook-login-13.2.0&#x20;
+* facebook-messenger-13.2.0&#x20;
+* facebook-share-13.2.0&#x20;
+* gamepot-channel-facebook
+
+#### iOS
+
+* FBAEMKit.xcframework
+* FBSDKCoreKit.xcframework
+* FBSDKCoreKit\_Basics.xcframework
+* FBSDKLoginKit.xcframework
+* GamePotFacebook
+
+</details>
+
+#### Android
+
+Assets/Plugins/Android/libs 폴더에 위치해야 하며 해당 플러그인들은 타겟 플랫폼에 맞게 선택하여 빌드 시 포함되어야 합니다. Assets/Plugins/Android/nativeLibs 폴더는 비우고 빌드 시 포함되지 않게 체크를 해제해주세요.
+
+#### iOS
+
+Assets/Plugins/iOS/Frameworks 폴더에 위치해야 하며 해당 플러그인들은 타겟 플랫폼에 맞게 선택하여 빌드 시 포함되어야 합니다.
+
+<figure><img src="../../../.gitbook/assets/image (13).png" alt=""><figcaption><p>현재 타겟 플랫폼(Android)에 맞게 빌드 시 포함되게 한 예시 이미지</p></figcaption></figure>
+
+{% tabs %}
+{% tab title="Google Login" %}
+#### Android
+
+* gamepot-channel-google-signin.aar
+
+#### iOS
+
+* GamePotGoogleSignIn.framework
+* GoogleSignIn.framework
+* GoogleSignInDependencies.framework
+{% endtab %}
+
+{% tab title="Naver Login" %}
+#### Android
+
+* gamepot-channel-naver.aar
+
+#### iOS
+
+* GamePotNaver.framework
+* NaverThirdPartyLogin.framework
+{% endtab %}
+
+{% tab title="Apple Login" %}
+#### Android
+
+* gamepot-channel-apple-signin.aar
+
+#### iOS
+
+* GamePotApple.framework
+{% endtab %}
+{% endtabs %}
+
+### GamePot Setting
+
+#### Unity Android Setting
 
 1. Assets/Plugins/Android/mainTemplate.gradle 수정
 
@@ -55,7 +219,7 @@ GamePot Sample Project with arzMETA
 
 <figure><img src="../../../gitbook/.gitbook/assets/image (17).png" alt=""><figcaption><p>android:name 변경</p></figcaption></figure>
 
-### Unity iOS Setting
+#### Unity iOS Setting
 
 1. ../Assets/Plugins/IOS 경로 하위에 GamePotConfig-Info.plist, GoogleService-Info.plist 추가
 2. gamepot\_google\_app\_id의 값은 GoogleService-Info 파일의 CLIENT\_ID 값, gamepot\_google\_url\_schemes의 값은 GoogleService-Info 파일의 REVERSED\_CLIENT\_ID 값 입력
@@ -64,11 +228,16 @@ GamePot Sample Project with arzMETA
 참고 페이지
 {% endembed %}
 
-3. gamep
+#### Google Login Setting
 
-### Google Login Setting
+> GamePotGoogleSignIn.framework GoogleSignIn.framework GoogleSignInDependencies.framework
 
 1. 구글 Firebase 콘솔에서 획득한 안드로이드용 google-service.json 파일을 Assets/Plugins/Android에 복사)
+
+{% embed url="https://cloud.google.com/firestore/docs/client/get-firebase?hl=ko" %}
+Google Cloud에 Firebase 프로젝트 생성 방법
+{% endembed %}
+
 2. keystore파일의 SHA-1 값을 Firebase 콘솔에 추가
 
 > \[ Unity Keysotre SHA-1 확인 방법 ]
@@ -85,10 +254,12 @@ GamePot Sample Project with arzMETA
 3. minify와 같은 기능이 설정되어 있으나 예외처리가 되지 않은 경우일지
 4. 소셜 로그인 진행 전 게임팟 초기화가 되지 않은 부분일지
 5. 구글 플레이 콘솔의 앱 서명 키 인증서 기능을 사용하고 있을지
-6. firebase sha-1 값과 빌드에 사용된 키의 sha-1 값이 일치하는지 (apk로 빌드하여 확인도 가능합니다)
+6.  firebase sha-1 값과 빌드에 사용된 키의 sha-1 값이 일치하는지 (apk로 빌드하여 확인도 가능합니다)
+
+    \-> 각 스토어 콘솔의 앱 서명으로 인해 sha-1값이 변경된 경우, 빌드에 사용되는 keystore가 변경된 경우에도 firebase 내 sha-1 값을 갱신해주어야 합니다.
 7. 사용하는 라이브러리들은 nativeLibs 폴더가 아닌 libs 폴더로 이동시켜 사용하고, libs 폴더 전체가 빌드 시 포함되도록 적용하고 nativeLibs 폴더는 포함되지 않도록 적용
 8. Google Console 내 Google Cloud의 OAuth 2.0 클라이언트 ID가 있어야 하며, API 및 서비스 > Auth 동의 화면 내 게시 상태가 프로덕션 단계여야 하며, 사용자 유형은 외부여야 한다.
-9. [firebase 콘솔](../firebase.md) > FCM, CMA 기존 방식이 사용 설정 되어 있을지 확인
+9. [firebase 콘솔](broken-reference) > FCM, CMA 기존 방식이 사용 설정 되어 있을지 확인
 10. [Gamepot 콘솔](gamepot.md#gamepot) > Auth Key > 구글에 client\_id가 잘 들어갔는지 확인(도움말)참조
 {% endhint %}
 
@@ -100,7 +271,9 @@ GamePot Sample Project with arzMETA
 
 <figure><img src="../../../gitbook/.gitbook/assets/image (24).png" alt=""><figcaption><p>&#x3C; 9. 참고 이미지 ></p></figcaption></figure>
 
-### Apple Login Setting
+#### Apple Login Setting
+
+Apple Developer Identifiers 등록 순서 : AppID - Key(권한 있어야 보임) - Service ID
 
 {% hint style="warning" %}
 애플 로그인이 잘되지 않을 경우, 아래의 경우들을 확인해보세요.
@@ -127,7 +300,7 @@ GamePot Sample Project with arzMETA
        ```
        를 포함한 p8의 모든 내용이 포함되어있는지 
        ```
-2.
+2. Xcode에서 Clean Build 후, 재진행해보기
 {% endhint %}
 
 {% file src="../../../gitbook/.gitbook/assets/AuthKey_8656A9UB85.p8" %}
@@ -304,7 +477,7 @@ Unity 빌드 후, buildPath에 Podfile 복사 -> pod install -> .xcworkspace 열
 
 <mark style="color:blue;">=> Xcode.workspace에서 빌드</mark>
 
-* <mark style="color:red;">UnityAppController 를 상속받는 파일이 하나만 있어야 함(GamePot의GamePotAppDelegate.h, Vuplex의 VXWebViewAppController.h)</mark>
+* <mark style="color:red;">UnityAppController 를 상속받는 파일이 하나만 있어야 함(GamePot의GamePotAppDelegate.h, Vuplex의 VXWebViewAppController.h) -> GamePot SDK가 정상적으로 초기화되지 않을 수 있음</mark>
 
 <mark style="color:blue;">=> VXWebViewAppController가 UnityAppController를 상속받게 하고, GamePotAppDelegate.h가 VXWebViewAppController를 상속받게 수정함</mark>
 
