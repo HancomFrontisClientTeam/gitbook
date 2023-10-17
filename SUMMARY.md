@@ -64,8 +64,9 @@
   * [Firebase](asset/sdk/firebase/README.md)
     * [GamePot](asset/sdk/firebase/gamepot.md)
     * [DynamicLink - AOS, iOS](asset/sdk/firebase-1/dynamiclink-aos-ios.md)
-  * [DynamicLink - Standalone Windows](asset/sdk/dynamiclink-standalone-windows.md)
+  * [DeepLink - Standalone Windows](asset/sdk/dynamiclink-standalone-windows.md)
   * [UnityAzureStorage](asset/sdk/unityazurestorage.md)
+  * [GPresto](asset/sdk/gpresto.md)
 * [🔧 Tool](asset/tool/README.md)
   * [Custom-Primitive-Colliders](asset/tool/custom-primitive-colliders.md)
   * [LINQtoGameObject](asset/tool/linqtogameobject.md)
@@ -75,3 +76,12 @@
   * [EndlessBook](asset/util/endlessbook.md)
   * [LeanTween](asset/util/leantween.md)
   * [PathCreator](asset/util/pathcreator.md)
+
+## 🙌 그 외 인수인계
+
+* [변고경 연구원](undefined/undefined.md)
+* [송주은 연구원](undefined/undefined-1/README.md)
+  * [소셜 로그인 기능](undefined/undefined-1/undefined.md)
+  * [계정 연동 및 전환 기능](undefined/undefined-1/undefined-1.md)
+  * [채팅 기능](undefined/undefined-1/undefined-2.md)
+  * [DynamicLink/DeepLink 기능](undefined/undefined-1/dynamiclink-deeplink.md)

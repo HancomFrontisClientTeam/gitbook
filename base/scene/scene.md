@@ -21,7 +21,7 @@ description: 씬 구성도
 
 #### 1 ) Scene\_Base\_Logo 로고씬
 
-<table data-full-width="false"><thead><tr><th width="204">구분</th><th>실행 작업</th></tr></thead><tbody><tr><td>● Awake</td><td><ul><li>그래픽 퀄리티 세팅 </li><li>기본 시스템 언어 로드</li></ul></td></tr><tr><td>● PreMaster Load</td><td><ul><li>디버그 UI 비/활성화 여부를 위한 세팅 </li><li>(프리팹명: IngameDebugConsole)</li></ul><p><img src="../../.gitbook/assets/image (17).png" alt=""><img src="../../.gitbook/assets/image (14).png" alt=""></p></td></tr><tr><td>● 로고씬 진행</td><td><ul><li>로고 스플레쉬</li><li>싱글톤 초기화</li><li>그 외 초기화가 필요한 작업</li><li><a href="../manager/webmanager.md">WebManager</a> 초기화</li><li><a href="../manager/masterdatamanager.md">MasterDataManager</a> 초기화</li></ul></td></tr></tbody></table>
+<table data-full-width="false"><thead><tr><th width="204">구분</th><th>실행 작업</th></tr></thead><tbody><tr><td>● Awake</td><td><ul><li>그래픽 퀄리티 세팅 </li><li>기본 시스템 언어 로드</li></ul></td></tr><tr><td>● PreMaster Load</td><td><ul><li>디버그 UI 비/활성화 여부를 위한 세팅 </li><li>(프리팹명: IngameDebugConsole)</li></ul><p><img src="../../.gitbook/assets/image (20).png" alt=""><img src="../../.gitbook/assets/image (17).png" alt=""></p></td></tr><tr><td>● 로고씬 진행</td><td><ul><li>로고 스플레쉬</li><li>싱글톤 초기화</li><li>그 외 초기화가 필요한 작업</li><li><a href="../manager/webmanager.md">WebManager</a> 초기화</li><li><a href="../manager/masterdatamanager.md">MasterDataManager</a> 초기화</li></ul></td></tr></tbody></table>
 
 1-1 ) [WebManager](../manager/webmanager.md)
 
@@ -46,7 +46,7 @@ description: 씬 구성도
 
 * 흐름도
 
-<img src="../../.gitbook/assets/file.excalidraw (2).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (10).svg" alt="" class="gitbook-drawing">
 
 #### 3 ) Scene\_Base\_Lobby
 

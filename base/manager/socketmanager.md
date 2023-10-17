@@ -153,8 +153,6 @@ Dev Server Port : 3910, Staging Server Port : 3920
 Live Server
 {% endembed %}
 
-1. SceneLogic.instance.isPanelChat == true
-
 [^1]: S\_SET\_NICKNAME\_NOTICE
 
 [^2]: CHAT\_TYPE.ALL
