@@ -168,7 +168,7 @@ public override void UpdateContent(ItemData itemData)
 
 상속한 FancyScrollRect\<TItemData, TContext> 클래스에 각 \<Item\_Data, Context>을 지정하여 상속받았다.
 
-<figure><img src="../../../../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (8) (1).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 
@@ -268,7 +268,7 @@ public void SetAxisCellCount(int count)
 
 상속한 FancyGridViewCell\<TItemData, TContext> 클래스에 각 \<Item\_Data, Context>을 지정하여 상속받았다.
 
-<figure><img src="../../../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (9) (1).png" alt=""><figcaption></figcaption></figure>
 
 아이템 스크립트를 작성하여 FancyGridViewCell\_Custom를 상속받아 사용한다.
 

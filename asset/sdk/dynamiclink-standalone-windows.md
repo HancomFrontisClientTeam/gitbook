@@ -6,7 +6,7 @@ description: Unity에서 Standalone Windows 딥링크를 지원하지 않기 때
 
 * <mark style="color:red;">Build Settings - Player Settings - Other Settings - Configuration 설정 변경 필수</mark>
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (2).png" alt=""><figcaption></figcaption></figure>
 
 * 해당 Asset을 import 후 DeepLinkingForWindows/Example.cs에서 발생하는 KeyValue 에러 해결법
 
