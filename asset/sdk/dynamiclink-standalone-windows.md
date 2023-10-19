@@ -129,7 +129,68 @@ private void OnPCDynamicLinkReceived(string uri)
         }
 ```
 
+## 기타
 
+앱이 unfocusing 됐다가 다시 focusing 됐을 때 딥링크가 수신되는 버그가 있어 bool값[^3]을 추가해서 수정하였습니다.
+
+```csharp
+// Assets\DeepLinkingForWindows\WindowsDeepLinking.cs
+// AppFocus 풀었다가 다시 Focus하면 링크가 한번 더 받아지는 버그 수정을 위한 Flag
+public static bool linkReceived { get; set; } = false;
+
+private IEnumerator Start()
+{
+    yield return null;
+
+        var args = Environment.GetCommandLineArgs();
+
+        if (args.Length == 2 && args[1].StartsWith(_uriScheme))
+        {
+            // 링크를 처음 받을 때만 콜백 함수 호출 후, linkReceived = true로 변경
+            if (!linkReceived)
+            {
+                deepLinkActivated?.Invoke(args[1]);
+                linkReceived = true;
+            }
+        }
+    }
+        
+private void OnApplicationFocus(bool hasFocus)
+{
+    if (!hasFocus) return;
+
+    using var key = Registry.CurrentUser.OpenSubKey($@"SOFTWARE\Classes\{_uriScheme}", writable: true);
+    var value = key?.GetValue(RegistryValueName);
+
+    if (value == null) return;
+
+    key.DeleteValue(RegistryValueName);
+
+    var uri = (string)value;
+
+    if (!uri.StartsWith(_uriScheme)) return;
+
+    // 링크를 처음 받을 때만 콜백 함수 호출 후, linkReceived = true로 변경
+    if (!linkReceived)
+    {        
+        _callback?.Invoke(uri);
+        deepLinkActivated?.Invoke(uri);
+        linkReceived = true;
+    }
+}
+```
+
+<pre class="language-csharp"><code class="lang-csharp">// Assets\_DEV\Script\MobileShare\JoinShareLink.cs
+/// &#x3C;summary>
+/// 파라미터 데이터를 삭제합니다.
+/// 파라미터 사용후 반드시 클리어해줘야합니다.
+/// &#x3C;/summary>
+public void ClearCachedParameters()
+{
+<strong>    parameters = null;
+</strong>    WindowsDeepLinking.linkReceived = false;
+}
+</code></pre>
 
 [^1]: 1 : MYROOM,
 
@@ -142,3 +203,5 @@ private void OnPCDynamicLinkReceived(string uri)
     &#x20;MYROOM\_ENTER,
 
     &#x20; &#x20;
+
+[^3]: public static bool linkReceived
