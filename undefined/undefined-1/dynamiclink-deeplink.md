@@ -22,6 +22,28 @@ description: 자신의 마이룸 초대(MYROOM_ENTER), 오피스룸 초대(OFFIC
 
 > Firebase DynamicLink는 [변고경 연구원의 인수인계자료](../undefined.md) 5번 참고부탁드립니다.
 
+<details>
+
+<summary>변고경 연구원 업무 인수인계 이후 주요 변경점</summary>
+
+* 짧은 링크 만들기 : Bit.Ly -> 자체 API(손재명 연구원)로 변경됨
+
+<!---->
+
+* 파일명 변경
+  * MobileShareModule.cs -> CreateShareLink.cs
+  * ArzmetaShare.cs -> JoinShareLink.cs
+
+<!---->
+
+* 다이나믹 링크 콘텐츠 연결
+
+<!---->
+
+* [PC 버전 공유 링크](../../asset/sdk/dynamiclink-standalone-windows.md) 추가 구현
+
+</details>
+
 ## 공유  링크  종류 <a href="#undefined" id="undefined"></a>
 
 ### 마이룸 <a href="#undefined" id="undefined"></a>
