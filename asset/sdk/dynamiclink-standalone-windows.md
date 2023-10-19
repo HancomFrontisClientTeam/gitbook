@@ -109,12 +109,19 @@ private void OnPCDynamicLinkReceived(string uri)
             var url = Uri.UnescapeDataString(uri);
             Debug.Log($"[Received PC Dynamic Link] Absolute Uri: {url}");
 
-            Dictionary<string, string> query = ParseQueryString(url);
-
-            foreach ((string key, string value) in query.Select(x => (x.Key, x.Value)))
+            if (string.IsNullOrEmpty(url))
             {
-                Debug.Log($"{key}={value}");
-                
+                Debug.Log("질의가 없습니다.");
+            }
+            else
+            {
+                Dictionary<string, string> query = ParseQueryString(url);
+
+                foreach ((string key, string value) in query.Select(x => (x.Key, x.Value)))
+                {
+                    Debug.Log($"{key}={value}");
+                }
+
                 // 로직 실행을 위해 Assets\_DEV\Script\MobileShare\JoinShareLink.cs의 OnParamReceived() 이벤트 호출
                 // 해당 이벤트 초기화는 Assets\_DEV\Script\MobileShare\DynamicLinkSetting.cs의Awake()에서 해줌
                 onParam?.Invoke(query);

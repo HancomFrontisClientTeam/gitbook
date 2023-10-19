@@ -163,31 +163,34 @@ private void CheckSceneAndJoin(string name)
     else return;
 }
 
+/// <summary>
+/// 다이나믹 링크에 따른 join 로직 구현
+/// </summary>
+
 public void JoinRoom()
+{
+    if (HasParameters() == false)
     {
-        if (HasParameters() == false)
-        {
-            Debug.LogWarning("파라미터가 존재하지 않습니다.");
-            return;
-        }
-
-        // 공유 링크 목적에 따라 다른 입장 로직 실행
-        SHARELINK_TYPE roomType = (SHARELINK_TYPE)Enum.Parse(typeof(SHARELINK_TYPE), parameters["roomtype"]);
-        switch (roomType)
-        {
-            case SHARELINK_TYPE.OFFICE_ENTER:
-                JoinOfficeRoom();
-                break;
-            case SHARELINK_TYPE.OFFIICE_INFO:
-                ShowOfficeInfo();
-                break;
-            case SHARELINK_TYPE.MYROOM_ENTER:
-                JoinMyRoom();
-                break;
-        }
-
-        ClearCachedParameters();
+        Debug.LogWarning("파라미터가 존재하지 않습니다.");
+        return;
     }
+
+    SHARELINK_TYPE roomType = (SHARELINK_TYPE)Enum.Parse(typeof(SHARELINK_TYPE), parameters["roomtype"]);
+    switch (roomType)
+    {
+        case SHARELINK_TYPE.OFFICE_ENTER:
+            JoinOfficeRoom();
+            break;
+        case SHARELINK_TYPE.OFFIICE_INFO:
+            ShowOfficeInfo();
+            break;
+        case SHARELINK_TYPE.MYROOM_ENTER:
+            JoinMyRoom();
+            break;
+    }
+
+    ClearCachedParameters();
+}
 
 /// <summary>
 /// 오피스룸 입장 로직
@@ -195,7 +198,7 @@ public void JoinRoom()
 private async void JoinOfficeRoom()
 {
     Debug.Log($"오피스룸 입장 / + {parameters["roomid"]}");
-
+    
     var panel = SceneLogic.instance.GetPanel<Panel_Office>();
     panel.SuperJoin(parameters);
 
@@ -224,11 +227,21 @@ private void JoinMyRoom()
     Debug.Log($"마이룸 입장 / {parameters["roomcode"]}");
 
     string roomCode = parameters["roomcode"];
+    string roomId = parameters["roomid"];
 
-    // 현재 자신의 마이룸인데 자신의 마이룸으로 가려고 할 때 예외처리
-    if (SceneLogic.instance.GetSceneType() == SceneName.Scene_Room_MyRoom && roomCode == LocalPlayerData.MemberCode) 
-        return;
-    else 
+    LocalContentsData.scenePortal = ScenePortal.MyRoom;
+
+    // 현재 자신의 마이룸인데 자신의 마이룸으로 가려고 하거나 입장하려는 마이룸에 이미 와있는 경우 예외처리
+    if (SceneLogic.instance.GetSceneType() == SceneName.Scene_Room_MyRoom)
+    {
+        if (roomCode == LocalPlayerData.MemberCode || roomId == LocalContentsData.roomId)
+        {
+            LocalContentsData.scenePortal = ScenePortal.None;
+            return;
+        }
+    }
+    else
         Single.RealTime.EnterRoom(RoomType.MyRoom, roomCode);
 }
+#endregion
 ```
