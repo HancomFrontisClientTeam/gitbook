@@ -103,29 +103,25 @@ public void C_ExitAndEnterChatRoom(string roomId);
 
 ```csharp
 // 전체(룸) 채팅의 경우, 서버가 보내는 메세지 패킷
-private void S_GetMessage(string _message)
+private void S_ChatMessage(string _message)
 {
-    // Json String 형태의 데이터 -> Item_sendChat 형태로 변환
-    Item_sendChat chatData = JsonConvert.DeserializeObject<Item_sendChat>(_message);
-    
-    // View_Chat 스크립트의 월드 채팅 데이터를세팅하는 함수 호출
-    viewChat.LoadChatData(chatData);
+    Item_S_ChatMessage Item_S_ChatMessage = JsonConvert.DeserializeObject<Item_S_ChatMessage>(_message);
+
+    item_S_ChatMessage_Handler?.Invoke(Item_S_ChatMessage);
 }
 
 // 1:1 채팅의 경우, 서버가 보내는 메세지 패킷
-private void S_GetDirectMessage(string _message)
+private void S_ChatDM(string _message)
 {
-    // Json String 형태의데이터 -> Item_receiveDM 형태로 변환
-    Item_receiveDM dmData = JsonConvert.DeserializeObject<Item_receiveDM>(_message);
-    
-    // View_Chat 스크립트의 1:1 채팅 데이터를 세팅하는 함수 호출
-    viewChat.LoadDMData(dmData);
+    Item_S_ChatDM Item_S_ChatDM = JsonConvert.DeserializeObject<Item_S_ChatDM>(_message);
+    item_S_ChatDM_Handler?.Invoke(Item_S_ChatDM);
 }
 
 // 시스템 채팅의 경우, 서버가 보내는 메세지 패킷
-private void S_GetSystemMessage(string _message)
+private void S_ChatSystem(string _message)
 {
-    viewChat.LoadSystemData(_message);
+    Item_S_ChatSystem item_S_ChatSystem = new Item_S_ChatSystem() { message = _message, color = Cons.ChatColor_Green, };
+    item_S_ChatSystem_Handler?.Invoke(item_S_ChatSystem);
 }
 ```
 {% endtab %}

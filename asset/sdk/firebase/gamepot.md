@@ -170,7 +170,7 @@ Assets/Plugins/Android/libs 폴더에 위치해야 하며 해당 플러그인들
 
 Assets/Plugins/iOS/Frameworks 폴더에 위치해야 하며 해당 플러그인들은 타겟 플랫폼에 맞게 선택하여 빌드 시 포함되어야 합니다.
 
-<figure><img src="../../../.gitbook/assets/image (13).png" alt=""><figcaption><p>현재 타겟 플랫폼(Android)에 맞게 빌드 시 포함되게 한 예시 이미지</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (13) (1).png" alt=""><figcaption><p>현재 타겟 플랫폼(Android)에 맞게 빌드 시 포함되게 한 예시 이미지</p></figcaption></figure>
 
 {% tabs %}
 {% tab title="Google Login" %}

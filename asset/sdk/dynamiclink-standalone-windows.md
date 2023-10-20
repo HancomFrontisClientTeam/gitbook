@@ -8,7 +8,7 @@ description: Unity에서 Standalone Windows 딥링크를 지원하지 않기 때
 
 * <mark style="color:red;">Build Settings - Player Settings - Other Settings - Configuration 설정 변경 필수</mark>
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (2).png" alt=""><figcaption></figcaption></figure>
 
 * 해당 Asset을 import 후 DeepLinkingForWindows/Example.cs에서 발생하는 KeyValue 에러 해결법
 
@@ -37,7 +37,7 @@ public void Start()
             Debug.Log("PC DynamicLinkSetting Initialized.");
             initialized = true;
 #endif
-        }
+}
 ```
 
 프론트엔드에서 "arzmeta" scheme를 주로 사용하여 충돌이 있어 딥링크 관련 scheme는 "arzmetadeeplink"로 설정하였습니다.( PC버전 로그인 시, url을 오픈하면서 cmd.exe가 실행되어 다이나믹 링크가 수신되는 문제가 있었음)
@@ -105,28 +105,28 @@ DeepLink가 수신되었을 때, uri를 파라미터로 갖는 이벤트 함수�
 ```csharp
 // Assets\_DEV\Script\MobileShare\DynamicLinkSetting.cs
 private void OnPCDynamicLinkReceived(string uri)
+{
+    var url = Uri.UnescapeDataString(uri);
+    Debug.Log($"[Received PC Dynamic Link] Absolute Uri: {url}");
+
+    if (string.IsNullOrEmpty(url))
+    {
+        Debug.Log("질의가 없습니다.");
+    }
+    else
+    {
+        Dictionary<string, string> query = ParseQueryString(url);
+
+        foreach ((string key, string value) in query.Select(x => (x.Key, x.Value)))
         {
-            var url = Uri.UnescapeDataString(uri);
-            Debug.Log($"[Received PC Dynamic Link] Absolute Uri: {url}");
-
-            if (string.IsNullOrEmpty(url))
-            {
-                Debug.Log("질의가 없습니다.");
-            }
-            else
-            {
-                Dictionary<string, string> query = ParseQueryString(url);
-
-                foreach ((string key, string value) in query.Select(x => (x.Key, x.Value)))
-                {
-                    Debug.Log($"{key}={value}");
-                }
-
-                // 로직 실행을 위해 Assets\_DEV\Script\MobileShare\JoinShareLink.cs의 OnParamReceived() 이벤트 호출
-                // 해당 이벤트 초기화는 Assets\_DEV\Script\MobileShare\DynamicLinkSetting.cs의Awake()에서 해줌
-                onParam?.Invoke(query);
-            }
+            Debug.Log($"{key}={value}");
         }
+
+        // 로직 실행을 위해 Assets\_DEV\Script\MobileShare\JoinShareLink.cs의 OnParamReceived() 이벤트 호출
+        // 해당 이벤트 초기화는 Assets\_DEV\Script\MobileShare\DynamicLinkSetting.cs의Awake()에서 해줌
+        onParam?.Invoke(query);
+    }
+}
 ```
 
 ## 기타
@@ -142,18 +142,18 @@ private IEnumerator Start()
 {
     yield return null;
 
-        var args = Environment.GetCommandLineArgs();
+    var args = Environment.GetCommandLineArgs();
 
-        if (args.Length == 2 && args[1].StartsWith(_uriScheme))
+    if (args.Length == 2 && args[1].StartsWith(_uriScheme))
+    {
+        // 링크를 처음 받을 때만 콜백 함수 호출 후, linkReceived = true로 변경
+        if (!linkReceived)
         {
-            // 링크를 처음 받을 때만 콜백 함수 호출 후, linkReceived = true로 변경
-            if (!linkReceived)
-            {
-                deepLinkActivated?.Invoke(args[1]);
-                linkReceived = true;
-            }
+            deepLinkActivated?.Invoke(args[1]);
+            linkReceived = true;
         }
     }
+}
         
 private void OnApplicationFocus(bool hasFocus)
 {
