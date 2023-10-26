@@ -34,15 +34,15 @@ description: 전체 채팅, 1:1 채팅, 시스템 채팅
 
 <div>
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption><p>기본 모드(StandardMode)</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (48).png" alt=""><figcaption><p>기본 모드(StandardMode)</p></figcaption></figure>
 
  
 
-<figure><img src="../../.gitbook/assets/image (2).png" alt="" width="35"><figcaption><p>숨김 모드(HiddenMode)</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (2).png" alt="" width="35"><figcaption><p>숨김 모드(HiddenMode)</p></figcaption></figure>
 
  
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption><p>채팅 모드(ChattingMode)</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (3).png" alt=""><figcaption><p>채팅 모드(ChattingMode)</p></figcaption></figure>
 
 </div>
 {% endtab %}
@@ -56,15 +56,15 @@ description: 전체 채팅, 1:1 채팅, 시스템 채팅
 
 <div>
 
-<figure><img src="../../.gitbook/assets/image (3).png" alt=""><figcaption><p>전체 채팅</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (3) (2).png" alt=""><figcaption><p>전체 채팅</p></figcaption></figure>
 
  
 
-<figure><img src="../../.gitbook/assets/image (4).png" alt=""><figcaption><p>1:1 채팅</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (4) (2).png" alt=""><figcaption><p>1:1 채팅</p></figcaption></figure>
 
  
 
-<figure><img src="../../.gitbook/assets/image (5).png" alt=""><figcaption><p>시스템 채팅</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (5) (2).png" alt=""><figcaption><p>시스템 채팅</p></figcaption></figure>
 
 </div>
 {% endtab %}

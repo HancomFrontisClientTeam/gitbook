@@ -30,7 +30,7 @@ PWD : Dksdbslzmgksrj1!
 
 {% file src="../../.gitbook/assets/GPresto_AOS_Guide.pdf" %}
 
-<figure><img src="../../.gitbook/assets/image (23).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (23) (1).png" alt=""><figcaption></figcaption></figure>
 
 ## iOS
 
@@ -43,10 +43,10 @@ PWD : Dksdbslzmgksrj1!
 
 {% file src="../../.gitbook/assets/GPresto_iOS_Guide.pdf" %}
 
-<figure><img src="../../.gitbook/assets/image (22).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (22) (1).png" alt=""><figcaption></figcaption></figure>
 
 ## Standalone Windows
 
 {% file src="../../.gitbook/assets/GPresto_PC_Guide.pdf" %}
 
-<figure><img src="../../.gitbook/assets/image (21).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (21) (1).png" alt=""><figcaption></figcaption></figure>

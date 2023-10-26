@@ -339,8 +339,8 @@ protected virtual void SetAnimatorHash() { }
 
 ※ LoopScrollView\_Custom 컴포넌트 추가 예시
 
-<figure><img src="../../../../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (6) (1).png" alt=""><figcaption></figcaption></figure>
 
 ※ Cell 스크립트(FancyCell\_Custom를 상속받음) 프리팹 오브젝트 예시
 
-<figure><img src="../../../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (7) (1).png" alt=""><figcaption></figcaption></figure>
