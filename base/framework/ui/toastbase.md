@@ -5,7 +5,7 @@ description: 토스트 팝업 관련 베이스 클래스
 # ToastBase
 
 {% hint style="info" %}
-public virtual void ChainToastData(object data)아즈메타 내의 기본토스트 팝업 정의
+아즈메타 내의 기본토스트 팝업 정의
 
 * 상단 구역에서 보인다
 * 떴다가 일정 시간(변동 가능)이 지난 후 자동으로 꺼지는 팝업
@@ -92,15 +92,7 @@ protected override void SetContent()
             Util.SetMasterLocalizing(txtmp_Title, toastData.descLocal);
         }
     }
-
-    if (toastData.type == TOASTICON.Wrong)
-    {
-        SoundWorng();
-    }
-    else
-    {
-        SoundNomal();
-    }
+    ...
 }
 ```
 
@@ -169,6 +161,7 @@ public IEnumerator<float> Co_ToastPopup(object data)
 * ToastBase를 상속받아서 활용하는 방법
 * ToastBase는 UIBase를 상속받아 UIFramework를 사용할 수 있다.
 * ToastBase 기본 기능: 토스트 팝업 오픈&클로즈 애니메이션, 아이콘 로드 가상 함수
+* 기본 기능 외 추가 기능은 각 Toast 마다 다르므로 각 스크립트에서 구현한다.
 
 {% tabs %}
 {% tab title="예시 - Toast_Basic" %}
@@ -234,7 +227,6 @@ public IEnumerator<float> Co_ToastPopup(object data)
 
 {% tab title="예시 - Toast_TwoBtn " %}
 * 추가 기능: 팝업 desc 텍스트, 버튼 두 개, 버튼 액션, 카운트다운
-* 기본 기능 외 추가 기능은 각 Toast 마다 다르므로 각 스크립트에서 구현한다.
 
 <figure><img src="../../../.gitbook/assets/ToastPopupTwoBtn.gif" alt=""><figcaption><p>예시 - Toast_TwoBtn</p></figcaption></figure>
 

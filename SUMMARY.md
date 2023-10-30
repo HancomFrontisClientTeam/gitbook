@@ -9,6 +9,7 @@
   * [SceneLogic](base/scene/scenelogic.md)
   * [Scene 구성도](base/scene/scene.md)
 * [🪄 Manager](base/manager/README.md)
+  * [WebViewManager](base/manager/webviewmanager.md)
   * [GamePotManager](base/manager/gamepotmanager.md)
   * [MasterDataManager](base/manager/masterdatamanager.md)
   * [ItemDataManager](base/manager/itemdatamanager.md)
