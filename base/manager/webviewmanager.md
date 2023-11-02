@@ -263,21 +263,65 @@ public class WebSetting
 
 <img src="../../.gitbook/assets/file.excalidraw (14).svg" alt="" class="gitbook-drawing">
 
+## 4. 호출 방법
 
+### 1. URL 웹뷰 호출
 
+#### 1-1. 헤더가 없는 URL
 
+```csharp
+// 1) URL 로드
+// 2) 헤더가 없음
+// 3) 그 외 세팅 기본 (스택o, 비활성화x, 툴바 앞뒤 버튼o, 전체화면 모드)
 
+// 예시 - Panel_SocialLogin.cs
+Single.WebView.OpenWebView(new WebViewData(new WebDataSetting(WEBVIEWTYPE.URL, combineUrl)));
+```
 
+#### 1-2. 헤더가 있는 URL
 
+```csharp
+// 1) URL 로드
+// 2) 헤더가 있음
+// 3) 그 외 세팅 기본 (스택o, 비활성화x, 툴바 앞뒤 버튼o, 전체화면 모드)
 
+// 예시 - Panel_ArzProfile.cs
+// 헤더는 보통 서버측에서 필요한 데이터를 알려줌
+string combineUrl = Single.Web.WebviewUrl + "/login";
+Dictionary<string, string> dic = new Dictionary<string, string>
+{
+     { "jwtAccessToken", ClsCrypto.EncryptByAES(LocalPlayerData.JwtAccessToken) },
+     { "type", Util.EnumInt2String(ARZMETA_HOMEPAGE_TYPE.Report) },
+     { "nickname", WebUtility.UrlEncode(memberInfo.nickname) },
+     { "memberCode", memberInfo.memberCode }
+};
+Single.WebView.OpenWebView(new WebViewData(new WebDataSetting(WEBVIEWTYPE.URL, combineUrl, dic)));
+```
 
+### 2. HTML 웹뷰 호출
 
+```csharp
+// 1) HTML 로드
+// 2) HTML string을 넣어야 한다
+// 3) 그 외 세팅 기본 (스택o, 비활성화x, 툴바 앞뒤 버튼o, 전체화면 모드)
+Single.WebView.OpenWebView(new WebViewData(new WebDataSetting(WEBVIEWTYPE.HTML, htmlStr)));
+```
 
+### 3. 콜백 등록 방법
 
+```csharp
+// OpenWebView 메소드 호출 전에 콜백 등록
+// 해당 콜백이 등록된 웹뷰가 close 되면 모든 콜백을 삭제하므로 참고
 
-사용방법
-
-
-
-
+// 예시 - Item_ManageFriend.cs
+Single.WebView.OnReceiveCallback = (str) =>
+{ 
+    if (str.Url == "arzmeta://AccuseDone")
+    {
+        Single.WebView.CloseWebview();
+        SceneLogic.instance.isUILock = false;
+        SceneLogic.instance.PopPopup(); // 신고 팝업
+    }
+};
+```
 
