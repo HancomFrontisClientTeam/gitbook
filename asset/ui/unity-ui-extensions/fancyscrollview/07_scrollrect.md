@@ -267,7 +267,7 @@ public override void UpdateContent(ItemData itemData)
 
 {% tabs %}
 {% tab title="ScrollView_Custom" %}
-<img src="../../../../.gitbook/assets/file.excalidraw (1) (1).svg" alt="" class="gitbook-drawing">
+<img src="../../../../.gitbook/assets/file.excalidraw (1) (1) (1).svg" alt="" class="gitbook-drawing">
 {% endtab %}
 
 {% tab title="예시 - View_FriendList" %}

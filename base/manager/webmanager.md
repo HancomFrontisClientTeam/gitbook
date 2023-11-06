@@ -29,14 +29,14 @@ description: WebAPI를 호출하는 매니저
 * WebManager의 변수로 해당 스크립트를 선언하고 Single.Web.(해당 스크립트  변수명).(API) 형식으로 사용한다.
 * API 클래스는 Asset/\_Dev/Script/Framework/Manager/WebManager/ 폴더 하위에 생성
 
-<img src="../../.gitbook/assets/file.excalidraw.svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (1).svg" alt="" class="gitbook-drawing">
 
 ## 2) 메소드 흐름 구조도
 
 * 초기화 플로우 (게이트웨이 및 마스터 데이터 로드)
 * 일반 API 호출은 제외
 
-<img src="../../.gitbook/assets/file.excalidraw (1).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (1) (1).svg" alt="" class="gitbook-drawing">
 
 ## 3) 중요 메소드
 
