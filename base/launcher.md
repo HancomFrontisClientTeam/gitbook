@@ -20,7 +20,7 @@ description: PC런처에 대해 기술한다
 
 ### 런처에 사용되는 모든 파일/폴더명 통일
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (4).png" alt=""><figcaption></figcaption></figure>
 
 * Dev / Sta / Live 3개의 폴더로 나누었습니다.
 
@@ -37,13 +37,13 @@ description: PC런처에 대해 기술한다
 * Version.bin 파일에 이름도 동일해야하며 내부 버전 번호만 변경해서 업로드 해주시면 됩니다.\
   (.bin 파일을 메모장으로 열어 버전을 변경해 주시면 됩니다.)
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (3).png" alt=""><figcaption></figcaption></figure>
 
 해당 파일 내부에는 Dev / Sta / Live 라고 적힌 OpenVersion.bin파일 존재합니다.
 
 (VersionFile -> OpenVersion.bin)
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption><p>(Dev / Sta / Live 중  본인이 사용할 경로를 적어주면 됨)</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (3).png" alt=""><figcaption><p>(Dev / Sta / Live 중  본인이 사용할 경로를 적어주면 됨)</p></figcaption></figure>
 
 <figure><img src="../.gitbook/assets/image (59).png" alt=""><figcaption></figcaption></figure>
 
@@ -54,7 +54,7 @@ description: PC런처에 대해 기술한다
 
 ### InnoSetup
 
-<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption><p>(폴더 전체 구조)</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (3).png" alt=""><figcaption><p>(폴더 전체 구조)</p></figcaption></figure>
 
 <figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption><p>(아즈메타 PC빌드 폴더)</p></figcaption></figure>
 

@@ -48,6 +48,8 @@ public class AppendType
 public TableBaseData<ExampleClass> dataExampleClass { get; private set; }
 ```
 
+###
+
 ### 2 ) switch문 캐싱
 
 * LoadMasterData(string) 함수 내부 switch문에 해당 클래스명 추가
@@ -77,7 +79,7 @@ case "ExampleClass":
 * 마스터 데이터 파싱 및 데이터 사용 시 편의를 위한 클래스
 * 중요 메소드
 
-○ 파싱
+● 파싱
 
 <details>
 
@@ -114,7 +116,7 @@ public void SetDictionary(Dictionary<(int, string), T> dic)
 
 </details>
 
-○ 데이터 사용
+● 데이터 사용
 
 <details>
 

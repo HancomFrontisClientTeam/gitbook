@@ -104,6 +104,8 @@ public List<string> GetMaterials(int itemid)
 
 </details>
 
+###
+
 ### 2) Convert
 
 * 데이터 형변환을 하여 편리하게 사용할 수 있게 한다.
@@ -216,6 +218,8 @@ private string ConvertEnumStr(int id)
 
 </details>
 
+###
+
 ### 3) Avatar Data 관련
 
 * 아바타 데이터 관련 기능 메소드
@@ -270,7 +274,11 @@ public bool IsWearNFTCostume(Dictionary<string, int> data)
 
 </details>
 
+###
+
 ### 4) 썸네일
 
 <table data-full-width="true"><thead><tr><th width="304">방식</th><th width="180">사용처</th><th>설명</th></tr></thead><tbody><tr><td>리소스 폴드 로드</td><td>아바타 일반 의상</td><td>Panel_Costume에서 보이는 코스튬 아이템 썸네일</td></tr><tr><td>스토리지 로드</td><td>NFT 의상</td><td><p>스토리지에 2023개의 이미지가 업로드 되어있으며</p><p>다운로드 받아서 사용</p></td></tr><tr><td>프리팹 로드 + 썸네일  제네레이트</td><td>가구  및 인테리어</td><td>(23.10.24 기준) 프리팹 오브젝트를 로드하여 썸네일 제네레이터로<br>스프라이트 생성 및 저장</td></tr></tbody></table>
+
+
 

@@ -6,6 +6,10 @@ description: 3D WebView Vuplex 에셋을 사용한 웹뷰 관련 매니저
 
 * 앱 내부에서 외부 URL 혹은 HTML을 UI에 띄울 때 사용
 
+{% hint style="danger" %}
+오피스 내부에서 사용하는 WebViewController와는 별개의 스크립트
+{% endhint %}
+
 <figure><img src="../../.gitbook/assets/WebView.gif" alt=""><figcaption><p>예시 - 창 모드 웹뷰</p></figcaption></figure>
 
 ## 1. 에셋도큐먼트
@@ -69,6 +73,8 @@ public void CloseWebview()
 ```
 
 </details>
+
+
 
 ● 코어 메소드
 
@@ -196,6 +202,8 @@ private void OpenWeb(WebDataSetting uRLSetting)
 
 </details>
 
+
+
 ● 데이터 클래스
 
 <details>
@@ -298,6 +306,8 @@ Dictionary<string, string> dic = new Dictionary<string, string>
 Single.WebView.OpenWebView(new WebViewData(new WebDataSetting(WEBVIEWTYPE.URL, combineUrl, dic)));
 ```
 
+###
+
 ### 2. HTML 웹뷰 호출
 
 ```csharp
@@ -306,6 +316,8 @@ Single.WebView.OpenWebView(new WebViewData(new WebDataSetting(WEBVIEWTYPE.URL, c
 // 3) 그 외 세팅 기본 (스택o, 비활성화x, 툴바 앞뒤 버튼o, 전체화면 모드)
 Single.WebView.OpenWebView(new WebViewData(new WebDataSetting(WEBVIEWTYPE.HTML, htmlStr)));
 ```
+
+###
 
 ### 3. 콜백 등록 방법
 
