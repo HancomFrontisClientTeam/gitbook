@@ -34,15 +34,15 @@ description: 전체 채팅, 1:1 채팅, 시스템 채팅
 
 <div>
 
-<figure><img src="../../.gitbook/assets/image (48).png" alt=""><figcaption><p>기본 모드(StandardMode)</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (69).png" alt=""><figcaption><p>기본 모드(StandardMode)</p></figcaption></figure>
 
  
 
-<figure><img src="../../.gitbook/assets/image (2) (2).png" alt="" width="35"><figcaption><p>숨김 모드(HiddenMode)</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (71).png" alt="" width="35"><figcaption><p>숨김 모드(HiddenMode)</p></figcaption></figure>
 
  
 
-<figure><img src="../../.gitbook/assets/image (1) (3).png" alt=""><figcaption><p>채팅 모드(ChattingMode)</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (70).png" alt=""><figcaption><p>채팅 모드(ChattingMode)</p></figcaption></figure>
 
 </div>
 {% endtab %}
@@ -56,15 +56,15 @@ description: 전체 채팅, 1:1 채팅, 시스템 채팅
 
 <div>
 
-<figure><img src="../../.gitbook/assets/image (3) (2).png" alt=""><figcaption><p>전체 채팅</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (72).png" alt=""><figcaption><p>전체 채팅</p></figcaption></figure>
 
  
 
-<figure><img src="../../.gitbook/assets/image (4) (2).png" alt=""><figcaption><p>1:1 채팅</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (73).png" alt=""><figcaption><p>1:1 채팅</p></figcaption></figure>
 
  
 
-<figure><img src="../../.gitbook/assets/image (5) (2).png" alt=""><figcaption><p>시스템 채팅</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (74).png" alt=""><figcaption><p>시스템 채팅</p></figcaption></figure>
 
 </div>
 {% endtab %}
@@ -72,7 +72,7 @@ description: 전체 채팅, 1:1 채팅, 시스템 채팅
 
 
 
-<img src="../../.gitbook/assets/file.excalidraw (12).svg" alt="채팅 모드에 따른 UI 변경 로직" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (17).svg" alt="채팅 모드에 따른 UI 변경 로직" class="gitbook-drawing">
 
 ## 웹소켓 연결 및 채팅 초기화
 
@@ -435,7 +435,7 @@ public void ChangeChatMode()
 * ScrollView\_Chat : 채팅 모드에서 사용하는 **무한 스크롤 뷰**
 * ScrollView\_UserList : 채팅 모드에서 @ 입력 시 활성화되는 1:1 채팅 유저 리스트 **무한 스크롤 뷰**
 
-<img src="../../.gitbook/assets/file.excalidraw (12) (1).svg" alt="InfiniteScroll을 사용한 채팅 UI 및 스크립트 구성" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (18).svg" alt="InfiniteScroll을 사용한 채팅 UI 및 스크립트 구성" class="gitbook-drawing">
 
 2. 토글 타입에 따라 토글 글자와  UI 변경, new 아이콘 비활성화, 각 토글에 해당되는 채팅 데이터를 불러옵니다.
 

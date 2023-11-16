@@ -36,7 +36,7 @@ description: WebAPI를 호출하는 매니저
 * 초기화 플로우 (게이트웨이 및 마스터 데이터 로드)
 * 일반 API 호출은 제외
 
-<img src="../../.gitbook/assets/file.excalidraw (1) (1).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (2).svg" alt="" class="gitbook-drawing">
 
 ## 3) 중요 메소드
 
@@ -650,7 +650,7 @@ public void SetLocalPlayerData(LoginPacketRes res)
 
 * 서버팀측에서 API 제공 => Swagger 참고
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption><p>예시 - 친구 즐겨찾기 API</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption><p>예시 - 친구 즐겨찾기 API</p></figcaption></figure>
 
 ```csharp
 // 카테고리가 Friend이므로 WebFriend.cs에서 작업
@@ -714,13 +714,13 @@ Single.Web.friend.BookmarkFriend(data.memberCode, (res) =>
 
 1\) 메소드 형식,  API 주소, 바디 작성
 
-<img src="../../.gitbook/assets/image (2).png" alt="" data-size="original">
+<img src="../../.gitbook/assets/image (3).png" alt="" data-size="original">
 
 2\) 유니티에서 아즈메타 로그인 후 F11를 눌러 암호화된jwtAccessToken과 sessionId 획득
 
 3\) 획득한 데이터를 헤더에 추가
 
-<img src="../../.gitbook/assets/image (3).png" alt="" data-size="original">
+<img src="../../.gitbook/assets/image (4).png" alt="" data-size="original">
 
 4\) Send 하여 API 작동 확인
 {% endhint %}

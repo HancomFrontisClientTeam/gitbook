@@ -168,7 +168,7 @@ public override void UpdateContent(ItemData itemData)
 
 상속한 FancyScrollRect\<TItemData, TContext> 클래스에 각 \<Item\_Data, Context>을 지정하여 상속받았다.
 
-<figure><img src="../../../../.gitbook/assets/image (8) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (27).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 
@@ -268,11 +268,11 @@ public void SetAxisCellCount(int count)
 
 상속한 FancyGridViewCell\<TItemData, TContext> 클래스에 각 \<Item\_Data, Context>을 지정하여 상속받았다.
 
-<figure><img src="../../../../.gitbook/assets/image (9) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (28).png" alt=""><figcaption></figcaption></figure>
 
 아이템 스크립트를 작성하여 FancyGridViewCell\_Custom를 상속받아 사용한다.
 
-<figure><img src="../../../../.gitbook/assets/image (10) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (29).png" alt=""><figcaption></figcaption></figure>
 
 <table><thead><tr><th width="418.3333333333333">변수</th><th>설명</th></tr></thead><tbody><tr><td>protected UIBase uIBase;</td><td>UIBase를 상속받지 못하므로 외부 컴포넌트에서 가져와 초기화 시킨다.<br>(기본적으로 RequireComponent가 설정되어 있음)</td></tr><tr><td>private bool isInit = false;</td><td>UIBase 최초 1회 초기화</td></tr></tbody></table>
 
@@ -357,11 +357,11 @@ public void SetAxisCellCount(int count)
 
 {% tabs %}
 {% tab title="ScrollView_Custom" %}
-<img src="../../../../.gitbook/assets/file.excalidraw (7).svg" alt="" class="gitbook-drawing">
+<img src="../../../../.gitbook/assets/file.excalidraw (13).svg" alt="" class="gitbook-drawing">
 {% endtab %}
 
 {% tab title="예시 - Panel_CostumeInven" %}
-<img src="../../../../.gitbook/assets/file.excalidraw (9).svg" alt="" class="gitbook-drawing">
+<img src="../../../../.gitbook/assets/file.excalidraw (14).svg" alt="" class="gitbook-drawing">
 {% endtab %}
 {% endtabs %}
 
@@ -383,10 +383,10 @@ public void SetAxisCellCount(int count)
 
 ※ GridView\_Custom 컴포넌트 추가 예시
 
-<figure><img src="../../../../.gitbook/assets/image (11) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (30).png" alt=""><figcaption></figcaption></figure>
 
 ※ Cell 스크립트(FancyGridViewCell\_Custom를 상속받음) 프리팹 오브젝트 예시
 
-<figure><img src="../../../../.gitbook/assets/image (12) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (31).png" alt=""><figcaption></figcaption></figure>
 
 5\) GridView의 Cell Size의 값과 Cell Prefab의 높이와 너비 값을 일치시켜주어야 한다

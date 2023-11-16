@@ -170,7 +170,7 @@ Assets/Plugins/Android/libs 폴더에 위치해야 하며 해당 플러그인들
 
 Assets/Plugins/iOS/Frameworks 폴더에 위치해야 하며 해당 플러그인들은 타겟 플랫폼에 맞게 선택하여 빌드 시 포함되어야 합니다.
 
-<figure><img src="../../../.gitbook/assets/image (13) (1) (1).png" alt=""><figcaption><p>현재 타겟 플랫폼(Android)에 맞게 빌드 시 포함되게 한 예시 이미지</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (34).png" alt=""><figcaption><p>현재 타겟 플랫폼(Android)에 맞게 빌드 시 포함되게 한 예시 이미지</p></figcaption></figure>
 
 {% tabs %}
 {% tab title="Google Login" %}
@@ -213,11 +213,11 @@ Assets/Plugins/iOS/Frameworks 폴더에 위치해야 하며 해당 플러그인�
 
 1. Assets/Plugins/Android/mainTemplate.gradle 수정
 
-<figure><img src="../../../gitbook/.gitbook/assets/image (16).png" alt=""><figcaption><p>gamepot_project_id 연결, gamepot_store 변경</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (16).png" alt=""><figcaption><p>gamepot_project_id 연결, gamepot_store 변경</p></figcaption></figure>
 
 2. AndroidManifest.xml MainActivity 수정
 
-<figure><img src="../../../gitbook/.gitbook/assets/image (17).png" alt=""><figcaption><p>android:name 변경</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (17).png" alt=""><figcaption><p>android:name 변경</p></figcaption></figure>
 
 #### Unity iOS Setting
 
@@ -263,13 +263,13 @@ Google Cloud에 Firebase 프로젝트 생성 방법
 10. [Gamepot 콘솔](gamepot.md#gamepot) > Auth Key > 구글에 client\_id가 잘 들어갔는지 확인(도움말)참조
 {% endhint %}
 
-<figure><img src="../../../gitbook/.gitbook/assets/image (23).png" alt=""><figcaption><p>&#x3C; 5. 참고 이미지 > 빌드 시, 폴더를 비포함시키는 방법</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (23).png" alt=""><figcaption><p>&#x3C; 5. 참고 이미지 > 빌드 시, 폴더를 비포함시키는 방법</p></figcaption></figure>
 
 {% embed url="https://console.cloud.google.com/apis/credentials/consent?authuser=1&project=arzmeta-bacde" %}
 < 6. 참고 링크 >
 {% endembed %}
 
-<figure><img src="../../../gitbook/.gitbook/assets/image (24).png" alt=""><figcaption><p>&#x3C; 9. 참고 이미지 ></p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (24).png" alt=""><figcaption><p>&#x3C; 9. 참고 이미지 ></p></figcaption></figure>
 
 #### Apple Login Setting
 
@@ -303,7 +303,7 @@ Apple Developer Identifiers 등록 순서 : AppID - Key(권한 있어야 보임)
 2. Xcode에서 Clean Build 후, 재진행해보기
 {% endhint %}
 
-{% file src="../../../gitbook/.gitbook/assets/AuthKey_8656A9UB85.p8" %}
+{% file src="../../../.gitbook/assets/AuthKey_8656A9UB85.p8" %}
 < 1. AuthKey\_ .p8 파일 >
 {% endfile %}
 
@@ -313,7 +313,7 @@ Apple Developer Identifiers 등록 순서 : AppID - Key(권한 있어야 보임)
 
 ### GamePot InApp Purchase 사용할 경우, 아래 패치를 적용하여 관련 버전 업그레이드 필요
 
-{% file src="../../../gitbook/.gitbook/assets/google_inappV5_0823_Unity.zip" %}
+{% file src="../../../.gitbook/assets/google_inappV5_0823_Unity.zip" %}
 
 1\. 첨부파일의 4개 파일 ./Assets/Plugins/Android/libs 경로에 붙여넣기 및 교체
 
@@ -329,7 +329,7 @@ GamePot SDK를 통해 기능 개발하면서 겪었던 버그들을 정리해두
 
 * <mark style="color:red;">mainTemplate.gradle file is using the old aaptOptions noCompress property definition which does not include types defined by unityStreamingAssets constant.</mark>
 
-<figure><img src="../../../gitbook/.gitbook/assets/image (18).png" alt=""><figcaption><p><mark style="color:blue;">aaptOptions 변경</mark></p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (18).png" alt=""><figcaption><p><mark style="color:blue;">aaptOptions 변경</mark></p></figcaption></figure>
 
 * <mark style="color:red;">Found plugins with same names, Assets/Plugins/Android/libs/gamepot-channel-facebook.aar and Assets/Plugins/Android/nativeLibs/gamepot-channel-facebook.aar. Delete the one of the duplicate plugins.</mark>
 
@@ -411,7 +411,7 @@ GamePot SDK를 통해 기능 개발하면서 겪었던 버그들을 정리해두
 
     <mark style="color:red;">> Configuration with name 'compileClasspath' not found.</mark>
 
-<figure><img src="../../../gitbook/.gitbook/assets/image (19).png" alt=""><figcaption><p><mark style="color:blue;">mainTemplate.gradle에 추가</mark></p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (19).png" alt=""><figcaption><p><mark style="color:blue;">mainTemplate.gradle에 추가</mark></p></figcaption></figure>
 
 * <mark style="color:red;">Could not delete old \[Path]\lint-results-release-fatal.html</mark>
 

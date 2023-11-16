@@ -20,14 +20,14 @@ description: >-
 
 </details>
 
-<figure><img src="../../.gitbook/assets/image (27) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (48).png" alt=""><figcaption></figcaption></figure>
 
 ## 전체적인 로직
 
 1. 아즈폰 - 설정 -  계정 화면에서 각 소셜 로그인(NAVER, GOOGLE, APPLE) 버튼 클릭 시, 해당 소셜 로그인 페이지를 3D Webview에 띄워 로그인을 한다.
 2. <mark style="color:green;">모바일의 경우</mark>, API를 통해 다른 계정에 연동되어 있는지 확인 후 있으면 계정 전환을 위한 팝업에 현재 로그인 계정 정보와 전환하고 싶은 계정 정보를 넘겨주고 없으면 로컬 데이터를 추가하여 현재 로그인된 계정 정보를 업데이트한다. <mark style="color:blue;">Stnadalone의 경우</mark>, 서버에서 보내주는 콜백으로 다른 계정에 연동되어 있는지 확인 후 모바일과 같은 로직으로 계정 전환 팝업을 띄우거나 현재 로그인된 계정 정보를 업데이트한다.
 
-<figure><img src="../../.gitbook/assets/image (29).png" alt=""><figcaption><p>계정 전환 팝업</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (50).png" alt=""><figcaption><p>계정 전환 팝업</p></figcaption></figure>
 
 3. 현재 계정 연동 상태에 따라 토글 상태를 업데이트한다.
 

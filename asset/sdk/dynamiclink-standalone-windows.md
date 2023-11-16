@@ -8,7 +8,7 @@ description: Unity에서 Standalone Windows 딥링크를 지원하지 않기 때
 
 * <mark style="color:red;">Build Settings - Player Settings - Other Settings - Configuration 설정 변경 필수</mark>
 
-<figure><img src="../../.gitbook/assets/image (1) (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (33).png" alt=""><figcaption></figcaption></figure>
 
 * 해당 Asset을 import 후 DeepLinkingForWindows/Example.cs에서 발생하는 KeyValue 에러 해결법
 
@@ -48,7 +48,7 @@ public void Start()
 
 WindowsDeepLinking.Initialize("urischeme")에서 레지스트리 편집기에 설정한 urischeme와 Standalone Windows 앱 실행파일을 연결짓는다.&#x20;
 
-<figure><img src="../../.gitbook/assets/image (46).png" alt=""><figcaption><p>지정한scheme가 레지스트리 편집기에 등록된 모습</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (67).png" alt=""><figcaption><p>지정한scheme가 레지스트리 편집기에 등록된 모습</p></figcaption></figure>
 
 ## Deep Link 생성
 

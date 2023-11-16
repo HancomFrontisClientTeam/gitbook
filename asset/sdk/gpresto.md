@@ -20,7 +20,7 @@ PWD : Dksdbslzmgksrj1!
 1. GPresto Unity Plugin 다운로드([https://console.largosoft.co.kr/guide\_download.jsp](https://console.largosoft.co.kr/guide\_download.jsp)) 및 Import
 2. SceneLogic Awake에 Gpresto 사용하기 위한 코드 추가
 
-<figure><img src="../../.gitbook/assets/image (47).png" alt=""><figcaption><p>Assets\_DEV\Script\Framework\UI\SceneLogic_Base.cs</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (68).png" alt=""><figcaption><p>Assets\_DEV\Script\Framework\UI\SceneLogic_Base.cs</p></figcaption></figure>
 
 ## AOS
 
@@ -30,7 +30,7 @@ PWD : Dksdbslzmgksrj1!
 
 {% file src="../../.gitbook/assets/GPresto_AOS_Guide.pdf" %}
 
-<figure><img src="../../.gitbook/assets/image (23) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (44).png" alt=""><figcaption></figcaption></figure>
 
 ## iOS
 
@@ -43,10 +43,10 @@ PWD : Dksdbslzmgksrj1!
 
 {% file src="../../.gitbook/assets/GPresto_iOS_Guide.pdf" %}
 
-<figure><img src="../../.gitbook/assets/image (22) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (43).png" alt=""><figcaption></figcaption></figure>
 
 ## Standalone Windows
 
 {% file src="../../.gitbook/assets/GPresto_PC_Guide.pdf" %}
 
-<figure><img src="../../.gitbook/assets/image (21) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (42).png" alt=""><figcaption></figcaption></figure>

@@ -193,7 +193,7 @@ UpdatePosition(currentPosition);
 
 상속한 FancyScrollView\<TItemData, TContext> 클래스에 각 \<Item\_Data, Context>을 지정하여 상속받았다.
 
-<figure><img src="../../../../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (20).png" alt=""><figcaption></figcaption></figure>
 
 <table><thead><tr><th width="475">변수</th><th>설명</th></tr></thead><tbody><tr><td>public bool IsUpdate = true;</td><td>셀 선택 시 업데이트</td></tr><tr><td>public bool IsScrollTo = true;</td><td>셀 선택 시 스크롤</td></tr></tbody></table>
 
@@ -201,11 +201,11 @@ UpdatePosition(currentPosition);
 
 상속한 FancyCell\<TItemData, TContext> 클래스에 각 \<Item\_Data, Context>을 지정하여 상속받았다.
 
-<figure><img src="../../../../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (21).png" alt=""><figcaption></figcaption></figure>
 
 아이템 스크립트를 작성하여 FancyScrollRectCell\_Custom를 상속받아 사용한다.
 
-<figure><img src="../../../../.gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (22).png" alt=""><figcaption></figcaption></figure>
 
 <table><thead><tr><th width="418.3333333333333">변수</th><th>설명</th></tr></thead><tbody><tr><td>protected UIBase uIBase;</td><td>UIBase를 상속받지 못하므로 외부 컴포넌트에서 가져와 초기화 시킨다.<br>(기본적으로 RequireComponent가 설정되어 있음)</td></tr><tr><td>private bool isInit = false;</td><td>UIBase 최초 1회 초기화</td></tr><tr><td>[SerializeField] protected Animator animator;</td><td>애니메이션이 연결되어있는 애니메이터. </td></tr><tr><td>protected static string animatorHashName;</td><td>애니메이션 이름 변수</td></tr><tr><td>protected float currentPosition = 0;</td><td>포지션 변수</td></tr></tbody></table>
 
@@ -311,11 +311,11 @@ protected virtual void SetAnimatorHash() { }
 
 {% tabs %}
 {% tab title="LoopScrollView_Custom" %}
-<img src="../../../../.gitbook/assets/file.excalidraw (5).svg" alt="" class="gitbook-drawing">
+<img src="../../../../.gitbook/assets/file.excalidraw (11).svg" alt="" class="gitbook-drawing">
 {% endtab %}
 
 {% tab title="예시 - Panel_Preset" %}
-<img src="../../../../.gitbook/assets/file.excalidraw (6).svg" alt="" class="gitbook-drawing">
+<img src="../../../../.gitbook/assets/file.excalidraw (12).svg" alt="" class="gitbook-drawing">
 {% endtab %}
 {% endtabs %}
 
@@ -339,8 +339,8 @@ protected virtual void SetAnimatorHash() { }
 
 ※ LoopScrollView\_Custom 컴포넌트 추가 예시
 
-<figure><img src="../../../../.gitbook/assets/image (6) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (25).png" alt=""><figcaption></figcaption></figure>
 
 ※ Cell 스크립트(FancyCell\_Custom를 상속받음) 프리팹 오브젝트 예시
 
-<figure><img src="../../../../.gitbook/assets/image (7) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (26).png" alt=""><figcaption></figcaption></figure>

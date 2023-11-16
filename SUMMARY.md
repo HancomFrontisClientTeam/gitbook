@@ -65,7 +65,7 @@
 * [⚙ SDK](asset/sdk/README.md)
   * [Firebase](asset/sdk/firebase/README.md)
     * [GamePot](asset/sdk/firebase/gamepot.md)
-    * [DynamicLink - AOS, iOS](asset/sdk/firebase-1/dynamiclink-aos-ios.md)
+    * [DynamicLink - AOS, iOS](asset/sdk/firebase/dynamiclink-aos-ios.md)
   * [DeepLink - Standalone Windows](asset/sdk/dynamiclink-standalone-windows.md)
   * [UnityAzureStorage](asset/sdk/unityazurestorage.md)
   * [GPresto](asset/sdk/gpresto.md)

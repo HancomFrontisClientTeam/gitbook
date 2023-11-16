@@ -12,4 +12,4 @@ SceneLogic은 각 씬의 시작점 이다.
 
 
 
-<img src="../../.gitbook/assets/file.excalidraw (1) (2).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (6).svg" alt="" class="gitbook-drawing">

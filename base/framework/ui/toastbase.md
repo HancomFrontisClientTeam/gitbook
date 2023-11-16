@@ -18,7 +18,7 @@ description: 토스트 팝업 관련 베이스 클래스
 
 ## 1. 실행 구조도
 
-<img src="../../../.gitbook/assets/file.excalidraw (13).svg" alt="" class="gitbook-drawing">
+<img src="../../../.gitbook/assets/file.excalidraw (19).svg" alt="" class="gitbook-drawing">
 
 ## 2. 중요 메소드
 
@@ -171,7 +171,7 @@ public IEnumerator<float> Co_ToastPopup(object data)
 
 * 데이터 클래스
 
-<figure><img src="../../../.gitbook/assets/image (60).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (115).png" alt=""><figcaption></figcaption></figure>
 
 1\) SetMemberUI 오버라이딩
 
@@ -232,7 +232,7 @@ public IEnumerator<float> Co_ToastPopup(object data)
 
 * 데이터 클래스
 
-<figure><img src="../../../.gitbook/assets/image (61).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (116).png" alt=""><figcaption></figcaption></figure>
 
 1\) SetMemberUI 오버라이딩
 

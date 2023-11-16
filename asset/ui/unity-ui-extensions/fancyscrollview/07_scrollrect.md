@@ -31,7 +31,7 @@ description: 오브젝트 재활용 스크롤 뷰
 
 ## ● 구조도
 
-<img src="../../../../.gitbook/assets/file.excalidraw (4).svg" alt="" class="gitbook-drawing">
+<img src="../../../../.gitbook/assets/file.excalidraw (10).svg" alt="" class="gitbook-drawing">
 
 ***
 
@@ -168,17 +168,17 @@ public override void UpdateContent(ItemData itemData)
 
 상속한 FancyScrollRect\<TItemData, TContext> 클래스에 각 \<Item\_Data, Context>을 지정하여 상속받은 것 외 추가 변경 없음.
 
-![](<../../../../gitbook/.gitbook/assets/image (13).png>)
+![](<../../../../.gitbook/assets/image (13).png>)
 
 #### ▷ FancyScrollRectCell\_Custom.cs
 
 상속한 FancyScrollRectCell\<TItemData, TContext> 클래스에 각 \<Item\_Data, Context>을 지정하여 상속받았다.
 
-![](<../../../../gitbook/.gitbook/assets/image (14).png>)
+![](<../../../../.gitbook/assets/image (14).png>)
 
 아이템 스크립트를 작성하여 FancyScrollRectCell\_Custom를 상속받아 사용한다.
 
-![](<../../../../gitbook/.gitbook/assets/image (15).png>)
+![](<../../../../.gitbook/assets/image (15).png>)
 
 <table><thead><tr><th width="418.3333333333333">변수</th><th>설명</th></tr></thead><tbody><tr><td>protected UIBase uIBase;</td><td>UIBase를 상속받지 못하므로 외부 컴포넌트에서 가져와 초기화 시킨다.<br>(기본적으로 RequireComponent가 설정되어 있음)</td></tr><tr><td>private bool isInit = false;</td><td>UIBase 최초 1회 초기화</td></tr></tbody></table>
 
@@ -267,11 +267,11 @@ public override void UpdateContent(ItemData itemData)
 
 {% tabs %}
 {% tab title="ScrollView_Custom" %}
-<img src="../../../../.gitbook/assets/file.excalidraw (1) (1) (1).svg" alt="" class="gitbook-drawing">
+<img src="../../../../.gitbook/assets/file.excalidraw (1) (2).svg" alt="" class="gitbook-drawing">
 {% endtab %}
 
 {% tab title="예시 - View_FriendList" %}
-<img src="../../../../gitbook/.gitbook/assets/file.excalidraw (7).svg" alt="" class="gitbook-drawing">
+<img src="../../../../.gitbook/assets/file.excalidraw (7).svg" alt="" class="gitbook-drawing">
 {% endtab %}
 {% endtabs %}
 
@@ -293,10 +293,10 @@ public override void UpdateContent(ItemData itemData)
 
 ※ Scroll View\_Custom 컴포넌트 추가 예시
 
-![](<../../../../gitbook/.gitbook/assets/image (10).png>)
+![](<../../../../.gitbook/assets/image (10) (1).png>)
 
 ※ Cell 스크립트(FancyScrollRectCell\_Custom를 상속받음) 프리팹 오브젝트 예시
 
-![](<../../../../gitbook/.gitbook/assets/image (11).png>)
+![](<../../../../.gitbook/assets/image (11) (1).png>)
 
 5\) Scroll View의 Cell Size의 값과 Cell Prefab의 높이 값을 일치시켜주어야 한다

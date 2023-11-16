@@ -76,4 +76,4 @@ public void ResizeScrollView();
 
 ## 사용 구조도
 
-<img src="../../gitbook/.gitbook/assets/file.excalidraw (2) (1).svg" alt="Infinite Scroll 사용 구조도" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (2) (1) (1).svg" alt="Infinite Scroll 사용 구조도" class="gitbook-drawing">

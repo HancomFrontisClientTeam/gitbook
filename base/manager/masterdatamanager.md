@@ -185,5 +185,5 @@ Url 주소 : StorageUrl(게이트웨이에서 가져올 수 있음) + "master/ma
 * Get으로 설정
 *   Url 주소를 Send
 
-    <figure><img src="../../.gitbook/assets/image (16) (1).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (37).png" alt=""><figcaption></figcaption></figure>
 {% endhint %}

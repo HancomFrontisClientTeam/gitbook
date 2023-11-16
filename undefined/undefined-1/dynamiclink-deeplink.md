@@ -12,7 +12,7 @@ description: 자신의 마이룸 초대(MYROOM_ENTER), 오피스룸 초대(OFFIC
 
 <summary>관련 스크립트</summary>
 
-[Firebase DynamicLink](../../asset/sdk/firebase-1/dynamiclink-aos-ios.md), [Standalone DeepLink](../../asset/sdk/dynamiclink-standalone-windows.md) 세팅 : Assets\\\_DEV\Script\MobileShare\DynamicLinkSetting.cs
+[Firebase DynamicLink](../../asset/sdk/firebase/dynamiclink-aos-ios.md), [Standalone DeepLink](../../asset/sdk/dynamiclink-standalone-windows.md) 세팅 : Assets\\\_DEV\Script\MobileShare\DynamicLinkSetting.cs
 
 공유 목적에 맞게 링크 생성 : Assets\\\_DEV\Script\MobileShare\CreateShareLink.cs
 
@@ -52,11 +52,11 @@ description: 자신의 마이룸 초대(MYROOM_ENTER), 오피스룸 초대(OFFIC
 
 <div align="left">
 
-<figure><img src="../../.gitbook/assets/image (30).png" alt="" width="563"><figcaption><p>프로필 우측 공유하기 버튼을 누르면 공유 가능</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (51).png" alt="" width="563"><figcaption><p>프로필 우측 공유하기 버튼을 누르면 공유 가능</p></figcaption></figure>
 
  
 
-<figure><img src="../../.gitbook/assets/image (40).png" alt=""><figcaption><p>카톡 공유 예시</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (61).png" alt=""><figcaption><p>카톡 공유 예시</p></figcaption></figure>
 
 </div>
 
@@ -68,11 +68,11 @@ description: 자신의 마이룸 초대(MYROOM_ENTER), 오피스룸 초대(OFFIC
 
 <div align="left" data-full-width="false">
 
-<figure><img src="../../.gitbook/assets/image (31).png" alt="" width="563"><figcaption><p>룸코드 우측 공유하기 버튼을 누르면 공유 가능</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (52).png" alt="" width="563"><figcaption><p>룸코드 우측 공유하기 버튼을 누르면 공유 가능</p></figcaption></figure>
 
  
 
-<figure><img src="../../.gitbook/assets/image (32).png" alt=""><figcaption><p>카톡 공유 예시</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (53).png" alt=""><figcaption><p>카톡 공유 예시</p></figcaption></figure>
 
 </div>
 
@@ -82,11 +82,11 @@ description: 자신의 마이룸 초대(MYROOM_ENTER), 오피스룸 초대(OFFIC
 
 <div>
 
-<figure><img src="../../.gitbook/assets/image (44).png" alt="" width="563"><figcaption><p>룸코드 우측 공유하기 버튼을 누르면 공유 가능</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (65).png" alt="" width="563"><figcaption><p>룸코드 우측 공유하기 버튼을 누르면 공유 가능</p></figcaption></figure>
 
  
 
-<figure><img src="../../.gitbook/assets/image (45).png" alt=""><figcaption><p>카톡 공유 예시</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (66).png" alt=""><figcaption><p>카톡 공유 예시</p></figcaption></figure>
 
 </div>
 
@@ -94,11 +94,11 @@ description: 자신의 마이룸 초대(MYROOM_ENTER), 오피스룸 초대(OFFIC
 
 <div>
 
-<figure><img src="../../.gitbook/assets/image (41).png" alt="" width="563"><figcaption><p>왼쪽 하단 공유하기 버튼을 누르면 공유 가능</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (62).png" alt="" width="563"><figcaption><p>왼쪽 하단 공유하기 버튼을 누르면 공유 가능</p></figcaption></figure>
 
  
 
-<figure><img src="../../.gitbook/assets/image (43).png" alt=""><figcaption><p>카톡 공유 예시</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (64).png" alt=""><figcaption><p>카톡 공유 예시</p></figcaption></figure>
 
 </div>
 
@@ -116,12 +116,12 @@ description: 자신의 마이룸 초대(MYROOM_ENTER), 오피스룸 초대(OFFIC
 
 </div>
 
-3. 사용자가 초대 링크를 클릭하게 되면 DynamicLinkSetting.cs의 콜백 함수(모바일은  [OnDynamicLinkReceived()](../../asset/sdk/firebase-1/dynamiclink-aos-ios.md#dynamic-link), Standalone은 [OnPCDynamicLinkReceived()](../../asset/sdk/dynamiclink-standalone-windows.md#deep-link-1))가 호출되어, url에 포함되어있는 파라미터를 Dictionary 형태로 파싱하여 저장합니다.
+3. 사용자가 초대 링크를 클릭하게 되면 DynamicLinkSetting.cs의 콜백 함수(모바일은  [OnDynamicLinkReceived()](../../asset/sdk/firebase/dynamiclink-aos-ios.md#dynamic-link), Standalone은 [OnPCDynamicLinkReceived()](../../asset/sdk/dynamiclink-standalone-windows.md#deep-link-1))가 호출되어, url에 포함되어있는 파라미터를 Dictionary 형태로 파싱하여 저장합니다.
 4. JoinShareLink.cs의 이벤트 OnParamReceived()가 호출되어 파싱된 파라미터를 받아와 다이나믹 링크 로직이 활성화되어있는 씬인지 확인 후 공유 링크 타입(roomType)에 따라 Join 로직을 실행합니다.
 
 ### 공유 링크 생성 및 공유
 
-공유하고자 하는 곳에서 공유 링크에 필요한 데이터(ShareLinkInfo)를 파라미터로 포함하여  CreateShareLink.cs의 CreateLink(ShareLinkInfo)([모바일](../../asset/sdk/firebase-1/dynamiclink-aos-ios.md#firebase-dynamiclinks), [PC](../../asset/sdk/dynamiclink-standalone-windows.md#deep-link))을 호출하여 공유 링크를 생성하여 공유한다.&#x20;
+공유하고자 하는 곳에서 공유 링크에 필요한 데이터(ShareLinkInfo)를 파라미터로 포함하여  CreateShareLink.cs의 CreateLink(ShareLinkInfo)([모바일](../../asset/sdk/firebase/dynamiclink-aos-ios.md#firebase-dynamiclinks), [PC](../../asset/sdk/dynamiclink-standalone-windows.md#deep-link))을 호출하여 공유 링크를 생성하여 공유한다.&#x20;
 
 ```csharp
 // 다이나믹 링크 정보
@@ -143,7 +143,7 @@ public class ShareLinkInfo
 
 ### 사용자가 공유받은 링크 클릭
 
-[모바일](../../asset/sdk/firebase-1/dynamiclink-aos-ios.md#dynamic-link) / [PC](../../asset/sdk/dynamiclink-standalone-windows.md#deep-link-1) 콜백 함수에서 JoinShareLink.cs의 OnParamReceived() 이벤트를 호출해 공유 링크 로직이 활성화될 수 있는 씬인지 확인(CheckSceneAndJoin(현재 씬 이름) 후 해당 씬에 따라 Join 로직을 실행시킨다.
+[모바일](../../asset/sdk/firebase/dynamiclink-aos-ios.md#dynamic-link) / [PC](../../asset/sdk/dynamiclink-standalone-windows.md#deep-link-1) 콜백 함수에서 JoinShareLink.cs의 OnParamReceived() 이벤트를 호출해 공유 링크 로직이 활성화될 수 있는 씬인지 확인(CheckSceneAndJoin(현재 씬 이름) 후 해당 씬에 따라 Join 로직을 실행시킨다.
 
 ```csharp
 // Assets\_DEV\Script\MobileShare\JoinShareLink.cs

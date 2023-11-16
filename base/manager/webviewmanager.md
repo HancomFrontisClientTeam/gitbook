@@ -269,7 +269,7 @@ public class WebSetting
 
 ## 3. 메소드 흐름 구조도
 
-<img src="../../.gitbook/assets/file.excalidraw (14).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (20).svg" alt="" class="gitbook-drawing">
 
 ## 4. 호출 방법
 
