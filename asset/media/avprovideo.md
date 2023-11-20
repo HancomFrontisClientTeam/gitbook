@@ -65,7 +65,7 @@ mediaPlayer.Control.MuteAudio(true);
 {% tab title="Inspector" %}
 * MediaPlayer 컴포넌트 내에 있는 Events 항목 추가
 
-![](<../../.gitbook/assets/image (1) (1).png>)
+![](<../../.gitbook/assets/image (1) (1) (1).png>)
 {% endtab %}
 
 {% tab title="Scripting" %}

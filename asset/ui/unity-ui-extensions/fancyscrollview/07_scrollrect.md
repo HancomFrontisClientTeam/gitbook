@@ -168,13 +168,13 @@ public override void UpdateContent(ItemData itemData)
 
 상속한 FancyScrollRect\<TItemData, TContext> 클래스에 각 \<Item\_Data, Context>을 지정하여 상속받은 것 외 추가 변경 없음.
 
-![](<../../../../.gitbook/assets/image (13).png>)
+![](<../../../../.gitbook/assets/image (13) (1).png>)
 
 #### ▷ FancyScrollRectCell\_Custom.cs
 
 상속한 FancyScrollRectCell\<TItemData, TContext> 클래스에 각 \<Item\_Data, Context>을 지정하여 상속받았다.
 
-![](<../../../../.gitbook/assets/image (14).png>)
+![](<../../../../.gitbook/assets/image (14) (1).png>)
 
 아이템 스크립트를 작성하여 FancyScrollRectCell\_Custom를 상속받아 사용한다.
 
@@ -293,10 +293,10 @@ public override void UpdateContent(ItemData itemData)
 
 ※ Scroll View\_Custom 컴포넌트 추가 예시
 
-![](<../../../../.gitbook/assets/image (10) (1).png>)
+![](<../../../../.gitbook/assets/image (10) (1) (1).png>)
 
 ※ Cell 스크립트(FancyScrollRectCell\_Custom를 상속받음) 프리팹 오브젝트 예시
 
-![](<../../../../.gitbook/assets/image (11) (1).png>)
+![](<../../../../.gitbook/assets/image (11) (1) (1).png>)
 
 5\) Scroll View의 Cell Size의 값과 Cell Prefab의 높이 값을 일치시켜주어야 한다

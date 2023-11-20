@@ -245,7 +245,7 @@ public async void SetLocalPlayerData(LoginPacketRes res) => await Co_SetLocalPla
 * LocalPlayerData:  사용자 데이터 캐싱 및 프로퍼티, 데이터리셋
 * LocalPlayerData\_Method:  사용자 데이터를 이용한 그외 전역 메소드
 
-<figure><img src="../../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="danger" %}
 (2023.11.16 기준) 각자 필요에 의하여 작성된 메소드이기 때문에 개수가 많으며, 간혹 사용자 데이터를 사용하지 않는 메소드도 있다. 차후 클래스 이동이나 정리가 필요할 듯 하다.
