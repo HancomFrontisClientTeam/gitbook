@@ -104,12 +104,15 @@ if (SceneLogic.instance.GetPopup<Popup_Basic>().CheckWebSocketResponseError(targ
 
 #### ● 신규 추가 방법
 
+1\) 웹소켓 깃북 - 공통 에러 코드 참고 (손재명 연구원)
 
+{% embed url="https://jaemyeongson.gitbook.io/arzmeta-socketserver-docs/undefined-3" %}
 
+2\) WebSocketError.cs에 Enum 추가
 
+<figure><img src="../../.gitbook/assets/image (122).png" alt=""><figcaption></figcaption></figure>
 
-웹소켓 깃북
+3\) Popup\_Basic.cs의 CheckWebSocketResponseError 메소드에 case 추가
 
-이넘 추가
+<figure><img src="../../.gitbook/assets/image (123).png" alt=""><figcaption></figcaption></figure>
 
-스위치문 추가
