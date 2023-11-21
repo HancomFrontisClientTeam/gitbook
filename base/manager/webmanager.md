@@ -23,7 +23,7 @@ description: WebAPI를 호출하는 매니저
 
 {% embed url="https://dev-content.arzmeta.net/docs#/" %}
 
-## 1 ) 스크립트 구조도
+## 1 . 스크립트 구조도
 
 * API 개수가 많아짐에 따라 스웨거 카테고리 기준으로 스크립트 분배
 * WebManager의 변수로 해당 스크립트를 선언하고 Single.Web.(해당 스크립트  변수명).(API) 형식으로 사용한다.
@@ -31,14 +31,14 @@ description: WebAPI를 호출하는 매니저
 
 <img src="../../.gitbook/assets/file.excalidraw (1).svg" alt="" class="gitbook-drawing">
 
-## 2) 메소드 흐름 구조도
+## 2. 메소드 흐름 구조도
 
 * 초기화 플로우 (게이트웨이 및 마스터 데이터 로드)
 * 일반 API 호출은 제외
 
 <img src="../../.gitbook/assets/file.excalidraw (2).svg" alt="" class="gitbook-drawing">
 
-## 3) 중요 메소드
+## 3. 중요 메소드
 
 <table><thead><tr><th width="458">변수</th><th>설명</th></tr></thead><tbody><tr><td>public bool IsGateWayInfoResDone { get; private set; }</td><td>Scene_Logo.cs에서 게이트웨이 로드 완료 여부를 알기 위한 bool값.<br>true가 되지 않으면 진입 플로우를 타지 않는다.</td></tr><tr><td>private string GatewayInfoURL</td><td>암호화 된 게이트웨이 주소를 가지고 있는 스토리지 컨테이너.<br>서버측에서 제공한 주소를 넣는다.</td></tr></tbody></table>
 
@@ -548,7 +548,7 @@ public class SendRequestData_MultiPartForm : SendRequestData
 
 
 
-## 4) 작성 방법
+## 4. 작성 방법
 
 ● 신규 게이트웨이 변수 추가 시
 
@@ -687,7 +687,7 @@ public void BookmarkFriend(string friendMemeberCode, Action<BookmarkFriendPacket
 
 &#x20;
 
-## 5) 사용 방법
+## 5. 사용 방법
 
 * API 메소드 외부 호출 시 방법
 

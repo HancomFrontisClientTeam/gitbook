@@ -20,6 +20,7 @@
   * [WebManager](base/manager/webmanager.md)
   * [WebViewManager](base/manager/webviewmanager.md)
 * [📦 FrameWork](base/framework/README.md)
+  * [공통 에러 팝업](base/framework/undefined.md)
   * [MyRoom](base/framework/myroom.md)
   * [UI FrameWork](base/framework/ui/README.md)
     * [PanelBase](base/framework/ui/panelbase.md)
