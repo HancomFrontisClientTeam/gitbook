@@ -49,27 +49,27 @@ coverY: 119
 
 1-1)  캐릭터 팀에서 전달한 프리팹 중 신규 Bone을 가진 것이 있다면 해당 프리팹의 구조를 연다.
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption><p>예시 - downponytail 프리팹</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (10).png" alt=""><figcaption><p>예시 - downponytail 프리팹</p></figcaption></figure>
 
 1-2) Magica 컴포넌트를 확인하여 신규 추가된 Bone을 확인한다. (위 이미지의 붉은줄 참고)
 
 1-3) Assets\_DEV\Prefab\Avatar\Root 프리팹의 동일한 위치에 해당 Bone을 복사 붙여넣기 한다.&#x20;
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption><p>예시 - Root 프리팹</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption><p>예시 - Root 프리팹</p></figcaption></figure>
 
 1-4) 붙여 넣은 Bone의 Transform 값이 같은지 확인한다.
 
-<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption><p>동일한 Transform 컴포넌트 값</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1).png" alt=""><figcaption><p>동일한 Transform 컴포넌트 값</p></figcaption></figure>
 
 #### 2) Bone 편집
 
 2-1) 1에서 Root에 붙여 넣은 Bone 오브젝트를 Magica Bone Cloth 컴포넌트의 RootList에 추가
 
-<figure><img src="../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
 
 2-2) 하단의  Start Point Selection 버튼을 누른다.
 
-<figure><img src="../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 &#x20;신규 추가 된 Bone은 기능이 비활성화 되어있다.&#x20;
@@ -79,13 +79,13 @@ coverY: 119
 
 2-3) 2-2의 버튼을 누르면 편집 모드로 변경된다.&#x20;
 
-<figure><img src="../../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (6) (1).png" alt=""><figcaption></figcaption></figure>
 
 <table><thead><tr><th width="188">구분</th><th>설명</th></tr></thead><tbody><tr><td>🟢 Move Point</td><td>움직이는 것이 가능한 포인트<br>물리 엔진의 영향을 받는 움직이는 부위는 해당 포인트로 설정하여야 한다.</td></tr><tr><td>🔴 Fixed Point</td><td>고정된 포인트<br>고정 포인트 없이 Move Point만 있으면 물리 엔진의 영향으로 전체가 떨어지므로, 기본적으로 움직이는 포인트의 뿌리 부분으로 설정한다. 주로 몸이나 옷에 붙어있는 부분이 해당된다.</td></tr><tr><td>⚫ Invalid Point</td><td>유효하지 않은 포인트<br>물리 계산에서 제외된다. 불필요한 포인트를 해당 포인트로 설정하면 부하를 줄일 수 있다.</td></tr><tr><td>Fill</td><td>세 가지의 포인트 중 하나를 선택한 채로 해당 버튼을 누르면 오브젝트의 모든 포인트가 선택한 포인트로 설정된다.</td></tr></tbody></table>
 
 2-4)  Bone 포인트를 설정해준다.
 
-&#x20;![](<../../.gitbook/assets/image (7).png>)
+&#x20;![](<../../.gitbook/assets/image (7) (1).png>)
 
 {% hint style="info" %}
 최초로 본을 이식했다면, 이식해 온 Bone은 Invaild Point로 인식되어 회색 파티클로 보인다. 원본 프리팹의 설정을 확인한 다음 해당 Bone을 동일하게 설정해준다.
@@ -95,18 +95,18 @@ coverY: 119
 
 2-5) 설정이 완료되었다면 End Point Selection을 눌러 설정을 종료한다.
 
-<figure><img src="../../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (8) (1).png" alt=""><figcaption></figcaption></figure>
 
 2-6) 수정된 사항이 있다면 Create 버튼을 눌러 2-5에서 설정 완료한 Bone 설정을 저장한다.
 
-<figure><img src="../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (9) (1).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="warning" %}
 2-5 이후 Create를 누르지 않거나  Bone 에러가 발생하면 이와 같은 경고 문구가 발생한다.
 
 보통 Create 버튼을 누르면 사라진다.
 
-![](<../../.gitbook/assets/image (10).png>)
+![](<../../.gitbook/assets/image (10) (1).png>)
 {% endhint %}
 
 

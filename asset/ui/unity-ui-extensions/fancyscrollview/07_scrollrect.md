@@ -293,7 +293,7 @@ public override void UpdateContent(ItemData itemData)
 
 ※ Scroll View\_Custom 컴포넌트 추가 예시
 
-![](<../../../../.gitbook/assets/image (10) (1) (1).png>)
+![](<../../../../.gitbook/assets/image (10) (1) (1) (1).png>)
 
 ※ Cell 스크립트(FancyScrollRectCell\_Custom를 상속받음) 프리팹 오브젝트 예시
 

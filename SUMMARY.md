@@ -9,12 +9,12 @@
   * [SceneLogic](base/scene/scenelogic.md)
   * [Scene 구성도](base/scene/scene.md)
 * [🪄 Manager](base/manager/README.md)
+  * [Singleton](base/manager/singleton.md)
   * [CountDownManager](base/manager/countdownmanager.md)
   * [GamePotManager](base/manager/gamepotmanager.md)
   * [ItemDataManager](base/manager/itemdatamanager.md)
   * [RealtimeManager](base/manager/realtimemanager.md)
   * [MasterDataManager](base/manager/masterdatamanager.md)
-  * [Singleton](base/manager/singleton.md)
   * [SocketManager](base/manager/socketmanager.md)
   * [SoundManager](base/manager/soundmanager.md)
   * [WebManager](base/manager/webmanager.md)
@@ -33,6 +33,9 @@
   * [Enums](base/util/enums.md)
   * [Utils](base/util/utils.md)
 * [🔱 Launcher](base/launcher.md)
+* [☸ Build](base/build/README.md)
+  * [📱 IOS Build](base/build/ios-build.md)
+  * [📱 AOS Build](base/build/aos-build.md)
 
 ## 🔥 ASSET
 

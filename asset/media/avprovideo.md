@@ -65,7 +65,7 @@ mediaPlayer.Control.MuteAudio(true);
 {% tab title="Inspector" %}
 * MediaPlayer 컴포넌트 내에 있는 Events 항목 추가
 
-![](<../../.gitbook/assets/image (1) (1) (1).png>)
+![](<../../.gitbook/assets/image (1) (1) (1) (1).png>)
 {% endtab %}
 
 {% tab title="Scripting" %}
@@ -102,6 +102,6 @@ public class EventsExample : MonoBehaviour
 
 * 이벤트 종류
 
-<figure><img src="../../.gitbook/assets/image (8) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (8) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 {% embed url="https://assetstore.unity.com/packages/tools/video/avpro-video-core-edition-181844" %}
